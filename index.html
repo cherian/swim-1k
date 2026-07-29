@@ -1,0 +1,2634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swim 1K — Coach's Report</title>
+<style>
+        /* ============================================
+           COLOR TOKENS
+           ============================================
+           Two-level architecture: primitives → semantics.
+           Canonical source of truth for every color in this template.
+           Syntax highlighting, gradient endpoints, and print overrides
+           are contextual — intentionally excluded from the token set.
+           ============================================ */
+        :root {
+            /* ── Primitives: Warm Neutrals ── */
+            --cream-50:  #f5f3f1;
+            --cream-100: #f3f0ed;
+            --cream-200: #e8e6e3;
+            --cream-300: #e0ddd9;
+            --cream-400: #d8d4cf;
+            --neutral-500: #ccc;
+            --neutral-400: #ddd;
+            --white:     #ffffff;
+
+            /* ── Primitives: Gray Scale ── */
+            --gray-950:  #222;
+            --gray-900:  #333;
+            --gray-800:  #444;
+            --gray-700:  #555;
+            --gray-600:  #666;
+            --gray-500:  #777;
+            --gray-400:  #888;
+            --gray-300:  #999;
+            --gray-200:  #aaa;
+
+            /* ── Primitives: Status ── */
+            --blue-600:  #2a6aa0;
+            --blue-500:  #2980b9;
+            --green-600: #2a8c4a;
+            --green-700: #1a5c3a;
+            --amber-500: #c9922a;
+            --red-600:   #c0392b;
+            --purple-600:#7c3aed;
+            --teal-500:  #0d9488;
+
+            /* ── Primitives: Annotation (Tailwind-derived) ── */
+            --anno-green:  #22c55e;
+            --anno-amber:  #f59e0b;
+            --anno-red:    #ef4444;
+            --anno-blue:   #3b82f6;
+
+            /* ── Semantic: Surfaces ── */
+            --bg:              var(--cream-50);
+            --bg-surface:      var(--white);
+            --bg-tint:         var(--cream-100);
+            --bg-muted:        var(--cream-200);
+
+            /* ── Semantic: Text ── */
+            --text:            var(--gray-950);
+            --text-heading:    var(--gray-900);
+            --text-secondary:  var(--gray-700);
+            --text-muted:      var(--gray-400);
+            --text-faint:      var(--gray-300);
+
+            /* ── Semantic: Links & Interaction ── */
+            --link:            var(--gray-950);
+            --link-hover:      var(--gray-700);
+            --btn-bg:          var(--gray-950);
+            --btn-hover:       var(--gray-800);
+
+            /* ── Semantic: Status ── */
+            --status-info:     var(--blue-500);
+            --status-success:  var(--green-600);
+            --status-warning:  var(--amber-500);
+            --status-error:    var(--red-600);
+            --status-feature:  var(--purple-600);
+
+            /* ── Semantic: Borders ── */
+            --border:          var(--neutral-500);
+            --border-light:    var(--neutral-400);
+            --border-section:  var(--cream-300);
+
+            /* ── Semantic: Shadows (4 tiers) ── */
+            --shadow-xs:   0 1px 3px rgba(0,0,0,0.08);
+            --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md:   0 4px 12px rgba(0,0,0,0.12);
+            --shadow-lg:   0 8px 30px rgba(0,0,0,0.12);
+
+            /* ── Semantic: Code (dark theme) ── */
+            --code-bg:         #2d2d2d;
+            --code-text:       #e6e6e6;
+            --code-comment:    #999;
+            --code-selector:   #7ec699;
+            --code-property:   #81d4fa;
+            --code-value:      #f0c674;
+            --code-string:     #cc99cd;
+
+            /* ── Chart palette (6-color categorical) ── */
+            /* Shared with styleguide-charts.html */
+            --chart-1:         var(--blue-600);
+            --chart-2:         var(--red-600);
+            --chart-3:         var(--green-600);
+            --chart-4:         var(--amber-500);
+            --chart-5:         var(--purple-600);
+            --chart-6:         var(--teal-500);
+
+            /* ── Tints (light backgrounds for badges/icons) ── */
+            --tint-blue:       #e3f2fd;
+            --tint-green:      #e8f5e9;
+            --tint-red:        #fce4ec;
+            --tint-amber:      #fff8e1;
+            --tint-purple:     #f3e5f5;
+            --tint-muted:      var(--cream-100);
+
+            /* ── Annotation fills (Tailwind-derived, separate from status) ── */
+            --annotation-green:  var(--anno-green);
+            --annotation-amber:  var(--anno-amber);
+            --annotation-red:    var(--anno-red);
+            --annotation-blue:   var(--anno-blue);
+
+            /* ── Overlays & Dialogs ── */
+            --overlay-backdrop: rgba(34,34,34,0.45);
+            --overlay-surface:  var(--bg-surface);
+            --overlay-shadow:   0 12px 40px rgba(0,0,0,0.18);
+            --overlay-radius:   10px;
+            --overlay-border:   var(--border-light);
+            --focus-ring:       0 0 0 3px rgba(41,128,185,0.45);
+            /* z-index contract — all must exceed .print-toggle (1000) */
+            --z-banner: 1050; --z-dropdown: 1200; --z-drawer: 1300;
+            --z-modal: 1300;  --z-toast: 1400;    --z-coachmark: 1500;
+            --overlay-dur: 180ms; --overlay-ease: ease-out; --overlay-shift: 8px;
+
+            color-scheme: light;
+        }
+
+        /* ============================================
+           FONTS
+           ============================================ */
+
+        /* iA Writer Quattro — Body */
+        @font-face {
+            font-family: 'iA Writer Quattro';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro';
+            font-style: italic;
+            font-display: swap;
+            font-weight: 400;
+            src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-italic.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 700;
+            src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro';
+            font-style: italic;
+            font-display: swap;
+            font-weight: 700;
+            src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-italic.woff2) format('woff2');
+        }
+
+        /* Inter — Headings */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        /* ============================================
+           RESET
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ============================================
+           BASE
+           ============================================ */
+        html {
+            font-size: 24px;
+            padding: 1.5rem 2rem;
+        }
+
+        body {
+            font-family: 'iA Writer Quattro', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.60;
+            color: #222;
+            background: #f5f3f1;
+            max-width: 46em;
+            margin: 3rem auto;
+        }
+
+        /* ============================================
+           HEADINGS
+           ============================================ */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.05;
+            margin: 0 0 0.75rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 4rem 0 1.25rem 0;
+            letter-spacing: -0.015em;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 3.5rem 0 0.3rem 0;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2.5rem 0 0.25rem 0;
+        }
+
+        h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2rem 0 0.2rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        h6 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 1.5rem 0 0.2rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #555;
+        }
+
+        /* ============================================
+           PARAGRAPHS & INLINE
+           ============================================ */
+        p {
+            margin: 0 0 1rem 0;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        u {
+            text-underline-offset: 0.15em;
+            text-decoration-thickness: 1px;
+        }
+
+        s {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        sup {
+            font-size: 0.65em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        sub {
+            font-size: 0.65em;
+            vertical-align: sub;
+            line-height: 0;
+        }
+
+        sup a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 600;
+        }
+
+        sup a:hover {
+            color: #555;
+        }
+
+        mark {
+            background: #fff3b0;
+            padding: 0.05em 0.2em;
+            border-radius: 2px;
+        }
+
+        abbr[title] {
+            text-decoration: underline dotted;
+            text-underline-offset: 0.15em;
+            cursor: help;
+        }
+
+        kbd {
+            font-family: 'iA Writer Quattro', monospace;
+            font-size: 0.85em;
+            background: #e8e6e3;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 0.1em 0.4em;
+            box-shadow: 0 1px 0 #bbb;
+        }
+
+        small, .small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .caption {
+            font-size: 0.75rem;
+            color: #777;
+            line-height: 1.4;
+        }
+
+        /* Intro / lead paragraph */
+        .intro {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           LINKS
+           ============================================ */
+        a {
+            color: #222;
+            text-decoration: underline;
+            text-underline-offset: 0.15em;
+            text-decoration-thickness: 1px;
+        }
+
+        a:hover {
+            color: #555;
+        }
+
+        a[href^="http"]::after {
+            content: " \2197";
+            font-size: 0.7em;
+            vertical-align: super;
+            line-height: 0;
+            color: #999;
+        }
+
+        a[href^="#"]::after,
+        .footnotes a::after,
+        sup a::after {
+            content: none;
+        }
+
+        /* ============================================
+           LISTS
+           ============================================ */
+        ul, ol {
+            margin: 0 0 1rem 0;
+            padding-left: 1.5em;
+        }
+
+        li {
+            margin: 0.35em 0;
+        }
+
+        li > ul, li > ol {
+            margin: 0.25em 0 0.25em 0;
+        }
+
+        /* Definition list */
+        dl {
+            margin: 0 0 1rem 0;
+        }
+
+        dt {
+            font-weight: 700;
+            margin-top: 0.75rem;
+        }
+
+        dd {
+            margin-left: 1.5em;
+            color: #444;
+        }
+
+        /* ============================================
+           BLOCKQUOTES & PULL QUOTES
+           ============================================ */
+        blockquote {
+            margin: 1.5rem 0;
+            padding: 0 0 0 1.5rem;
+            border-left: 3px solid #ccc;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #777;
+            font-style: normal;
+        }
+
+        .pullquote {
+            margin: 2.5rem auto;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.35;
+            color: #333;
+            border-top: 2px solid #222;
+            border-bottom: 2px solid #222;
+            max-width: 32em;
+        }
+
+        /* ============================================
+           TABLES
+           ============================================ */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 0 0 1rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0 0 1rem 0;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.6em 0.8em;
+        }
+
+        th {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #555;
+            border-bottom: 2px solid #222;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Striped */
+        table.striped tbody tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        /* Bordered */
+        table.bordered th,
+        table.bordered td {
+            border: 1px solid #ccc;
+        }
+
+        /* Compact */
+        table.compact th,
+        table.compact td {
+            padding: 0.3em 0.6em;
+            font-size: 0.82rem;
+        }
+
+        /* ============================================
+           IMAGES & FIGURES
+           ============================================ */
+        figure {
+            margin: 1.5rem 0;
+        }
+
+        figure img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            font-size: 0.75rem;
+            color: #777;
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+
+        img.rounded {
+            border-radius: 8px;
+        }
+
+        img.shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        img.border {
+            border: 1px solid #ddd;
+        }
+
+        .image-row {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .image-row figure {
+            flex: 1;
+            margin: 0;
+        }
+
+        /* ============================================
+           LAYOUT UTILITIES
+           ============================================ */
+        .wide {
+            max-width: 52.5em;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        .full-width {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .full-width img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ============================================
+           CODE
+           ============================================ */
+        code {
+            font-family: 'iA Writer Quattro', 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.85em;
+            background: #e8e6e3;
+            padding: 0.1em 0.35em;
+            border-radius: 3px;
+        }
+
+        pre {
+            margin: 0 0 1rem 0;
+            padding: 1.25rem 1.5rem;
+            background: #2d2d2d;
+            color: #e6e6e6;
+            border-radius: 6px;
+            overflow-x: auto;
+            line-height: 1.5;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.82rem;
+            color: inherit;
+            border-radius: 0;
+        }
+
+        /* ============================================
+           SYNTAX HIGHLIGHTING
+           ============================================ */
+        .syn-comment  { color: #999; font-style: italic; }
+        .syn-selector { color: #7ec699; }
+        .syn-property { color: #81d4fa; }
+        .syn-value    { color: #f0c674; }
+        .syn-string   { color: #cc99cd; }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-block;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1;
+            padding: 0.7em 1.6em;
+            border-radius: 6px;
+            border: 2px solid #222;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .btn::after {
+            content: none;
+        }
+
+        .btn-primary {
+            background: #222;
+            color: #f5f3f1;
+        }
+
+        .btn-primary:hover {
+            background: #444;
+            border-color: #444;
+            color: #f5f3f1;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #222;
+        }
+
+        .btn-secondary:hover {
+            background: #222;
+            color: #f5f3f1;
+        }
+
+        .btn-small {
+            font-size: 0.72rem;
+            padding: 0.5em 1.2em;
+        }
+
+        .btn + .btn {
+            margin-left: 0.5rem;
+        }
+
+        /* ============================================
+           CARDS
+           ============================================ */
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin: 0 0 1rem 0;
+        }
+
+        .card-body {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .card-body h4 {
+            margin-top: 0;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+        }
+
+        .card-row {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card-row .card {
+            flex: 1;
+            margin: 0;
+        }
+
+        .card-horizontal {
+            display: flex;
+        }
+
+        .card-horizontal img {
+            width: 40%;
+            object-fit: cover;
+        }
+
+        .card-horizontal .card-body {
+            flex: 1;
+        }
+
+        /* ============================================
+           CALLOUTS & ASIDES
+           ============================================ */
+        .callout {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 4px solid #222;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        .callout-title {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.4rem;
+        }
+
+        .callout.warning {
+            border-left-color: #c9922a;
+            background: rgba(201, 146, 42, 0.06);
+        }
+
+        aside {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            color: #555;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 6px;
+        }
+
+        aside p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============================================
+           DIVIDERS
+           ============================================ */
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 3rem 0;
+        }
+
+        hr.decorative {
+            border: none;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        hr.decorative::after {
+            content: "* * *";
+            color: #999;
+            font-size: 0.85rem;
+            letter-spacing: 0.5em;
+        }
+
+        /* ============================================
+           DETAILS / SUMMARY
+           ============================================ */
+        details {
+            margin: 0 0 1rem 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        summary {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.02);
+            list-style: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: "\25B6\FE0E";
+            display: inline-block;
+            margin-right: 0.5em;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details > div {
+            padding: 0.75rem 1rem 1rem;
+        }
+
+        details > div p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============================================
+           FOOTNOTES
+           ============================================ */
+        .footnotes {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.82rem;
+            color: #555;
+        }
+
+        .footnotes ol {
+            padding-left: 1.5em;
+        }
+
+        .footnotes li {
+            margin: 0.4rem 0;
+        }
+
+        .footnotes a {
+            color: #555;
+        }
+
+        /* ============================================
+           MEDIA EMBEDS
+           ============================================ */
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            background: #ddd;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        audio {
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        /* ============================================
+           BADGES & TAGS
+           ============================================ */
+        .badge {
+            display: inline-block;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25em 0.65em;
+            border-radius: 3px;
+            background: #222;
+            color: #f5f3f1;
+            vertical-align: middle;
+        }
+
+        .badge.outline {
+            background: transparent;
+            color: #222;
+            border: 1px solid #222;
+        }
+
+        .badge.muted {
+            background: #e8e6e3;
+            color: #555;
+        }
+
+        .badge.critical  { background: #c0392b; color: #fff; }
+        .badge.important { background: #c9922a; color: #fff; }
+        .badge.nice      { background: #2a8c4a; color: #fff; }
+        .badge.current   { background: #c0392b; color: #fff; }
+        .badge.proposed  { background: #2a8c4a; color: #fff; }
+        .badge.free      { background: #2980b9; color: #fff; }
+        .badge.pro       { background: #6c3fc1; color: #fff; }
+        .badge.phase     { background: #2980b9; color: #fff; }
+
+        .tag {
+            display: inline-block;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.2em 0.6em;
+            border-radius: 12px;
+            background: #e8e6e3;
+            color: #444;
+            text-decoration: none;
+            margin: 0.15em;
+        }
+
+        .tag:hover {
+            background: #ddd;
+            color: #222;
+        }
+
+        .tag::after {
+            content: none;
+        }
+
+        /* ============================================
+           ANNOTATED IMAGE SYSTEM
+           ============================================ */
+        .annotated-wrap {
+            position: relative;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .annotated-wrap img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .annotated-wrap .a-label {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.7rem 1rem 0.5rem;
+            border-bottom: 2px solid;
+        }
+        .annotated-wrap .a-label.current { color: #888; border-color: #ccc; }
+        .annotated-wrap .a-label.rec { color: #2a8c4a; border-color: #2a8c4a; }
+
+        .a-box {
+            position: absolute;
+            border: 2.5px solid;
+            border-radius: 4px;
+            pointer-events: none;
+        }
+        .a-box.green { border-color: #22c55e; background: rgba(34,197,94,0.12); }
+        .a-box.amber { border-color: #f59e0b; background: rgba(245,158,11,0.12); }
+        .a-box.red   { border-color: #ef4444; background: rgba(239,68,68,0.12); }
+        .a-box.blue  { border-color: #3b82f6; background: rgba(59,130,246,0.12); }
+        .a-box.dashed { border-style: dashed; }
+
+        .a-tag {
+            position: absolute;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            pointer-events: none;
+            line-height: 1.3;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+        }
+        .a-tag.green { background: #22c55e; color: #fff; }
+        .a-tag.amber { background: #f59e0b; color: #fff; }
+        .a-tag.red   { background: #ef4444; color: #fff; }
+        .a-tag.blue  { background: #3b82f6; color: #fff; }
+
+        .a-num {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+            pointer-events: none;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+        .a-num.green { background: #22c55e; }
+        .a-num.amber { background: #f59e0b; }
+        .a-num.blue  { background: #3b82f6; }
+        .a-num.red   { background: #ef4444; }
+
+        /* Legend */
+        .legend { margin: 1.5rem 0; }
+        .legend-row { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.6rem 0; border-bottom: 1px solid #e8e5e1; }
+        .legend-row:last-child { border-bottom: none; }
+        .legend-num { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0; }
+        .legend-num.green { background: #22c55e; }
+        .legend-num.amber { background: #f59e0b; }
+        .legend-num.blue  { background: #3b82f6; }
+        .legend-num.red   { background: #ef4444; }
+        .legend-text { flex: 1; }
+        .legend-text strong { font-family: 'Inter', sans-serif; font-size: 0.85rem; display: block; margin-bottom: 0.15rem; }
+        .legend-text p { font-size: 0.82rem; color: #555; margin: 0; line-height: 1.5; }
+        .legend-text .phase-tag { font-size: 0.65rem; font-weight: 700; color: #2980b9; margin-top: 0.15rem; }
+
+        /* ============================================
+           CALLOUT VARIANTS
+           ============================================ */
+        .callout.critical {
+            border-left-color: #c0392b;
+            background: rgba(192, 57, 43, 0.06);
+        }
+
+        .callout.positive {
+            border-left-color: #2a8c4a;
+            background: rgba(42, 140, 74, 0.06);
+        }
+
+        .callout.info {
+            border-left-color: #2980b9;
+            background: rgba(41, 128, 185, 0.06);
+        }
+
+        /* ============================================
+           STAT GRID
+           ============================================ */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-grid[data-cols="2"] { grid-template-columns: repeat(2, 1fr); }
+        .stat-grid[data-cols="3"] { grid-template-columns: repeat(3, 1fr); }
+        .stat-grid[data-cols="4"] { grid-template-columns: repeat(4, 1fr); }
+
+        .stat-card {
+            background: #fff;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            container-type: inline-size;
+        }
+
+        .stat-card .stat-value {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 2rem;
+            font-size: clamp(1.2rem, 12cqi, 2rem);
+            font-weight: 700;
+            line-height: 1.1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.72rem;
+            color: #777;
+            margin-top: 0.3rem;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .stat-card.red .stat-value    { color: #c0392b; }
+        .stat-card.green .stat-value  { color: #2a8c4a; }
+        .stat-card.amber .stat-value  { color: #c9922a; }
+        .stat-card.blue .stat-value   { color: #2980b9; }
+        .stat-card.purple .stat-value { color: #6c3fc1; }
+
+        /* ============================================
+           SUMMARY GRID
+           ============================================ */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .summary-grid[data-cols="2"] { grid-template-columns: repeat(2, 1fr); }
+        .summary-grid[data-cols="3"] { grid-template-columns: repeat(3, 1fr); }
+        .summary-grid[data-cols="4"] { grid-template-columns: repeat(4, 1fr); }
+
+        .summary-grid .card {
+            margin: 0;
+            text-align: center;
+            container-type: inline-size;
+        }
+
+        /* ============================================
+           TIMELINE
+           ============================================ */
+        .timeline {
+            margin: 1.5rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline li {
+            position: relative;
+            padding: 0 0 1.5rem 2rem;
+            border-left: 2px solid #ddd;
+        }
+
+        .timeline li:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0.35em;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .timeline li.success::before { background: #2a8c4a; }
+        .timeline li.failure::before  { background: #c0392b; }
+        .timeline li.warning::before  { background: #c9922a; }
+        .timeline li.info::before     { background: #2980b9; }
+
+        .timeline .time {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .timeline .event {
+            font-size: 0.9rem;
+            margin-top: 0.15rem;
+        }
+
+        /* ============================================
+           BAR CHART
+           ============================================ */
+        .bar-chart {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .bar-chart h5 {
+            margin: 0 0 1rem 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #999;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            gap: 0.75rem;
+        }
+
+        .bar-label {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #444;
+            width: 155px;
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .bar-track {
+            flex: 1;
+            height: 31px;
+            background: #f0eeec;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 0.5rem;
+        }
+
+        .bar-fill.green { background: linear-gradient(90deg, #2a8c4a, #34a853); }
+        .bar-fill.blue  { background: linear-gradient(90deg, #2980b9, #3498db); }
+        .bar-fill.amber { background: linear-gradient(90deg, #c9922a, #e0a832); }
+        .bar-fill.red   { background: linear-gradient(90deg, #c0392b, #e74c3c); }
+        .bar-fill.gray  { background: linear-gradient(90deg, #999, #bbb); }
+
+        .bar-count {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .bar-count.outside {
+            color: #666;
+        }
+
+        /* ============================================
+           WEEKLY TREND CHART
+           ============================================ */
+        .week-chart { margin: 1.5rem 0; }
+        .week-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 80px;
+            margin-bottom: 0.3rem;
+        }
+        .week-bar {
+            flex: 1;
+            border-radius: 3px 3px 0 0;
+            background: #2a6aa0;
+            min-width: 6px;
+            transition: opacity 0.2s;
+        }
+        .week-bar.peak {
+            background: #2a8c4a;
+            border-top: 2px solid #1a5c3a;
+        }
+        .week-bar.partial { opacity: 0.55; }
+        .week-labels {
+            display: flex;
+            gap: 4px;
+        }
+        .week-label {
+            flex: 1;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.55rem;
+            color: #aaa;
+            text-align: center;
+            min-width: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Week chart color variants */
+        .week-chart.green .week-bar { background: #2a8c4a; }
+        .week-chart.green .week-bar.peak { background: #2a6aa0; border-top-color: #1a4a7a; }
+        .week-chart.amber .week-bar { background: #c9922a; }
+        .week-chart.amber .week-bar.peak { background: #2a8c4a; border-top-color: #1a5c3a; }
+        .week-chart.red .week-bar { background: #c0392b; }
+        .week-chart.red .week-bar.peak { background: #2a8c4a; border-top-color: #1a5c3a; }
+        .week-chart.gray .week-bar { background: #999; }
+        .week-chart.gray .week-bar.peak { background: #2a8c4a; border-top-color: #1a5c3a; }
+
+        /* ============================================
+           DISTRIBUTION BARS
+           ============================================ */
+        .dist-chart { margin: 1.5rem 0; }
+        .dist-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0.35rem 0;
+            font-size: 0.82rem;
+        }
+        .dist-label {
+            min-width: 10em;
+            color: #555;
+            flex-shrink: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .dist-track {
+            flex: 1;
+            height: 8px;
+            background: #e8e6e3;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .dist-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: #2a6aa0;
+        }
+        .dist-fill.blue  { background: #2a6aa0; }
+        .dist-fill.green { background: #2a8c4a; }
+        .dist-fill.amber { background: #c9922a; }
+        .dist-fill.red   { background: #c0392b; }
+        .dist-fill.gray  { background: #999; }
+        .dist-count {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.75rem;
+            min-width: 4.5em;
+            text-align: right;
+            color: #555;
+            white-space: nowrap;
+        }
+
+
+
+        /* ============================================
+           CONTRIBUTOR CARDS
+           ============================================ */
+        .contributors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        .contributor-card {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.8rem 0.5rem 0.5rem;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .contributor-name {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .contributor-meta {
+            font-size: 0.68rem;
+            color: #888;
+        }
+
+        /* ============================================
+           PROJECT HEADER & SECTION ICONS
+           ============================================ */
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .project-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .project-icon.tint-green  { background: #e8f5e9; }
+        .project-icon.tint-blue   { background: #e3f2fd; }
+        .project-icon.tint-red    { background: #fce4ec; }
+        .project-icon.tint-amber  { background: #fff8e1; }
+        .project-icon.tint-purple { background: #f3e5f5; }
+        .project-icon.tint-muted  { background: #f3f0ed; }
+
+        .section-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: -3px;
+            margin-right: 0.3rem;
+        }
+
+        /* ============================================
+           SHADOWS REFERENCE
+           ============================================ */
+        .shadow-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .shadow-sample {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .shadow-sample .label {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.3rem;
+        }
+
+        .shadow-sample .value {
+            font-family: 'iA Writer Quattro', monospace;
+            font-size: 0.65rem;
+            color: #999;
+        }
+
+        .shadow-natural {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .shadow-deep {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .shadow-sharp {
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .shadow-crisp {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ============================================
+           PRINT MODE TOGGLE
+           ============================================ */
+        .print-toggle {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .print-toggle-btn {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.5em 1em;
+            border: none;
+            background: transparent;
+            color: #888;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .print-toggle-btn:hover {
+            background: #f5f3f1;
+            color: #555;
+        }
+
+        .print-toggle-btn.active {
+            background: #222;
+            color: #f5f3f1;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer-note {
+            font-style: italic;
+            color: #555;
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 900px) {
+            html { font-size: 22px; }
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 20px;
+                padding: 1rem;
+            }
+
+            body {
+                margin: 1.5rem auto;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                margin: 3rem 0 1rem 0;
+            }
+
+            h3 {
+                font-size: 1.05rem;
+                margin: 2.5rem 0 0.25rem 0;
+            }
+
+            .wide {
+                max-width: 100%;
+                margin-left: 0;
+                transform: none;
+            }
+
+            .card-row {
+                flex-direction: column;
+            }
+
+            .card-horizontal {
+                flex-direction: column;
+            }
+
+            .card-horizontal img {
+                width: 100%;
+            }
+
+            .image-row {
+                flex-direction: column;
+            }
+
+            .shadow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .a-tag { font-size: 7px; padding: 2px 5px; }
+            .a-num { width: 16px; height: 16px; font-size: 8px; }
+
+            .pullquote {
+                font-size: 1.2rem;
+                padding: 1rem 1.25rem;
+            }
+
+            .table-wrap {
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding: 0 1rem;
+            }
+
+            .stat-grid, .stat-grid[data-cols] { grid-template-columns: repeat(2, 1fr); }
+            .summary-grid, .summary-grid[data-cols] { grid-template-columns: repeat(2, 1fr); }
+            .bar-label { width: 110px; font-size: 0.68rem; }
+            .week-row { height: 60px; }
+            .dist-label { min-width: 7em; font-size: 0.75rem; }
+            .project-icon { width: 36px; height: 36px; }
+            .project-icon svg { width: 20px; height: 20px; }
+            .palette-swatch { width: calc(50% - 6px); }
+        }
+
+        /* ============================================
+           OVERLAYS & DIALOGS
+           ============================================ */
+
+        /* Enforce [hidden] even when overlay CSS sets display:flex/block */
+        .ov-root [hidden] { display: none !important; }
+
+        /* ---- Backdrop ---- */
+        .ov-backdrop {
+            position: fixed; inset: 0;
+            background: var(--overlay-backdrop);
+            z-index: calc(var(--z-modal) - 1);
+            opacity: 0;
+            transition: opacity var(--overlay-dur) var(--overlay-ease);
+        }
+        .ov-backdrop.ov-open { opacity: 1; }
+
+        /* ---- Shared overlay enter/exit transitions ---- */
+        .ov-modal, .ov-drawer, .ov-sheet, .ov-lightbox, .ov-palette,
+        .ov-popover, .ov-menu, .ov-ctxmenu {
+            opacity: 0;
+            transition: opacity var(--overlay-dur) var(--overlay-ease),
+                        transform var(--overlay-dur) var(--overlay-ease);
+        }
+        .ov-modal.ov-open, .ov-drawer.ov-open, .ov-sheet.ov-open,
+        .ov-lightbox.ov-open, .ov-palette.ov-open,
+        .ov-popover.ov-open, .ov-menu.ov-open, .ov-ctxmenu.ov-open { opacity: 1; }
+
+        /* ---- Modal ---- */
+        .ov-modal {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, calc(-50% + var(--overlay-shift)));
+            z-index: calc(var(--z-modal) + 1);
+            background: var(--overlay-surface);
+            border-radius: var(--overlay-radius);
+            box-shadow: var(--overlay-shadow);
+            border: 1px solid var(--overlay-border);
+            min-width: min(420px, 92vw);
+            max-width: min(580px, 94vw);
+            max-height: 85vh;
+            display: flex; flex-direction: column;
+        }
+        .ov-modal.ov-open { transform: translate(-50%, -50%); }
+        .ov-modal.ov-closing { transform: translate(-50%, calc(-50% + var(--overlay-shift))); opacity: 0; }
+
+        .ov-modal-header {
+            display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+            padding: 1.25rem 1.5rem 0;
+        }
+        .ov-modal-header h3, .ov-modal-header h4 {
+            margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600;
+        }
+        .ov-modal-body {
+            padding: 1rem 1.5rem 1.25rem;
+            overflow-y: auto; font-size: 0.9rem; line-height: 1.6;
+        }
+        .ov-modal-footer {
+            padding: 0.9rem 1.5rem 1.25rem;
+            display: flex; gap: 0.5rem; justify-content: flex-end;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ---- Close button (shared) ---- */
+        .ov-close {
+            appearance: none; background: none; border: none; cursor: pointer;
+            color: var(--text-muted); padding: 0.2rem; border-radius: 4px;
+            line-height: 1; font-size: 1.25rem;
+            transition: color 0.15s, background 0.15s; flex-shrink: 0;
+        }
+        .ov-close:hover { color: var(--text); background: var(--bg-tint); }
+        .ov-close:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+        /* ---- Toast region ---- */
+        .ov-toast-region {
+            position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+            z-index: var(--z-toast);
+            display: flex; flex-direction: column; align-items: center;
+            gap: 0.5rem; pointer-events: none;
+        }
+        .ov-toast {
+            background: var(--text); color: var(--bg-surface);
+            padding: 0.6rem 1rem;
+            border-radius: 6px; font-size: 0.875rem;
+            box-shadow: var(--shadow-md);
+            display: flex; align-items: center; gap: 0.65rem;
+            pointer-events: auto;
+            animation: ov-toast-in var(--overlay-dur) var(--overlay-ease) both;
+        }
+        .ov-toast.ov-closing { animation: ov-toast-out var(--overlay-dur) var(--overlay-ease) both; }
+        .ov-toast-action {
+            background: none; border: none; cursor: pointer;
+            color: #7ec8f0; font-size: 0.875rem; font-weight: 600;
+            padding: 0; text-decoration: underline;
+        }
+        @keyframes ov-toast-in  { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        @keyframes ov-toast-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(8px); } }
+
+        /* ---- Snackbar ---- */
+        .ov-snackbar {
+            position: fixed; bottom: 1.5rem; left: 1.5rem;
+            z-index: var(--z-toast);
+            background: var(--text); color: var(--bg-surface);
+            padding: 0.7rem 1rem; border-radius: 6px;
+            font-size: 0.875rem; box-shadow: var(--shadow-md);
+            display: flex; align-items: center; gap: 0.65rem;
+            animation: ov-toast-in var(--overlay-dur) var(--overlay-ease) both;
+        }
+        .ov-snackbar.ov-closing { animation: ov-toast-out var(--overlay-dur) var(--overlay-ease) both; }
+
+        /* ---- Site banner ---- */
+        .ov-banner {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: var(--z-banner);
+            background: var(--tint-blue);
+            border-bottom: 1px solid var(--border-light);
+            padding: 0.6rem 1.25rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            font-size: 0.875rem;
+        }
+        .ov-banner[hidden] { display: none; }
+
+        /* ---- Tooltip ---- */
+        .ov-tooltip {
+            position: fixed; z-index: calc(var(--z-dropdown) + 10);
+            background: var(--text); color: var(--bg-surface);
+            font-size: 0.8rem; padding: 0.3rem 0.6rem;
+            border-radius: 4px; white-space: nowrap;
+            pointer-events: none; box-shadow: var(--shadow-sm);
+            opacity: 0; transition: opacity var(--overlay-dur) var(--overlay-ease);
+        }
+        .ov-tooltip.ov-open { opacity: 1; }
+
+        /* ---- Popover ---- */
+        .ov-popover {
+            position: fixed; z-index: var(--z-dropdown);
+            background: var(--overlay-surface);
+            border: 1px solid var(--border); border-radius: var(--overlay-radius);
+            box-shadow: var(--shadow-md);
+            padding: 1rem 1.25rem; min-width: 220px; max-width: 320px;
+            transform: translateY(calc(-1 * var(--overlay-shift)));
+        }
+        .ov-popover.ov-open { transform: translateY(0); }
+        .ov-popover.ov-closing { opacity: 0; transform: translateY(calc(-1 * var(--overlay-shift))); }
+
+        /* ---- Dropdown menu / context menu ---- */
+        .ov-menu, .ov-ctxmenu {
+            position: fixed; z-index: var(--z-dropdown);
+            background: var(--overlay-surface);
+            border: 1px solid var(--border); border-radius: 8px;
+            box-shadow: var(--shadow-md); padding: 0.35rem 0; min-width: 180px;
+            transform: translateY(calc(-1 * var(--overlay-shift)));
+        }
+        .ov-menu.ov-open, .ov-ctxmenu.ov-open { transform: translateY(0); }
+        .ov-menu-item {
+            display: flex; align-items: center; gap: 0.6rem;
+            width: 100%; text-align: left; padding: 0.5rem 0.9rem;
+            background: none; border: none; cursor: pointer;
+            font-size: 0.875rem; color: var(--text);
+            font-family: 'Inter', sans-serif;
+            transition: background 0.12s;
+        }
+        .ov-menu-item:hover, .ov-menu-item:focus { background: var(--bg-tint); outline: none; }
+        .ov-menu-sep { border: none; border-top: 1px solid var(--border-light); margin: 0.3rem 0; }
+
+        /* ---- Side drawer ---- */
+        .ov-drawer {
+            position: fixed; top: 0; right: 0; bottom: 0;
+            z-index: var(--z-drawer);
+            background: var(--overlay-surface);
+            box-shadow: var(--overlay-shadow);
+            width: min(400px, 88vw);
+            display: flex; flex-direction: column;
+            transform: translateX(calc(100% + var(--overlay-shift)));
+            transition: transform var(--overlay-dur) var(--overlay-ease),
+                        opacity var(--overlay-dur) var(--overlay-ease);
+        }
+        .ov-drawer.ov-open { transform: translateX(0); opacity: 1; }
+        .ov-drawer.ov-closing { transform: translateX(calc(100% + var(--overlay-shift))); }
+        .ov-drawer-header {
+            padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-light);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .ov-drawer-header h3 { margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600; }
+        .ov-drawer-body { padding: 1.25rem 1.5rem; overflow-y: auto; flex: 1; font-size: 0.9rem; }
+
+        /* ---- Bottom sheet ---- */
+        .ov-sheet {
+            position: fixed; left: 0; right: 0; bottom: 0;
+            z-index: var(--z-drawer);
+            background: var(--overlay-surface);
+            border-radius: 12px 12px 0 0;
+            box-shadow: var(--overlay-shadow);
+            max-height: 70vh; display: flex; flex-direction: column;
+            transform: translateY(calc(100% + var(--overlay-shift)));
+            transition: transform var(--overlay-dur) var(--overlay-ease);
+        }
+        .ov-sheet.ov-open { transform: translateY(0); }
+        .ov-sheet.ov-closing { transform: translateY(calc(100% + var(--overlay-shift))); }
+        .ov-sheet-handle {
+            width: 40px; height: 4px; background: var(--border);
+            border-radius: 2px; margin: 0.75rem auto 0; flex-shrink: 0;
+        }
+        .ov-sheet-header {
+            padding: 0.75rem 1.5rem 0;
+            display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+        }
+        .ov-sheet-header h3 { margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600; }
+        .ov-sheet-body { padding: 1rem 1.5rem 1.5rem; overflow-y: auto; flex: 1; font-size: 0.9rem; }
+
+        /* ---- Lightbox ---- */
+        .ov-lightbox {
+            position: fixed; inset: 0; z-index: var(--z-modal);
+            background: rgba(0,0,0,0.88);
+            display: flex; align-items: center; justify-content: center;
+            padding: 2rem;
+            transform: none;
+        }
+        .ov-lightbox.ov-open { opacity: 1; }
+        .ov-lightbox.ov-closing { opacity: 0; }
+        .ov-lightbox .ov-close {
+            position: absolute; top: 1rem; right: 1rem;
+            color: rgba(255,255,255,0.7); font-size: 1.5rem;
+        }
+
+        /* ---- Command palette ---- */
+        .ov-palette {
+            position: fixed; top: 20%; left: 50%;
+            transform: translateX(-50%) translateY(calc(-1 * var(--overlay-shift)));
+            z-index: calc(var(--z-modal) + 1);
+            background: var(--overlay-surface);
+            border: 1px solid var(--border); border-radius: var(--overlay-radius);
+            box-shadow: var(--overlay-shadow);
+            width: min(560px, 92vw);
+        }
+        .ov-palette.ov-open { transform: translateX(-50%) translateY(0); }
+        .ov-palette.ov-closing { transform: translateX(-50%) translateY(calc(-1 * var(--overlay-shift))); opacity: 0; }
+        .ov-palette-input-wrap {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light);
+        }
+        .ov-palette-input-wrap svg { color: var(--text-muted); flex-shrink: 0; }
+        .ov-palette-input {
+            flex: 1; background: none; border: none; outline: none;
+            font-size: 1rem; color: var(--text); font-family: inherit;
+        }
+        .ov-palette-input::placeholder { color: var(--text-muted); }
+        .ov-palette-list {
+            max-height: 300px; overflow-y: auto;
+            padding: 0.35rem 0; margin: 0; list-style: none;
+        }
+        .ov-palette-option {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 0.5rem 1rem; font-size: 0.875rem; cursor: pointer; color: var(--text);
+        }
+        .ov-palette-option[aria-selected="true"] { background: var(--bg-tint); }
+        .ov-palette-option .ov-palette-shortcut { margin-left: auto; font-size: 0.75rem; color: var(--text-muted); }
+        .ov-palette-empty { padding: 1.5rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.875rem; }
+        .ov-palette-footer {
+            padding: 0.5rem 1rem; border-top: 1px solid var(--border-light);
+            display: flex; gap: 1.25rem; font-size: 0.75rem; color: var(--text-muted);
+        }
+        .ov-palette-footer .badge { font-size: 0.7rem; vertical-align: middle; }
+
+        /* ---- Coachmark tour ---- */
+        .ov-spotlight {
+            position: fixed; z-index: calc(var(--z-coachmark) - 1);
+            border-radius: 6px;
+            box-shadow: 0 0 0 9999px rgba(0,0,0,0.55);
+            pointer-events: none; display: none;
+            transition: top var(--overlay-dur) var(--overlay-ease),
+                        left var(--overlay-dur) var(--overlay-ease),
+                        width var(--overlay-dur) var(--overlay-ease),
+                        height var(--overlay-dur) var(--overlay-ease);
+        }
+        .ov-coachmark {
+            position: fixed; z-index: var(--z-coachmark); display: none;
+            background: var(--overlay-surface); border: 1px solid var(--border);
+            border-radius: var(--overlay-radius); box-shadow: var(--overlay-shadow);
+            width: min(320px, 88vw); padding: 1.1rem 1.25rem;
+        }
+        .ov-coachmark-step {
+            font-size: 0.75rem; color: var(--text-muted);
+            font-family: 'Inter', sans-serif; margin-bottom: 0.3rem;
+        }
+        .ov-coachmark h4 { margin: 0 0 0.35rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; }
+        .ov-coachmark p  { margin: 0 0 0.85rem; font-size: 0.875rem; line-height: 1.55; }
+        .ov-coachmark-nav { display: flex; gap: 0.5rem; justify-content: flex-end; flex-wrap: wrap; }
+
+        /* ---- Anatomy (static documentation renders) ---- */
+        .ov-anatomy {
+            background: var(--bg-tint); border: 1px solid var(--border-light);
+            border-radius: 8px; padding: 1.5rem; position: relative; margin: 1rem 0;
+        }
+        .ov-label {
+            display: inline-block;
+            font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 600;
+            letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted);
+            border: 1px dashed var(--border); padding: 0.1rem 0.35rem;
+            border-radius: 3px; margin-left: 0.4rem; vertical-align: middle;
+        }
+
+        /* Anatomy overrides — make positioned overlays render inline */
+        .ov-anatomy .ov-tooltip,
+        .ov-anatomy .ov-popover {
+            position: relative; opacity: 1; transform: none;
+        }
+        .ov-anatomy .ov-menu,
+        .ov-anatomy .ov-ctxmenu,
+        .ov-anatomy .ov-banner,
+        .ov-anatomy .ov-snackbar {
+            position: relative; top: auto; left: auto; right: auto; bottom: auto;
+            opacity: 1; transform: none; animation: none;
+        }
+        .ov-anatomy .ov-toast { animation: none; }
+        .ov-anatomy .ov-drawer {
+            position: relative; top: auto; right: auto; bottom: auto;
+            transform: none; opacity: 1; width: auto; max-width: 100%;
+            box-shadow: none; border: 1px solid var(--border-light);
+        }
+        .ov-anatomy .ov-sheet {
+            position: relative; left: auto; right: auto; bottom: auto;
+            transform: none; max-height: none;
+        }
+
+        /* ---- Reduced-motion overrides ---- */
+        @media (prefers-reduced-motion: reduce) {
+            .ov-backdrop, .ov-modal, .ov-drawer, .ov-sheet, .ov-lightbox,
+            .ov-palette, .ov-popover, .ov-menu, .ov-ctxmenu,
+            .ov-tooltip, .ov-toast, .ov-snackbar, .ov-spotlight {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+
+            /* ---- PAGE SETUP (A4) ---- */
+            @page {
+                size: A4;
+                margin: 2cm 1.5cm;
+                @top-center {
+                    font-family: 'Inter', system-ui, sans-serif;
+                    font-size: 8pt;
+                    color: #888;
+                }
+                @bottom-center {
+                    content: counter(page);
+                    font-family: 'Inter', system-ui, sans-serif;
+                    font-size: 8pt;
+                    color: #888;
+                }
+            }
+
+            /* Named pages for mode-specific headers (Chromium only) */
+            @page color-page {
+                background: #f5f3f1;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                @top-center { content: "Style Guide — Color"; }
+            }
+            @page bw-page {
+                @top-center { content: "Style Guide — B\&W"; }
+            }
+
+            /* ---- BASE RESET ---- */
+            html {
+                font-size: 12pt;
+                padding: 0;
+            }
+
+
+            body {
+                max-width: none;
+                margin: 0;
+                color: #000;
+            }
+
+            /* ---- HIDE NON-PRINT ELEMENTS ---- */
+            .print-toggle {
+                display: none !important;
+            }
+            .ov-root, .ov-backdrop, .ov-modal, .ov-drawer, .ov-sheet,
+            .ov-lightbox, .ov-palette, .ov-coachmark, .ov-spotlight,
+            .ov-toast-region, .ov-tooltip, .ov-popover, .ov-menu,
+            .ov-ctxmenu, .ov-snackbar, .ov-banner {
+                display: none !important;
+            }
+
+            /* Video: hide children, keep container for placeholder text */
+            .video-embed {
+                height: auto;
+                padding-bottom: 0;
+                background: none;
+            }
+            .video-embed iframe,
+            .video-placeholder {
+                display: none !important;
+            }
+            .video-embed::after {
+                display: block;
+                content: "[Video embed — view in browser]";
+                font-style: italic;
+                color: #888;
+                font-size: 0.8rem;
+                padding: 1rem 0;
+            }
+
+            audio {
+                display: none !important;
+            }
+
+            /* ---- LINKS ---- */
+            a[href^="http"]::after {
+                content: none !important;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+
+            /* ---- PAGE BREAK MANAGEMENT ---- */
+            h1 {
+                break-before: page;
+                page-break-before: always;
+            }
+
+            /* First h1 should not force a page break */
+            article > section:first-of-type h1,
+            article > header h1,
+            h1:first-child {
+                break-before: auto;
+                page-break-before: auto;
+            }
+
+            h2, h3, h4, h5, h6 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .card, .callout, aside, details, figure, .shadow-sample,
+            pre, blockquote, .pullquote, .ov-anatomy {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            table {
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+            tr {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* ---- LAYOUT RESETS ---- */
+            .wide {
+                max-width: 100%;
+                margin-left: 0;
+                transform: none;
+            }
+
+            .full-width {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            /* Normalize flex/grid layouts for single-column print */
+            .card-row,
+            .card-horizontal,
+            .image-row {
+                display: block;
+            }
+
+            .card-row .card {
+                margin-bottom: 1rem;
+            }
+
+            .card-horizontal img {
+                width: 100%;
+            }
+
+            .shadow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Prevent table overflow clipping */
+            .table-wrap {
+                overflow: visible;
+            }
+
+            /* ---- CODE BLOCKS ---- */
+            pre {
+                background: #f5f3f0 !important;
+                color: #222 !important;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            pre code {
+                color: #222 !important;
+            }
+
+            code {
+                background: #eee;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* Syntax highlighting — light-background colors for print (Color mode) */
+            .syn-comment  { color: #6a737d !important; font-style: italic; }
+            .syn-selector { color: #22863a !important; }
+            .syn-property { color: #005cc5 !important; }
+            .syn-value    { color: #b31d28 !important; }
+            .syn-string   { color: #6f42c1 !important; }
+
+            /* ---- BUTTONS ---- */
+            .btn {
+                background: transparent !important;
+                color: #000 !important;
+                border: 1px solid #000;
+            }
+
+            /* ---- CARDS ---- */
+            .card {
+                border: 1px solid #ddd;
+            }
+
+            /* ---- CHARTS (week-chart, dist-chart) ---- */
+            .week-bar.partial { opacity: 1; }
+            .dist-track { border: 1px solid #ccc; }
+
+            /* Callouts & asides — fallback when JS hasn't set a print-mode class */
+            body:not(.print-color):not(.print-bw) .callout,
+            body:not(.print-color):not(.print-bw) aside {
+                background: transparent;
+            }
+
+            /* ---- FOOTER FONT NOTE ---- */
+            .footer-note::after {
+                content: " Printed with web fonts — if fonts appear different, ensure iA Writer Quattro and Inter are installed or print from a Chromium browser.";
+                font-style: normal;
+                font-size: 0.75rem;
+                display: block;
+                margin-top: 0.5rem;
+                color: #888;
+            }
+
+            /* ==== COLOR MODE ==== */
+            body.print-color {
+                page: color-page;
+                background: #f5f3f1;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color .callout {
+                background: rgba(0, 0, 0, 0.03);
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color .callout.warning {
+                border-left-color: #c9922a;
+                background: rgba(201, 146, 42, 0.06);
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color aside {
+                background: rgba(0, 0, 0, 0.02);
+                border-radius: 6px;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color summary {
+                background: rgba(0, 0, 0, 0.02);
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color .badge {
+                background: #222;
+                color: #f5f3f1;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color .badge.muted {
+                background: #e8e6e3;
+                color: #555;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color .badge.critical,
+            body.print-color .badge.current   { background: #c0392b; color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            body.print-color .badge.important  { background: #c9922a; color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            body.print-color .badge.nice,
+            body.print-color .badge.proposed   { background: #2a8c4a; color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            body.print-color .badge.free,
+            body.print-color .badge.phase      { background: #2980b9; color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            body.print-color .badge.pro        { background: #6c3fc1; color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+            body.print-color .a-box,
+            body.print-color .a-tag,
+            body.print-color .a-num,
+            body.print-color .legend-num {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color .tag {
+                background: #e8e6e3;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color mark {
+                background: #fff3b0;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color img.shadow {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            body.print-color .annotated-wrap {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                background: #fff;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* Cards — white background against cream, border from base rule */
+            body.print-color .card {
+                box-shadow: none;
+                background: #fff;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-color .shadow-natural {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            body.print-color .shadow-deep {
+                box-shadow: none;
+                border: 2px solid #999;
+            }
+
+            body.print-color .shadow-sharp {
+                box-shadow: none;
+                border: 2px solid #bbb;
+                border-right-width: 4px;
+                border-bottom-width: 4px;
+            }
+
+            body.print-color .shadow-crisp {
+                box-shadow: none;
+                border: 1px solid #888;
+            }
+
+            /* Striped table rows — color mode */
+            body.print-color table.striped tbody tr:nth-child(even) {
+                background: rgba(0, 0, 0, 0.03);
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* ==== B&W MODE ==== */
+            body.print-bw {
+                page: bw-page;
+                background: #fff;
+                color: #000;
+            }
+
+            /* Deliberate gray mapping */
+            body.print-bw h6 { color: #555; }
+            body.print-bw s { color: #888; }
+            body.print-bw a { color: #000; }
+            body.print-bw mark {
+                background: #ddd;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* B&W images — apply grayscale filter */
+            body.print-bw img {
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+
+            /* Callouts — border differentiation instead of color */
+            body.print-bw .callout {
+                border-left: 4px solid #000;
+                background: transparent;
+            }
+
+            body.print-bw .callout.warning {
+                border-left: 4px double #666;
+                background: transparent;
+            }
+
+            body.print-bw aside {
+                border-left: 4px dashed #999;
+                background: transparent;
+            }
+
+            /* Badges — B&W treatments */
+            body.print-bw .badge {
+                background: #000;
+                color: #fff;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-bw .badge.outline {
+                background: transparent;
+                color: #000;
+                border: 1.5px solid #000;
+            }
+
+            body.print-bw .badge.muted {
+                background: #ddd;
+                color: #333;
+                border: 1px solid #999;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-bw .badge.critical,
+            body.print-bw .badge.important,
+            body.print-bw .badge.nice,
+            body.print-bw .badge.current,
+            body.print-bw .badge.proposed,
+            body.print-bw .badge.free,
+            body.print-bw .badge.pro,
+            body.print-bw .badge.phase {
+                background: #000;
+                color: #fff;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-bw .a-box {
+                border-color: #000;
+                background: rgba(0,0,0,0.05);
+            }
+
+            body.print-bw .a-tag,
+            body.print-bw .a-num,
+            body.print-bw .legend-num {
+                background: #000;
+                color: #fff;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-bw .tag {
+                background: #eee;
+                color: #333;
+                border: 1px solid #bbb;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body.print-bw img.shadow {
+                box-shadow: none;
+                border: 1px solid #999;
+            }
+
+            body.print-bw .annotated-wrap {
+                box-shadow: none;
+                border: 1px solid #999;
+            }
+
+            /* Shadows → borders in B&W */
+            body.print-bw .card,
+            body.print-bw .shadow-sample {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            body.print-bw .shadow-natural,
+            body.print-bw .shadow-deep,
+            body.print-bw .shadow-sharp,
+            body.print-bw .shadow-crisp {
+                box-shadow: none;
+                border: 1px solid #999;
+            }
+
+            body.print-bw .shadow-sample .value {
+                font-weight: 600;
+                color: #555;
+            }
+
+            /* Code blocks — B&W syntax: weight/style instead of color */
+            body.print-bw .syn-comment  { color: #666 !important; font-style: italic; }
+            body.print-bw .syn-selector { color: #000 !important; font-weight: 700; }
+            body.print-bw .syn-property { color: #333 !important; font-weight: 600; }
+            body.print-bw .syn-value    { color: #555 !important; }
+            body.print-bw .syn-string   { color: #444 !important; font-style: italic; }
+
+            /* Decorative divider */
+            body.print-bw hr.decorative::after {
+                color: #666;
+            }
+
+            /* Tables */
+            body.print-bw table.striped tr:nth-child(even) {
+                background: #f5f5f5;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* Buttons */
+            body.print-bw .btn {
+                border-color: #000;
+            }
+
+            body.print-bw .btn-primary {
+                border-width: 2px;
+                font-weight: 700;
+            }
+
+            /* ---- PALETTE SWATCHES (print) ---- */
+            body.print-color .swatch-fill {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            body.print-bw .swatch-fill {
+                background: #fff !important;
+                border: 2px solid #000;
+            }
+            body.print-bw .palette-shadow .swatch-fill {
+                box-shadow: none;
+                border: 1px solid #999;
+            }
+        }
+
+        /* ============================================
+           PALETTE SWATCHES
+           ============================================ */
+        .palette-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+        .palette-swatch {
+            width: 110px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            background: #fff;
+        }
+        .swatch-fill {
+            height: 56px;
+        }
+        .swatch-fill.bordered {
+            border: 1px solid #ddd;
+        }
+        .swatch-meta {
+            padding: 6px 8px 8px;
+        }
+        .swatch-name {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #222;
+            line-height: 1.3;
+            margin: 0 0 2px;
+        }
+        .swatch-hex {
+            font-family: 'iA Writer Quattro', monospace;
+            font-size: 12px;
+            color: #555;
+            margin: 0;
+        }
+        .swatch-token {
+            font-family: 'iA Writer Quattro', monospace;
+            font-size: 10px;
+            color: #999;
+            margin: 0;
+            word-break: break-all;
+        }
+        .palette-shadow .swatch-fill {
+            background: #fff;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+<main>
+
+<header>
+<p class="small" style="text-transform:uppercase;letter-spacing:0.08em;color:#8a8580">Swim 1K · a running project · updated from the 2026-07-28 20:49:38 -0700 export</p>
+<h1>The road to 1,000 meters</h1>
+<p class="intro">Coach's report for Cherian — graded against Alex Coci's Ocean Swim School protocol, with an honest eye on what the watch actually measured.</p>
+</header>
+
+<figure><img src="assets/hero-swimmer.png" alt="Flat illustration of a freestyle swimmer" class="rounded"></figure>
+
+<section>
+<h2>The verdict — Tuesday, July 28</h2>
+<div class="card">
+<div class="card-body">
+<h3 style="margin-top:0">The engine is fine. The wall stops are where the race is lost.</h3>
+<p><strong>The win.</strong> Your pace held: a measured 27s per length even on a 39-length day. The stroke is repeatable — that&#x27;s the raw material.</p>
+<p><strong>The correction.</strong> Measured median rest is ~55s, above the 20–45s band — only 32% of rests in band. Touch, three breaths, go. And keep chunking up: the protocol&#x27;s smallest unit is 100 m — four lengths.</p>
+<div class="card-row">
+<div><p class="caption">lengths</p><p style="font-size:1.6rem;font-weight:600;margin:0">39</p></div>
+<div><p class="caption">true distance</p><p style="font-size:1.6rem;font-weight:600;margin:0">892 m</p></div>
+<div><p class="caption">rests in band</p><p style="font-size:1.6rem;font-weight:600;margin:0">32%</p></div>
+</div>
+</div>
+</div>
+<p class="small">"True distance" counts lengths × 22.86 m. The watch's own numbers run ~15% hot — see <a href="#honesty">how this is measured</a>.</p>
+</section>
+
+<section>
+<h2>Where you stand</h2>
+<svg viewBox="0 0 1000 86" role="img" aria-label="Longest continuous swim versus the 44-length goal" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif"><rect x="2" y="26" width="996" height="26" rx="13" fill="#eceae6"/><rect x="2" y="26" width="45.3" height="26" rx="13" fill="#2563eb"><title>Longest continuous: 2 lengths of 44</title></rect><text x="2" y="16" font-size="14" fill="#666">longest continuous swim</text><text x="998" y="16" text-anchor="end" font-size="14" fill="#666">goal: 44 lengths · 1000 m</text><text x="59.3" y="44" font-size="15" font-weight="600" fill="#222">2 lengths · 46 m</text></svg>
+<p>The bar looks short. It's supposed to. You're swimming close to <strong>a full kilometer of volume per session</strong> — the engine is there. What hasn't been trained yet is swimming continuously, and that's precisely what the five-week ladder below builds. This bar is the one number this whole project exists to move.</p>
+</section>
+
+<section>
+<h2>The climb — session by session</h2>
+<svg viewBox="0 0 1000 380" role="img" aria-label="Longest continuous swim per session, climbing the protocol ladder" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif"><line x1="46" x2="870" y1="336.0" y2="336.0" stroke="#e2ded9" stroke-width="1" /><text x="38" y="340.0" text-anchor="end" font-size="13" fill="#8a8580">1</text><line x1="46" x2="870" y1="273.2" y2="273.2" stroke="#e2ded9" stroke-width="1" /><text x="38" y="277.2" text-anchor="end" font-size="13" fill="#8a8580">2</text><text x="878" y="277.2" font-size="13" fill="#8a8580">8 × 50 yd</text><line x1="46" x2="870" y1="210.4" y2="210.4" stroke="#e2ded9" stroke-width="1" /><text x="38" y="214.4" text-anchor="end" font-size="13" fill="#8a8580">5</text><text x="878" y="214.4" font-size="13" fill="#8a8580">10 × 5</text><line x1="46" x2="870" y1="147.6" y2="147.6" stroke="#e2ded9" stroke-width="1" /><text x="38" y="151.6" text-anchor="end" font-size="13" fill="#8a8580">10</text><text x="878" y="151.6" font-size="13" fill="#8a8580">5 × 10</text><line x1="46" x2="870" y1="84.8" y2="84.8" stroke="#e2ded9" stroke-width="1" /><text x="38" y="88.8" text-anchor="end" font-size="13" fill="#8a8580">22</text><text x="878" y="88.8" font-size="13" fill="#8a8580">2 × 22</text><line x1="46" x2="870" y1="22.0" y2="22.0" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4"/><text x="38" y="26.0" text-anchor="end" font-size="13" fill="#8a8580">44</text><text x="878" y="26.0" font-size="13" fill="#b91c1c" font-weight="600">GOAL · 1000 m</text><line x1="379.6" x2="536.4" y1="273.2" y2="273.2" stroke="#2563eb" stroke-width="3" opacity="0.85"/><line x1="536.4" x2="693.2" y1="273.2" y2="273.2" stroke="#2563eb" stroke-width="3" opacity="0.85"/><line x1="693.2" x2="850.0" y1="273.2" y2="273.2" stroke="#2563eb" stroke-width="3" opacity="0.85"/><text x="66.0" y="356" text-anchor="middle" font-size="12" fill="#8a8580">7/20</text><text x="222.8" y="356" text-anchor="middle" font-size="12" fill="#8a8580">7/21</text><circle cx="379.6" cy="273.2" r="7" fill="#2563eb" stroke="#2563eb" stroke-width="2.5"><title>Wed Jul 22 · longest run 2 lengths · 35 lengths total · median rest 56s (measured)</title></circle><text x="379.6" y="356" text-anchor="middle" font-size="12" fill="#8a8580">7/22</text><circle cx="536.4" cy="273.2" r="7" fill="#2563eb" stroke="#2563eb" stroke-width="2.5"><title>Thu Jul 23 · longest run 2 lengths · 25 lengths total · median rest 57s (measured)</title></circle><text x="536.4" y="356" text-anchor="middle" font-size="12" fill="#8a8580">7/23</text><circle cx="693.2" cy="273.2" r="7" fill="#2563eb" stroke="#2563eb" stroke-width="2.5"><title>Fri Jul 24 · longest run 2 lengths · 31 lengths total · median rest 56s (measured)</title></circle><text x="693.2" y="356" text-anchor="middle" font-size="12" fill="#8a8580">7/24</text><circle cx="850.0" cy="273.2" r="7" fill="#2563eb" stroke="#2563eb" stroke-width="2.5"><title>Tue Jul 28 · longest run 2 lengths · 39 lengths total · median rest 55s (measured)</title></circle><text x="850.0" y="356" text-anchor="middle" font-size="12" fill="#8a8580">7/28</text><text x="46" y="374" font-size="13" fill="#8a8580">dot = longest continuous swim, measured sessions only (open-water estimates fabricated runs) · blue step = best so far · rungs = the protocol ladder</text></svg>
+<p>Since the protocol started (July 19), your best continuous swim is 2 lengths (46 m). Next rung on the ladder: 5 lengths (114 m) in one go. Every measured session adds a dot — the job is to make the blue step line climb, one rung at a time, until it touches the red line at 44.</p>
+</section>
+
+<section>
+<h2>What the coach saw — Tuesday, July 28</h2>
+<svg viewBox="0 0 1000 300" role="img" aria-label="Measured rest after each length, Tue Jul 28" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif"><rect x="46" y="191.0" width="944" height="75.0" fill="#2563eb" opacity="0.07"/><line x1="46" x2="990" y1="191.0" y2="191.0" stroke="#e2ded9" stroke-width="1"/><text x="38" y="195.0" text-anchor="end" font-size="13" fill="#8a8580">45s</text><line x1="46" x2="990" y1="116.0" y2="116.0" stroke="#e2ded9" stroke-width="1"/><text x="38" y="120.0" text-anchor="end" font-size="13" fill="#8a8580">90s</text><line x1="46" x2="990" y1="16.0" y2="16.0" stroke="#e2ded9" stroke-width="1"/><text x="38" y="20.0" text-anchor="end" font-size="13" fill="#8a8580">150s</text><text x="38" y="270.0" text-anchor="end" font-size="13" fill="#8a8580">0</text><rect x="51.4" y="176.0" width="14.0" height="90.0" rx="3" fill="#d97706"><title>Length 1 · 6:28 PM · 54s rest (over band)</title></rect><rect x="76.3" y="177.7" width="14.0" height="88.3" rx="3" fill="#d97706"><title>Length 2 · 6:30 PM · 53s rest (over band)</title></rect><rect x="101.1" y="84.3" width="14.0" height="181.7" rx="3" fill="#b91c1c"><title>Length 3 · 6:31 PM · 109s rest (full reset)</title></rect><rect x="125.9" y="202.7" width="14.0" height="63.3" rx="3" fill="#2563eb"><title>Length 4 · 6:34 PM · 38s rest (in band)</title></rect><rect x="150.8" y="176.0" width="14.0" height="90.0" rx="3" fill="#d97706"><title>Length 5 · 6:35 PM · 54s rest (over band)</title></rect><rect x="175.6" y="192.7" width="14.0" height="73.3" rx="3" fill="#2563eb"><title>Length 6 · 6:36 PM · 44s rest (in band)</title></rect><rect x="200.5" y="191.0" width="14.0" height="75.0" rx="3" fill="#2563eb"><title>Length 7 · 6:37 PM · 45s rest (in band)</title></rect><rect x="225.3" y="174.3" width="14.0" height="91.7" rx="3" fill="#d97706"><title>Length 8 · 6:38 PM · 55s rest (over band)</title></rect><rect x="250.2" y="172.7" width="14.0" height="93.3" rx="3" fill="#d97706"><title>Length 9 · 6:40 PM · 56s rest (over band)</title></rect><rect x="275.0" y="127.7" width="14.0" height="138.3" rx="3" fill="#d97706"><title>Length 10 · 6:41 PM · 83s rest (over band)</title></rect><rect x="299.8" y="64.3" width="14.0" height="201.7" rx="3" fill="#b91c1c"><title>Length 11 · 6:43 PM · 121s rest (full reset — credited: fueled a back-to-back run)</title></rect><circle cx="306.8" cy="56.3" r="4" fill="none" stroke="#b91c1c" stroke-width="2"><title>Deliberate long rest before a back-to-back run</title></circle><rect x="324.7" y="262.7" width="14.0" height="3.3" rx="3" fill="#2563eb"><title>Length 12 · 6:45 PM · 2s rest (in band)</title></rect><rect x="349.5" y="59.3" width="14.0" height="206.7" rx="3" fill="#b91c1c"><title>Length 13 · 6:46 PM · 124s rest (full reset — credited: fueled a back-to-back run)</title></rect><circle cx="356.5" cy="51.3" r="4" fill="none" stroke="#b91c1c" stroke-width="2"><title>Deliberate long rest before a back-to-back run</title></circle><rect x="374.4" y="261.0" width="14.0" height="5.0" rx="3" fill="#2563eb"><title>Length 14 · 6:48 PM · 3s rest (in band)</title></rect><rect x="399.2" y="112.7" width="14.0" height="153.3" rx="3" fill="#b91c1c"><title>Length 15 · 6:49 PM · 92s rest (full reset)</title></rect><rect x="424.1" y="131.0" width="14.0" height="135.0" rx="3" fill="#d97706"><title>Length 16 · 6:51 PM · 81s rest (over band)</title></rect><rect x="448.9" y="186.0" width="14.0" height="80.0" rx="3" fill="#d97706"><title>Length 17 · 6:53 PM · 48s rest (over band)</title></rect><rect x="473.7" y="117.7" width="14.0" height="148.3" rx="3" fill="#d97706"><title>Length 18 · 6:54 PM · 89s rest (over band)</title></rect><rect x="498.6" y="266.0" width="14.0" height="2.0" rx="3" fill="#2563eb"><title>Length 19 · 6:56 PM · 0s rest (in band)</title></rect><rect x="523.4" y="101.0" width="14.0" height="165.0" rx="3" fill="#b91c1c"><title>Length 20 · 6:56 PM · 99s rest (full reset)</title></rect><rect x="548.3" y="206.0" width="14.0" height="60.0" rx="3" fill="#2563eb"><title>Length 21 · 6:58 PM · 36s rest (in band)</title></rect><rect x="573.1" y="111.0" width="14.0" height="155.0" rx="3" fill="#b91c1c"><title>Length 22 · 6:59 PM · 93s rest (full reset)</title></rect><rect x="597.9" y="182.7" width="14.0" height="83.3" rx="3" fill="#d97706"><title>Length 23 · 7:01 PM · 50s rest (over band)</title></rect><rect x="622.8" y="37.7" width="14.0" height="228.3" rx="3" fill="#b91c1c"><title>Length 24 · 7:03 PM · 137s rest (full reset — credited: fueled a back-to-back run)</title></rect><circle cx="629.8" cy="29.7" r="4" fill="none" stroke="#b91c1c" stroke-width="2"><title>Deliberate long rest before a back-to-back run</title></circle><rect x="647.6" y="241.0" width="14.0" height="25.0" rx="3" fill="#2563eb"><title>Length 25 · 7:05 PM · 15s rest (in band)</title></rect><rect x="672.5" y="149.3" width="14.0" height="116.7" rx="3" fill="#d97706"><title>Length 26 · 7:06 PM · 70s rest (over band)</title></rect><rect x="697.3" y="31.0" width="14.0" height="235.0" rx="3" fill="#b91c1c"><title>Length 27 · 7:08 PM · 141s rest (full reset)</title></rect><rect x="722.2" y="179.3" width="14.0" height="86.7" rx="3" fill="#d97706"><title>Length 28 · 7:11 PM · 52s rest (over band)</title></rect><rect x="747.0" y="146.0" width="14.0" height="120.0" rx="3" fill="#d97706"><title>Length 29 · 7:12 PM · 72s rest (over band)</title></rect><rect x="771.8" y="16.0" width="14.0" height="250.0" rx="3" fill="#b91c1c"><title>Length 30 · 7:14 PM · 271s rest (full reset — credited: fueled a back-to-back run)</title></rect><circle cx="778.8" cy="8.0" r="4" fill="none" stroke="#b91c1c" stroke-width="2"><title>Deliberate long rest before a back-to-back run</title></circle><rect x="796.7" y="261.0" width="14.0" height="5.0" rx="3" fill="#2563eb"><title>Length 31 · 7:19 PM · 3s rest (in band)</title></rect><rect x="821.5" y="71.0" width="14.0" height="195.0" rx="3" fill="#b91c1c"><title>Length 32 · 7:19 PM · 117s rest (full reset)</title></rect><rect x="846.4" y="212.7" width="14.0" height="53.3" rx="3" fill="#2563eb"><title>Length 33 · 7:22 PM · 32s rest (in band)</title></rect><rect x="871.2" y="54.3" width="14.0" height="211.7" rx="3" fill="#b91c1c"><title>Length 34 · 7:23 PM · 127s rest (full reset — credited: fueled a back-to-back run)</title></rect><circle cx="878.2" cy="46.3" r="4" fill="none" stroke="#b91c1c" stroke-width="2"><title>Deliberate long rest before a back-to-back run</title></circle><rect x="896.1" y="261.0" width="14.0" height="5.0" rx="3" fill="#2563eb"><title>Length 35 · 7:25 PM · 3s rest (in band)</title></rect><rect x="920.9" y="107.7" width="14.0" height="158.3" rx="3" fill="#b91c1c"><title>Length 36 · 7:26 PM · 95s rest (full reset)</title></rect><rect x="945.7" y="186.0" width="14.0" height="80.0" rx="3" fill="#d97706"><title>Length 37 · 7:28 PM · 48s rest (over band)</title></rect><rect x="970.6" y="196.0" width="14.0" height="70.0" rx="3" fill="#2563eb"><title>Length 38 · 7:29 PM · 42s rest (in band)</title></rect><text x="46" y="292" font-size="13" fill="#8a8580">each bar = one 25 yd length · bar height = measured rest before the next push-off · shaded zone = the protocol band (≤45s)</text></svg>
+<p style="margin-top:0.5rem"><span class="tag" style="background:#2563eb;color:#fff">in band ≤45s</span> <span class="tag" style="background:#d97706;color:#fff">over band 45–90s</span> <span class="tag" style="background:#b91c1c;color:#fff">full reset &gt;90s</span> <span class="tag">○ credited — fueled a back-to-back run</span></p>
+<p>Measured rests, no asterisks. Your median wait on Tuesday, July 28 was about <strong>55 seconds</strong> — above the 20–45s active-rest band, with 32% of rests in band. Swim pace: a measured 27s per length. The swimming isn't the limiter right now — the wall is. Touch, three breaths, go.</p>
+</section>
+
+<section>
+<h2>The training log</h2>
+<h3>Distance per session</h3>
+<svg viewBox="0 0 1000 260" role="img" aria-label="True distance per session in July" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif"><line x1="52" x2="990" y1="138.3" y2="138.3" stroke="#e2ded9" stroke-width="1"/><text x="44" y="142.3" text-anchor="end" font-size="13" fill="#8a8580">500m</text><line x1="52" x2="990" y1="60.6" y2="60.6" stroke="#e2ded9" stroke-width="1"/><text x="44" y="64.6" text-anchor="end" font-size="13" fill="#8a8580">1000m</text><line x1="52" x2="990" y1="60.6" y2="60.6" stroke="#222" stroke-width="1.5" stroke-dasharray="6 4"/><text x="988" y="54.6" text-anchor="end" font-size="13" fill="#222">goal volume · 1000 m</text><rect x="62.1" y="123.6" width="52.0" height="92.4" rx="4" fill="#b45309"><title>Fri Jul 10 · 26 lengths · 594 m true distance</title></rect><text x="88.1" y="236" text-anchor="middle" font-size="13" fill="#666">10</text><rect x="134.2" y="145.0" width="52.0" height="71.0" rx="4" fill="#b45309"><title>Sat Jul 11 · 20 lengths · 457 m true distance</title></rect><text x="160.2" y="236" text-anchor="middle" font-size="13" fill="#666">11</text><rect x="206.4" y="123.6" width="52.0" height="92.4" rx="4" fill="#b45309"><title>Mon Jul 13 · 26 lengths · 594 m true distance</title></rect><text x="232.4" y="236" text-anchor="middle" font-size="13" fill="#666">13</text><rect x="278.5" y="91.7" width="52.0" height="124.3" rx="4" fill="#b45309"><title>Tue Jul 14 · 35 lengths · 800 m true distance</title></rect><text x="304.5" y="236" text-anchor="middle" font-size="13" fill="#666">14</text><rect x="350.7" y="123.6" width="52.0" height="92.4" rx="4" fill="#b45309"><title>Wed Jul 15 · 26 lengths · 594 m true distance</title></rect><text x="376.7" y="236" text-anchor="middle" font-size="13" fill="#666">15</text><rect x="422.8" y="63.3" width="52.0" height="152.7" rx="4" fill="#b45309"><title>Thu Jul 16 · 43 lengths · 983 m true distance</title></rect><text x="448.8" y="236" text-anchor="middle" font-size="13" fill="#666">16</text><rect x="495.0" y="27.7" width="52.0" height="188.3" rx="4" fill="#b45309"><title>Fri Jul 17 · 53 lengths · 1212 m true distance</title></rect><text x="521.0" y="236" text-anchor="middle" font-size="13" fill="#666">17</text><rect x="567.2" y="49.1" width="52.0" height="166.9" rx="4" fill="#2563eb"><title>Mon Jul 20 · 47 lengths · 1074 m true distance</title></rect><text x="593.2" y="236" text-anchor="middle" font-size="13" fill="#666">20</text><rect x="639.3" y="66.8" width="52.0" height="149.2" rx="4" fill="#2563eb"><title>Tue Jul 21 · 42 lengths · 960 m true distance</title></rect><text x="665.3" y="236" text-anchor="middle" font-size="13" fill="#666">21</text><rect x="711.5" y="91.7" width="52.0" height="124.3" rx="4" fill="#2563eb"><title>Wed Jul 22 · 35 lengths · 800 m true distance</title></rect><text x="737.5" y="236" text-anchor="middle" font-size="13" fill="#666">22</text><rect x="783.6" y="127.2" width="52.0" height="88.8" rx="4" fill="#2563eb"><title>Thu Jul 23 · 25 lengths · 572 m true distance</title></rect><text x="809.6" y="236" text-anchor="middle" font-size="13" fill="#666">23</text><rect x="855.8" y="105.9" width="52.0" height="110.1" rx="4" fill="#2563eb"><title>Fri Jul 24 · 31 lengths · 709 m true distance</title></rect><text x="881.8" y="236" text-anchor="middle" font-size="13" fill="#666">24</text><rect x="927.9" y="77.5" width="52.0" height="138.5" rx="4" fill="#2563eb"><title>Tue Jul 28 · 39 lengths · 892 m true distance</title></rect><text x="953.9" y="236" text-anchor="middle" font-size="13" fill="#666">28</text><text x="52" y="254" font-size="13" fill="#8a8580">session dates · true distance = lengths × 22.86 m (GPS figures discarded)</text></svg>
+<p style="margin-top:0.5rem"><span class="tag" style="background:#b45309;color:#fff">baseline</span> <span class="tag" style="background:#2563eb;color:#fff">video era</span></p>
+<h3>Rest discipline per session</h3>
+<svg viewBox="0 0 1000 380" role="img" aria-label="Every single-lap rest per session vs a 30s target" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif"><rect x="52" y="244.0" width="928" height="56.0" fill="#2563eb" opacity="0.07"/><line x1="52" x2="980" y1="244.0" y2="244.0" stroke="#2563eb" stroke-width="2" stroke-dasharray="7 4"/><text x="980" y="236.0" text-anchor="end" font-size="13" fill="#2563eb" font-weight="600">TARGET 30s</text><line x1="52" x2="980" y1="244.0" y2="244.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="248.0" text-anchor="end" font-size="13" fill="#8a8580">30s</text><line x1="52" x2="980" y1="188.0" y2="188.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="192.0" text-anchor="end" font-size="13" fill="#8a8580">60s</text><line x1="52" x2="980" y1="132.0" y2="132.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="136.0" text-anchor="end" font-size="13" fill="#8a8580">90s</text><line x1="52" x2="980" y1="76.0" y2="76.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="80.0" text-anchor="end" font-size="13" fill="#8a8580">120s</text><circle cx="185.9" cy="206.7" r="5" fill="#d97706" opacity="0.75"><title>6:38 PM · 50s single-lap rest</title></circle><circle cx="206.6" cy="210.4" r="5" fill="#d97706" opacity="0.75"><title>6:40 PM · 48s single-lap rest</title></circle><circle cx="146.8" cy="191.7" r="5" fill="#d97706" opacity="0.75"><title>6:41 PM · 58s single-lap rest</title></circle><circle cx="208.4" cy="186.1" r="5" fill="#d97706" opacity="0.75"><title>6:42 PM · 61s single-lap rest</title></circle><circle cx="142.4" cy="197.3" r="5" fill="#d97706" opacity="0.75"><title>6:44 PM · 55s single-lap rest</title></circle><circle cx="121.9" cy="173.1" r="5" fill="#d97706" opacity="0.75"><title>6:45 PM · 68s single-lap rest</title></circle><circle cx="198.5" cy="197.3" r="5" fill="#d97706" opacity="0.75"><title>6:47 PM · 55s single-lap rest</title></circle><circle cx="128.0" cy="189.9" r="5" fill="#d97706" opacity="0.75"><title>6:48 PM · 59s single-lap rest</title></circle><circle cx="130.8" cy="193.6" r="5" fill="#d97706" opacity="0.75"><title>6:49 PM · 57s single-lap rest</title></circle><circle cx="184.6" cy="68.5" r="5" fill="#b91c1c" opacity="0.75"><title>6:51 PM · 124s single-lap rest</title></circle><circle cx="120.2" cy="288.8" r="5" fill="#2563eb" opacity="0.75"><title>6:53 PM · 6s single-lap rest</title></circle><circle cx="153.6" cy="161.9" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:54 PM · 74s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="220.0" cy="139.5" r="5" fill="#d97706" opacity="0.75"><title>6:56 PM · 86s single-lap rest</title></circle><circle cx="219.8" cy="139.5" r="5" fill="#d97706" opacity="0.75"><title>6:58 PM · 86s single-lap rest</title></circle><circle cx="148.3" cy="240.3" r="5" fill="#d97706" opacity="0.75"><title>6:59 PM · 32s single-lap rest</title></circle><circle cx="169.0" cy="219.7" r="5" fill="#d97706" opacity="0.75"><title>7:00 PM · 43s single-lap rest</title></circle><circle cx="186.8" cy="214.1" r="5" fill="#d97706" opacity="0.75"><title>7:02 PM · 46s single-lap rest</title></circle><circle cx="155.4" cy="202.9" r="5" fill="#d97706" opacity="0.75"><title>7:03 PM · 52s single-lap rest</title></circle><circle cx="139.2" cy="191.7" r="5" fill="#d97706" opacity="0.75"><title>7:04 PM · 58s single-lap rest</title></circle><circle cx="174.4" cy="158.1" r="5" fill="#d97706" opacity="0.75"><title>7:06 PM · 76s single-lap rest</title></circle><circle cx="180.6" cy="238.4" r="5" fill="#d97706" opacity="0.75"><title>7:07 PM · 33s single-lap rest</title></circle><circle cx="124.2" cy="217.9" r="5" fill="#d97706" opacity="0.75"><title>7:08 PM · 44s single-lap rest</title></circle><circle cx="199.4" cy="195.5" r="5" fill="#d97706" opacity="0.75"><title>7:09 PM · 56s single-lap rest</title></circle><circle cx="136.3" cy="300.0" r="5" fill="#2563eb" opacity="0.75"><title>7:11 PM · 0s single-lap rest</title></circle><circle cx="222.2" cy="98.4" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:11 PM · 108s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="124.2" cy="156.3" r="5" fill="#d97706" opacity="0.75"><title>7:13 PM · 77s single-lap rest</title></circle><circle cx="193.9" cy="286.9" r="5" fill="#2563eb" opacity="0.75"><title>7:15 PM · 7s single-lap rest</title></circle><circle cx="194.2" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:16 PM · 297s recovery after a back-to-back run (planned, not counted)</title></circle><text x="194.2" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><circle cx="167.5" cy="288.8" r="5" fill="#2563eb" opacity="0.75"><title>7:21 PM · 6s single-lap rest</title></circle><circle cx="142.7" cy="139.5" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:22 PM · 86s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="208.3" cy="232.8" r="5" fill="#d97706" opacity="0.75"><title>7:24 PM · 36s single-lap rest</title></circle><circle cx="127.7" cy="212.3" r="5" fill="#d97706" opacity="0.75"><title>7:25 PM · 47s single-lap rest</title></circle><circle cx="207.2" cy="191.7" r="5" fill="#d97706" opacity="0.75"><title>7:26 PM · 58s single-lap rest</title></circle><circle cx="149.4" cy="221.6" r="5" fill="#d97706" opacity="0.75"><title>7:28 PM · 42s single-lap rest</title></circle><line x1="108.0" x2="228.0" y1="200.1" y2="200.1" stroke="#222" stroke-width="2.5"><title>median of single-lap rests: 54s</title></line><text x="168.0" y="324" text-anchor="middle" font-size="14" fill="#444">7/22</text><text x="168.0" y="346" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">4/30 under 30s</text><text x="168.0" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">23/30 under 60s</text><circle cx="373.8" cy="137.6" r="5" fill="#d97706" opacity="0.75"><title>6:41 PM · 87s single-lap rest</title></circle><circle cx="394.5" cy="219.7" r="5" fill="#d97706" opacity="0.75"><title>6:43 PM · 43s single-lap rest</title></circle><circle cx="369.3" cy="201.1" r="5" fill="#d97706" opacity="0.75"><title>6:44 PM · 53s single-lap rest</title></circle><circle cx="356.3" cy="184.3" r="5" fill="#d97706" opacity="0.75"><title>6:46 PM · 62s single-lap rest</title></circle><circle cx="421.1" cy="202.9" r="5" fill="#d97706" opacity="0.75"><title>6:47 PM · 52s single-lap rest</title></circle><circle cx="371.6" cy="193.6" r="5" fill="#d97706" opacity="0.75"><title>6:48 PM · 57s single-lap rest</title></circle><circle cx="344.8" cy="77.9" r="5" fill="#b91c1c" opacity="0.75"><title>6:50 PM · 119s single-lap rest</title></circle><circle cx="348.9" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>6:52 PM · 2s single-lap rest</title></circle><circle cx="394.5" cy="51.7" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:53 PM · 133s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="349.4" cy="292.5" r="5" fill="#2563eb" opacity="0.75"><title>6:55 PM · 4s single-lap rest</title></circle><circle cx="345.0" cy="38.7" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:56 PM · 140s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="427.7" cy="223.5" r="5" fill="#d97706" opacity="0.75"><title>6:59 PM · 41s single-lap rest</title></circle><circle cx="407.9" cy="300.0" r="5" fill="#2563eb" opacity="0.75"><title>7:00 PM · 0s single-lap rest</title></circle><circle cx="367.2" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:00 PM · 176s recovery after a back-to-back run (planned, not counted)</title></circle><text x="367.2" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><circle cx="398.6" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>7:04 PM · 2s single-lap rest</title></circle><circle cx="396.4" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:04 PM · 159s recovery after a back-to-back run (planned, not counted)</title></circle><text x="396.4" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><circle cx="445.4" cy="249.6" r="5" fill="#2563eb" opacity="0.75"><title>7:07 PM · 27s single-lap rest</title></circle><circle cx="423.3" cy="20.0" r="5" fill="#b91c1c" opacity="0.75"><title>7:08 PM · 181s single-lap rest</title></circle><text x="423.3" y="12.0" text-anchor="middle" font-size="11" fill="#b91c1c">&#8593;</text><circle cx="446.6" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>7:12 PM · 2s single-lap rest</title></circle><circle cx="438.8" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:12 PM · 251s recovery after a back-to-back run (planned, not counted)</title></circle><text x="438.8" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><circle cx="427.7" cy="300.0" r="5" fill="#2563eb" opacity="0.75"><title>7:17 PM · 0s single-lap rest</title></circle><circle cx="430.2" cy="117.1" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:17 PM · 98s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="354.0" cy="283.2" r="5" fill="#2563eb" opacity="0.75"><title>7:19 PM · 9s single-lap rest</title></circle><circle cx="427.8" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:20 PM · 604s recovery after a back-to-back run (planned, not counted)</title></circle><text x="427.8" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><line x1="340.0" x2="460.0" y1="223.5" y2="223.5" stroke="#222" stroke-width="2.5"><title>median of single-lap rests: 41s</title></line><text x="400.0" y="324" text-anchor="middle" font-size="14" fill="#444">7/23</text><text x="400.0" y="346" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">8/17 under 30s</text><text x="400.0" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">13/17 under 60s</text><circle cx="603.2" cy="210.4" r="5" fill="#d97706" opacity="0.75"><title>6:31 PM · 48s single-lap rest</title></circle><circle cx="635.0" cy="223.5" r="5" fill="#d97706" opacity="0.75"><title>6:32 PM · 41s single-lap rest</title></circle><circle cx="613.4" cy="195.5" r="5" fill="#d97706" opacity="0.75"><title>6:33 PM · 56s single-lap rest</title></circle><circle cx="596.5" cy="234.7" r="5" fill="#d97706" opacity="0.75"><title>6:35 PM · 35s single-lap rest</title></circle><circle cx="653.5" cy="83.5" r="5" fill="#b91c1c" opacity="0.75"><title>6:36 PM · 116s single-lap rest</title></circle><circle cx="580.4" cy="292.5" r="5" fill="#2563eb" opacity="0.75"><title>6:38 PM · 4s single-lap rest</title></circle><circle cx="622.0" cy="85.3" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:39 PM · 115s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="615.4" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>6:41 PM · 2s single-lap rest</title></circle><circle cx="660.9" cy="72.3" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:42 PM · 122s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="607.6" cy="223.5" r="5" fill="#d97706" opacity="0.75"><title>6:44 PM · 41s single-lap rest</title></circle><circle cx="684.4" cy="188.0" r="5" fill="#d97706" opacity="0.75"><title>6:45 PM · 60s single-lap rest</title></circle><circle cx="623.4" cy="275.7" r="5" fill="#2563eb" opacity="0.75"><title>6:47 PM · 13s single-lap rest</title></circle><circle cx="609.4" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:47 PM · 407s recovery after a back-to-back run (planned, not counted)</title></circle><text x="609.4" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><circle cx="659.0" cy="292.5" r="5" fill="#2563eb" opacity="0.75"><title>6:54 PM · 4s single-lap rest</title></circle><circle cx="687.4" cy="96.5" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:55 PM · 109s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="660.8" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>6:57 PM · 2s single-lap rest</title></circle><circle cx="585.3" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:58 PM · 617s recovery after a back-to-back run (planned, not counted)</title></circle><text x="585.3" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><circle cx="655.9" cy="189.9" r="5" fill="#d97706" opacity="0.75"><title>7:08 PM · 59s single-lap rest</title></circle><circle cx="634.5" cy="217.9" r="5" fill="#d97706" opacity="0.75"><title>7:10 PM · 44s single-lap rest</title></circle><circle cx="650.7" cy="20.0" r="5" fill="#b91c1c" opacity="0.75"><title>7:11 PM · 151s single-lap rest</title></circle><text x="650.7" y="12.0" text-anchor="middle" font-size="11" fill="#b91c1c">&#8593;</text><circle cx="690.7" cy="184.3" r="5" fill="#d97706" opacity="0.75"><title>7:14 PM · 62s single-lap rest</title></circle><circle cx="649.6" cy="223.5" r="5" fill="#d97706" opacity="0.75"><title>7:15 PM · 41s single-lap rest</title></circle><circle cx="580.4" cy="167.5" r="5" fill="#d97706" opacity="0.75"><title>7:17 PM · 71s single-lap rest</title></circle><circle cx="608.5" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>7:18 PM · 2s single-lap rest</title></circle><circle cx="596.7" cy="20.0" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:19 PM · 156s recovery after a back-to-back run (planned, not counted)</title></circle><text x="596.7" y="12.0" text-anchor="middle" font-size="11" fill="#8a8580">&#8593;</text><circle cx="686.0" cy="229.1" r="5" fill="#d97706" opacity="0.75"><title>7:22 PM · 38s single-lap rest</title></circle><circle cx="572.2" cy="49.9" r="5" fill="#b91c1c" opacity="0.75"><title>7:23 PM · 134s single-lap rest</title></circle><circle cx="671.5" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>7:26 PM · 2s single-lap rest</title></circle><circle cx="689.7" cy="221.6" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:26 PM · 42s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="579.1" cy="90.9" r="5" fill="#b91c1c" opacity="0.75"><title>7:27 PM · 112s single-lap rest</title></circle><line x1="572.0" x2="692.0" y1="223.5" y2="223.5" stroke="#222" stroke-width="2.5"><title>median of single-lap rests: 41s</title></line><text x="632.0" y="324" text-anchor="middle" font-size="14" fill="#444">7/24</text><text x="632.0" y="346" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">7/23 under 30s</text><text x="632.0" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">16/23 under 60s</text><circle cx="880.0" cy="199.2" r="5" fill="#d97706" opacity="0.75"><title>6:28 PM · 54s single-lap rest</title></circle><circle cx="814.8" cy="201.1" r="5" fill="#d97706" opacity="0.75"><title>6:30 PM · 53s single-lap rest</title></circle><circle cx="861.7" cy="96.5" r="5" fill="#b91c1c" opacity="0.75"><title>6:31 PM · 109s single-lap rest</title></circle><circle cx="881.3" cy="229.1" r="5" fill="#d97706" opacity="0.75"><title>6:34 PM · 38s single-lap rest</title></circle><circle cx="916.2" cy="199.2" r="5" fill="#d97706" opacity="0.75"><title>6:35 PM · 54s single-lap rest</title></circle><circle cx="854.3" cy="217.9" r="5" fill="#d97706" opacity="0.75"><title>6:36 PM · 44s single-lap rest</title></circle><circle cx="883.6" cy="216.0" r="5" fill="#d97706" opacity="0.75"><title>6:37 PM · 45s single-lap rest</title></circle><circle cx="852.1" cy="197.3" r="5" fill="#d97706" opacity="0.75"><title>6:38 PM · 55s single-lap rest</title></circle><circle cx="842.5" cy="195.5" r="5" fill="#d97706" opacity="0.75"><title>6:40 PM · 56s single-lap rest</title></circle><circle cx="894.1" cy="145.1" r="5" fill="#d97706" opacity="0.75"><title>6:41 PM · 83s single-lap rest</title></circle><circle cx="849.1" cy="74.1" r="5" fill="#b91c1c" opacity="0.75"><title>6:43 PM · 121s single-lap rest</title></circle><circle cx="889.0" cy="296.3" r="5" fill="#2563eb" opacity="0.75"><title>6:45 PM · 2s single-lap rest</title></circle><circle cx="816.0" cy="68.5" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:46 PM · 124s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="898.4" cy="294.4" r="5" fill="#2563eb" opacity="0.75"><title>6:48 PM · 3s single-lap rest</title></circle><circle cx="873.7" cy="128.3" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:49 PM · 92s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="825.4" cy="148.8" r="5" fill="#d97706" opacity="0.75"><title>6:51 PM · 81s single-lap rest</title></circle><circle cx="916.2" cy="210.4" r="5" fill="#d97706" opacity="0.75"><title>6:53 PM · 48s single-lap rest</title></circle><circle cx="901.6" cy="133.9" r="5" fill="#d97706" opacity="0.75"><title>6:54 PM · 89s single-lap rest</title></circle><circle cx="886.9" cy="300.0" r="5" fill="#2563eb" opacity="0.75"><title>6:56 PM · 0s single-lap rest</title></circle><circle cx="882.4" cy="115.2" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>6:56 PM · 99s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="822.0" cy="232.8" r="5" fill="#d97706" opacity="0.75"><title>6:58 PM · 36s single-lap rest</title></circle><circle cx="834.4" cy="126.4" r="5" fill="#b91c1c" opacity="0.75"><title>6:59 PM · 93s single-lap rest</title></circle><circle cx="805.0" cy="206.7" r="5" fill="#d97706" opacity="0.75"><title>7:01 PM · 50s single-lap rest</title></circle><circle cx="845.4" cy="44.3" r="5" fill="#b91c1c" opacity="0.75"><title>7:03 PM · 137s single-lap rest</title></circle><circle cx="813.8" cy="272.0" r="5" fill="#2563eb" opacity="0.75"><title>7:05 PM · 15s single-lap rest</title></circle><circle cx="833.8" cy="169.3" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:06 PM · 70s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="834.5" cy="36.8" r="5" fill="#b91c1c" opacity="0.75"><title>7:08 PM · 141s single-lap rest</title></circle><circle cx="877.4" cy="202.9" r="5" fill="#d97706" opacity="0.75"><title>7:11 PM · 52s single-lap rest</title></circle><circle cx="857.9" cy="165.6" r="5" fill="#d97706" opacity="0.75"><title>7:12 PM · 72s single-lap rest</title></circle><circle cx="830.5" cy="20.0" r="5" fill="#b91c1c" opacity="0.75"><title>7:14 PM · 271s single-lap rest</title></circle><text x="830.5" y="12.0" text-anchor="middle" font-size="11" fill="#b91c1c">&#8593;</text><circle cx="863.9" cy="294.4" r="5" fill="#2563eb" opacity="0.75"><title>7:19 PM · 3s single-lap rest</title></circle><circle cx="871.3" cy="81.6" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:19 PM · 117s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="875.4" cy="240.3" r="5" fill="#d97706" opacity="0.75"><title>7:22 PM · 32s single-lap rest</title></circle><circle cx="849.7" cy="62.9" r="5" fill="#b91c1c" opacity="0.75"><title>7:23 PM · 127s single-lap rest</title></circle><circle cx="867.6" cy="294.4" r="5" fill="#2563eb" opacity="0.75"><title>7:25 PM · 3s single-lap rest</title></circle><circle cx="853.6" cy="122.7" r="5" fill="none" stroke="#8a8580" stroke-width="1.5" opacity="0.8"><title>7:26 PM · 95s recovery after a back-to-back run (planned, not counted)</title></circle><circle cx="898.7" cy="210.4" r="5" fill="#d97706" opacity="0.75"><title>7:28 PM · 48s single-lap rest</title></circle><circle cx="807.2" cy="221.6" r="5" fill="#d97706" opacity="0.75"><title>7:29 PM · 42s single-lap rest</title></circle><line x1="804.0" x2="924.0" y1="202.0" y2="202.0" stroke="#222" stroke-width="2.5"><title>median of single-lap rests: 52s</title></line><text x="864.0" y="324" text-anchor="middle" font-size="14" fill="#444">7/28</text><text x="864.0" y="346" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">6/32 under 30s</text><text x="864.0" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">21/32 under 60s</text></svg>
+<p class="small">Solid dots = single-lap rests judged against a 30s target (blue under 30s, amber 30–90s, red over 90s). Hollow grey dots = the ~2-minute recoveries after your 50-yard efforts — shown for honesty, never counted. Black tick = median of single-lap rests only.</p>
+<p>On Tue Jul 28, 6 of 32 single-lap rests beat 30s (best day so far: Thu Jul 23 at 47%). It isn&#x27;t a straight line up — the two-minute recoveries after your 50s are the hollow dots, planned and never penalized.</p>
+<div class="table-wrap"><table class="striped compact" style="font-variant-numeric:tabular-nums"><thead><tr><th>Date</th><th style="text-align:right;color:#2563eb">&lt;30s</th><th style="text-align:right;color:#4478e8">30–40s</th><th style="text-align:right;color:#6291ee">40–50s</th><th style="text-align:right;color:#7aa7f7">50–60s</th><th style="text-align:right;color:#d97706">60–90s</th><th style="text-align:right;color:#b91c1c">&gt;90s</th><th style="text-align:right;color:#8a8580">recovery</th><th style="text-align:right">at the wall</th></tr></thead><tbody><tr><td>Jul 22</td><td style="text-align:right;color:#2563eb;font-weight:700">1%</td><td style="text-align:right;color:#4478e8;font-weight:400">5%</td><td style="text-align:right;color:#6291ee;font-weight:400">13%</td><td style="text-align:right;color:#7aa7f7;font-weight:400">27%</td><td style="text-align:right;color:#d97706;font-weight:400">22%</td><td style="text-align:right;color:#b91c1c;font-weight:400">6%</td><td style="text-align:right;color:#8a8580;font-weight:400">27%</td><td style="text-align:right;color:#8a8580">35m</td></tr><tr><td>Jul 23</td><td style="text-align:right;color:#2563eb;font-weight:700">2%</td><td style="text-align:right;color:#4478e8;font-weight:400">0%</td><td style="text-align:right;color:#6291ee;font-weight:400">4%</td><td style="text-align:right;color:#7aa7f7;font-weight:400">7%</td><td style="text-align:right;color:#d97706;font-weight:400">6%</td><td style="text-align:right;color:#b91c1c;font-weight:400">13%</td><td style="text-align:right;color:#8a8580;font-weight:400">68%</td><td style="text-align:right;color:#8a8580">38m</td></tr><tr><td>Jul 24</td><td style="text-align:right;color:#2563eb;font-weight:700">1%</td><td style="text-align:right;color:#4478e8;font-weight:400">3%</td><td style="text-align:right;color:#6291ee;font-weight:400">8%</td><td style="text-align:right;color:#7aa7f7;font-weight:400">4%</td><td style="text-align:right;color:#d97706;font-weight:400">7%</td><td style="text-align:right;color:#b91c1c;font-weight:400">19%</td><td style="text-align:right;color:#8a8580;font-weight:400">58%</td><td style="text-align:right;color:#8a8580">45m</td></tr><tr><td>Jul 28</td><td style="text-align:right;color:#2563eb;font-weight:700">1%</td><td style="text-align:right;color:#4478e8;font-weight:400">4%</td><td style="text-align:right;color:#6291ee;font-weight:400">9%</td><td style="text-align:right;color:#7aa7f7;font-weight:400">14%</td><td style="text-align:right;color:#d97706;font-weight:400">12%</td><td style="text-align:right;color:#b91c1c;font-weight:400">38%</td><td style="text-align:right;color:#8a8580;font-weight:400">22%</td><td style="text-align:right;color:#8a8580">44m</td></tr></tbody></table></div>
+<p class="small">Share of classified time stopped at the wall, per session (mid-run turns excluded). Recovery = the planned pauses after 50-yard efforts — never judged, but never hidden. The 30–60 split is where improvement shows — but each 10s slice holds only a handful of rests per session, so read the drift across days, not single-day jumps.</p>
+<p>The count view above flatters you — the rests that beat 30s are, by definition, your shortest ones, so they add up to 1–2% of your wall time. Where the minutes actually go: the &gt;90s singles (38% on Jul 28, your worst yet) and the recoveries.</p>
+</section>
+
+<section>
+<h2>Stroke efficiency</h2>
+<h3>Strokes per length</h3>
+<svg viewBox="0 0 1000 340" role="img" aria-label="Strokes per length, per session" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif"><rect x="52" y="200.9" width="928" height="49.9" fill="#047857" opacity="0.08"/><text x="980" y="214.9" text-anchor="end" font-size="12" fill="#047857">glide zone</text><line x1="52" x2="980" y1="284.0" y2="284.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="288.0" text-anchor="end" font-size="13" fill="#8a8580">6</text><line x1="52" x2="980" y1="250.8" y2="250.8" stroke="#e2ded9" stroke-width="1"/><text x="44" y="254.8" text-anchor="end" font-size="13" fill="#8a8580">8</text><line x1="52" x2="980" y1="217.5" y2="217.5" stroke="#e2ded9" stroke-width="1"/><text x="44" y="221.5" text-anchor="end" font-size="13" fill="#8a8580">10</text><line x1="52" x2="980" y1="184.2" y2="184.2" stroke="#e2ded9" stroke-width="1"/><text x="44" y="188.2" text-anchor="end" font-size="13" fill="#8a8580">12</text><line x1="52" x2="980" y1="151.0" y2="151.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="155.0" text-anchor="end" font-size="13" fill="#8a8580">14</text><line x1="52" x2="980" y1="117.8" y2="117.8" stroke="#e2ded9" stroke-width="1"/><text x="44" y="121.8" text-anchor="end" font-size="13" fill="#8a8580">16</text><line x1="52" x2="980" y1="84.5" y2="84.5" stroke="#e2ded9" stroke-width="1"/><text x="44" y="88.5" text-anchor="end" font-size="13" fill="#8a8580">18</text><line x1="52" x2="980" y1="51.2" y2="51.2" stroke="#e2ded9" stroke-width="1"/><text x="44" y="55.2" text-anchor="end" font-size="13" fill="#8a8580">20</text><line x1="52" x2="980" y1="18.0" y2="18.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="22.0" text-anchor="end" font-size="13" fill="#8a8580">22</text><line x1="168.0" x2="400.0" y1="167.6" y2="184.2" stroke="#2563eb" stroke-width="2" opacity="0.5"/><line x1="400.0" x2="632.0" y1="184.2" y2="184.2" stroke="#2563eb" stroke-width="2" opacity="0.5"/><line x1="632.0" x2="864.0" y1="184.2" y2="184.2" stroke="#2563eb" stroke-width="2" opacity="0.5"/><rect x="154.0" y="167.6" width="28.0" height="16.6" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="167.5" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="171.2" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="176.3" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="162.9" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="178.4" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="174.6" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="166.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="179.2" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="177.6" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="162.1" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="157.8" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="161.4" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="176.3" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="173.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="157.9" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="174.8" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="159.4" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="163.7" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="178.7" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="171.6" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="159.3" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="160.6" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="156.8" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="175.1" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="179.4" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="165.2" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="168.3" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="156.6" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="159.3" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="163.6" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="159.1" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="179.2" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="161.5" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="176.1" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><line x1="152.0" x2="184.0" y1="167.6" y2="167.6" stroke="#111" stroke-width="3"><title>median: 13.0 · 1 length missing stroke data</title></line><text x="168.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/22</text><text x="168.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">13</text><rect x="386.0" y="167.6" width="28.0" height="33.2" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="395.7" cy="217.5" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="400.3" cy="217.5" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="395.1" cy="217.5" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="406.2" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="392.0" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="392.5" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="402.2" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="403.8" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="396.4" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="398.6" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="399.1" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="395.6" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="405.2" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="395.3" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="392.4" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="398.1" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="389.2" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="402.5" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="394.6" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="393.2" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="404.6" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="402.5" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="388.3" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="398.5" cy="134.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="400.0" cy="18.0" r="4" fill="none" stroke="#b91c1c" stroke-width="1.5" opacity="0.8"><title>28 — watch glitch, excluded from stats</title></circle><line x1="384.0" x2="416.0" y1="184.2" y2="184.2" stroke="#111" stroke-width="3"><title>median: 12.0</title></line><text x="400.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/23</text><text x="400.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">12</text><rect x="618.0" y="167.6" width="28.0" height="33.2" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="624.4" cy="250.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="637.5" cy="250.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="640.9" cy="234.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.9" cy="217.5" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="624.9" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="632.0" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="633.3" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="639.4" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="622.4" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="628.4" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="643.8" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="635.4" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="641.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="625.8" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.2" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="639.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="623.3" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="631.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="621.1" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="629.7" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="638.3" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.8" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="629.0" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="632.5" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="643.8" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="630.2" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="639.1" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="628.2" cy="84.5" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="632.0" cy="284.0" r="4" fill="none" stroke="#b91c1c" stroke-width="1.5" opacity="0.8"><title>6 — watch glitch, excluded from stats</title></circle><circle cx="632.0" cy="18.0" r="4" fill="none" stroke="#b91c1c" stroke-width="1.5" opacity="0.8"><title>35 — watch glitch, excluded from stats</title></circle><line x1="616.0" x2="648.0" y1="184.2" y2="184.2" stroke="#111" stroke-width="3"><title>median: 12.0 · 1 length missing stroke data</title></line><text x="632.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/24</text><text x="632.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">12</text><rect x="850.0" y="167.6" width="28.0" height="33.2" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="862.3" cy="217.5" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="868.7" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="854.2" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="859.5" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="874.5" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="861.1" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="870.6" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="870.1" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="869.1" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="870.4" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="863.0" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="869.4" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="858.3" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="856.4" cy="200.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="875.6" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="852.6" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="866.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="870.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="854.1" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="866.6" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="855.7" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="865.5" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="874.4" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="865.5" cy="184.2" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="867.9" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="852.2" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="873.0" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="858.4" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="866.2" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="853.7" cy="167.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="870.4" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="867.7" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="868.7" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="853.5" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="872.2" cy="151.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="861.4" cy="134.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="862.2" cy="134.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="855.1" cy="67.9" r="3.5" fill="#2563eb" opacity="0.5"/><line x1="848.0" x2="880.0" y1="184.2" y2="184.2" stroke="#111" stroke-width="3"><title>median: 12.0 · 1 length missing stroke data</title></line><text x="864.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/28</text><text x="864.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">12</text></svg>
+<p class="small">Faint dot = every length; shaded box = middle 50%; black tick = session median. Green band = the 8–11 stroke glide zone you're training toward. Hollow red rings are watch glitches (implausible counts), excluded from every stat.</p>
+<h3>SWOLF (seconds + strokes)</h3>
+<svg viewBox="0 0 1000 340" role="img" aria-label="SWOLF per length, per session" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif"><rect x="52" y="138.9" width="928" height="48.4" fill="#047857" opacity="0.08"/><text x="980" y="152.9" text-anchor="end" font-size="12" fill="#047857">very good (25 yd)</text><rect x="52" y="187.3" width="928" height="24.2" fill="#065f46" opacity="0.08"/><text x="980" y="201.3" text-anchor="end" font-size="12" fill="#065f46">elite</text><line x1="52" x2="980" y1="259.8" y2="259.8" stroke="#e2ded9" stroke-width="1"/><text x="44" y="263.8" text-anchor="end" font-size="13" fill="#8a8580">20</text><line x1="52" x2="980" y1="211.5" y2="211.5" stroke="#e2ded9" stroke-width="1"/><text x="44" y="215.5" text-anchor="end" font-size="13" fill="#8a8580">30</text><line x1="52" x2="980" y1="163.1" y2="163.1" stroke="#e2ded9" stroke-width="1"/><text x="44" y="167.1" text-anchor="end" font-size="13" fill="#8a8580">40</text><line x1="52" x2="980" y1="114.7" y2="114.7" stroke="#e2ded9" stroke-width="1"/><text x="44" y="118.7" text-anchor="end" font-size="13" fill="#8a8580">50</text><line x1="52" x2="980" y1="66.4" y2="66.4" stroke="#e2ded9" stroke-width="1"/><text x="44" y="70.4" text-anchor="end" font-size="13" fill="#8a8580">60</text><line x1="52" x2="980" y1="18.0" y2="18.0" stroke="#e2ded9" stroke-width="1"/><text x="44" y="22.0" text-anchor="end" font-size="13" fill="#8a8580">70</text><line x1="168.0" x2="400.0" y1="158.3" y2="172.8" stroke="#2563eb" stroke-width="2" opacity="0.5"/><line x1="400.0" x2="632.0" y1="172.8" y2="160.7" stroke="#2563eb" stroke-width="2" opacity="0.5"/><line x1="632.0" x2="864.0" y1="160.7" y2="167.9" stroke="#2563eb" stroke-width="2" opacity="0.5"/><rect x="154.0" y="152.2" width="28.0" height="15.7" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="171.4" cy="182.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="170.3" cy="182.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="179.8" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="174.7" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="162.8" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="156.2" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="169.4" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="166.7" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="158.0" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="176.6" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="164.8" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="156.4" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="177.2" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="179.3" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="173.9" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="170.6" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="176.0" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="163.9" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="166.8" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="167.2" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="160.5" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="157.8" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="160.3" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="162.1" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="171.7" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="167.7" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="176.3" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="165.6" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="158.7" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="165.5" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="172.0" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="165.9" cy="138.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="163.8" cy="124.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="169.4" cy="114.7" r="3.5" fill="#2563eb" opacity="0.5"/><line x1="152.0" x2="184.0" y1="158.3" y2="158.3" stroke="#111" stroke-width="3"><title>median: 41.0 · 1 length missing stroke data</title></line><text x="168.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/22</text><text x="168.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">41</text><rect x="386.0" y="154.6" width="28.0" height="23.0" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="406.2" cy="192.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="399.0" cy="192.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="397.3" cy="182.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="401.0" cy="182.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="398.6" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="404.6" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="398.1" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="397.6" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="405.7" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="391.2" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="393.0" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="405.4" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="396.0" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="410.2" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="407.1" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="396.5" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="398.6" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="396.6" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="394.5" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="404.2" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="408.4" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="397.6" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="390.0" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="396.6" cy="114.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="400.0" cy="56.7" r="4" fill="none" stroke="#b91c1c" stroke-width="1.5" opacity="0.8"><title>62 — watch glitch, excluded from stats</title></circle><line x1="384.0" x2="416.0" y1="172.8" y2="172.8" stroke="#111" stroke-width="3"><title>median: 38.0</title></line><text x="400.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/23</text><text x="400.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">38</text><rect x="618.0" y="148.6" width="28.0" height="29.0" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="620.4" cy="264.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="641.0" cy="255.0" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="628.0" cy="187.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="636.8" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="643.5" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="643.9" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="620.2" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="620.1" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="629.2" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.4" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="627.1" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="622.6" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="627.8" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="637.7" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="635.0" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.3" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="625.8" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="624.7" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="623.4" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="623.5" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.2" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="632.5" cy="148.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="628.9" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="624.8" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="632.2" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.3" cy="138.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="626.6" cy="138.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="643.6" cy="134.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="632.0" cy="240.5" r="4" fill="none" stroke="#b91c1c" stroke-width="1.5" opacity="0.8"><title>24 — watch glitch, excluded from stats</title></circle><circle cx="632.0" cy="18.0" r="4" fill="none" stroke="#b91c1c" stroke-width="1.5" opacity="0.8"><title>73 — watch glitch, excluded from stats</title></circle><line x1="616.0" x2="648.0" y1="160.7" y2="160.7" stroke="#111" stroke-width="3"><title>median: 40.5 · 1 length missing stroke data</title></line><text x="632.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/24</text><text x="632.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">40</text><rect x="850.0" y="157.0" width="28.0" height="20.6" rx="6" fill="#2563eb" opacity="0.25"/><circle cx="859.5" cy="187.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="853.4" cy="187.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="852.2" cy="187.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="856.2" cy="182.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="868.3" cy="182.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="859.4" cy="182.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="858.3" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="861.8" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="865.0" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="870.1" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="853.2" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="864.6" cy="177.6" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="858.7" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="864.1" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="871.2" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="857.9" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="864.4" cy="172.8" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="855.0" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="862.9" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="854.8" cy="167.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="853.9" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="869.5" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="855.5" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="864.9" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="859.7" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="854.9" cy="163.1" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="873.7" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="856.5" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="863.1" cy="158.3" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="874.0" cy="153.4" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="852.5" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="853.7" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="855.6" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="861.6" cy="143.7" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="864.4" cy="138.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="861.0" cy="138.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="870.5" cy="109.9" r="3.5" fill="#2563eb" opacity="0.5"/><circle cx="863.5" cy="37.3" r="3.5" fill="#2563eb" opacity="0.5"/><line x1="848.0" x2="880.0" y1="167.9" y2="167.9" stroke="#111" stroke-width="3"><title>median: 39.0 · 1 length missing stroke data</title></line><text x="864.0" y="316" text-anchor="middle" font-size="14" fill="#444">7/28</text><text x="864.0" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#2563eb">39</text></svg>
+<p class="small">SWOLF = swim time + strokes for the length — the honesty check, since gliding into a stall doesn't improve it. Bands: 35–45 "very good," 30–35 "elite" for a 25 yd pool.</p>
+<p>Stroke count has held at 13, 12, 12, 12 strokes per length across every measured session — already inside the glide zone. SWOLF (41, 38, 40, 39) backs it up: that&#x27;s the &quot;very good&quot; band for a 25 yd pool, not a stall dressed up as glide. Flat is honest here — the chart exists to catch the next real gain, not to flatter this one.</p>
+</section>
+
+<section>
+<h2>Report card vs. the three mistakes</h2>
+<table class="striped">
+<thead><tr><th>The mistake (video)</th><th>Your grade</th><th>The coach's note</th></tr></thead>
+<tbody>
+<tr><td><strong>1 · Random laps, no plan</strong> <span class="small">(01:30)</span></td><td><span class="badge" style="background:#2563eb;color:#fff">B+</span></td><td>You now show up with a plan and repeat it. That's base training. Write it down before each swim to make it an A.</td></tr>
+<tr><td><strong>2 · The wrong kind of rest</strong> <span class="small">(04:54)</span></td><td><span class="badge" style="background:#2563eb;color:#fff">B</span></td><td>Median rest ~56s is inside the 20–45s band. The remaining leak: the 90s+ full resets that aren't feeding a bigger chunk. One hand on the wall, stay ready.</td></tr>
+<tr><td><strong>3 · Chasing the goal distance</strong> <span class="small">(08:12)</span></td><td><span class="badge" style="background:#d97706;color:#fff">C</span></td><td>You're not overreaching — you're underreaching. One length per repeat is smaller than anything on the ladder. Time to chunk up: this is your growth edge.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section>
+<h2>Corrections — in order of payoff</h2>
+<div class="callout">
+<p class="callout-title">1 · Fix the watch — ✅ done, July 22</p>
+<p>You switched to <strong>Pool Swim mode</strong> and it shows: exact laps, exact rests, honest distance. Sessions before July 22 keep their "estimated" asterisks; from here on the numbers are measured. Keep the setting.</p>
+</div>
+<div class="callout">
+<p class="callout-title">2 · Double the chunk, keep the rest</p>
+<p>This week: <strong>8 × 50 yd with 30–45 s rest</strong>, easy pace, every repeat at the same speed. Two lengths, touch, breathe, go. Your measured best is 2 back-to-back — this makes the 50 the plan instead of the ceiling.</p>
+</div>
+<div class="callout">
+<p class="callout-title">3 · Kill the innocent full resets</p>
+<p>A 2-minute rest that buys a 50 is spent well. A 2-minute rest that buys another single 25 is Mistake #2 — your heart restarts from zero. If you're going to rest long, make it feed something bigger.</p>
+</div>
+</section>
+
+<section>
+<h2>The ladder to 1,000 m</h2>
+<figure style="max-width:280px;margin-left:0"><img src="assets/goal-medal.png" alt="Illustration of a swim medal" class="rounded"></figure>
+<p>Alex's five-week progression, translated to your pool (25 yd lengths; 100 m ≈ 4½ lengths, rounded to 5 for honesty — slightly over-distance, never under):</p>
+<table class="bordered compact">
+<thead><tr><th>Block</th><th>The set</th><th>Session total</th><th>You're ready when</th></tr></thead>
+<tbody>
+<tr><td>Now</td><td>8 × 50 yd @ 30–45s</td><td>≈ 366 m</td><td>all repeats feel the same, breathing steady</td></tr>
+<tr><td>Next</td><td>10 × 5 lengths @ 30s</td><td>≈ 1,143 m</td><td>30s starts to feel like plenty of rest</td></tr>
+<tr><td>Then</td><td>5 × 10 lengths @ 30s</td><td>≈ 1,143 m</td><td>same — chunks up, rest unchanged</td></tr>
+<tr><td>Then</td><td>2 × 22 lengths @ 30s</td><td>≈ 1,006 m</td><td>finishing thinking "I could do one more"</td></tr>
+<tr><td>Goal</td><td><strong>44 lengths, no stops</strong></td><td><strong>1,006 m</strong></td><td>—</td></tr>
+</tbody>
+</table>
+<p><strong>Timeline:</strong> at your current five-swims-a-week rhythm, the honest window for the first continuous 1,000 m is <strong>late August to mid-September</strong>. Pool Swim mode is on as of July 22 — give me a few more measured swims and I'll commit to a date.</p>
+</section>
+
+<section>
+<h2>Every session</h2>
+<div class="table-wrap">
+<table class="striped compact">
+<thead><tr><th>Date</th><th>Era</th><th>Lengths</th><th>True dist.</th><th>Median rest*</th><th>In band*</th><th>Longest run*</th><th>Avg HR</th></tr></thead>
+<tbody><tr><td>Jul 10</td><td><span class='badge muted'>baseline</span></td><td>26</td><td>594 m</td><td>~44s</td><td>52%</td><td>—</td><td>120</td></tr><tr><td>Jul 11</td><td><span class='badge muted'>baseline</span></td><td>20</td><td>457 m</td><td>~54s</td><td>42%</td><td>—</td><td>108</td></tr><tr><td>Jul 13</td><td><span class='badge muted'>baseline</span></td><td>26</td><td>594 m</td><td>~42s</td><td>52%</td><td>—</td><td>116</td></tr><tr><td>Jul 14</td><td><span class='badge muted'>baseline</span></td><td>35</td><td>800 m</td><td>~42s</td><td>53%</td><td>—</td><td>110</td></tr><tr><td>Jul 15</td><td><span class='badge muted'>baseline</span></td><td>26</td><td>594 m</td><td>~46s</td><td>48%</td><td>—</td><td>115</td></tr><tr><td>Jul 16</td><td><span class='badge muted'>baseline</span></td><td>43</td><td>983 m</td><td>~37s</td><td>60%</td><td>—</td><td>115</td></tr><tr><td>Jul 17</td><td><span class='badge muted'>baseline</span></td><td>53</td><td>1212 m</td><td>~38s</td><td>67%</td><td>—</td><td>122</td></tr><tr><td>Jul 20</td><td><span class='badge'>video era</span></td><td>47</td><td>1074 m</td><td>~24s</td><td>78%</td><td>—</td><td>116</td></tr><tr><td>Jul 21</td><td><span class='badge'>video era</span></td><td>42</td><td>960 m</td><td>~37s</td><td>68%</td><td>—</td><td>124</td></tr><tr><td>Jul 22</td><td><span class='badge'>video era</span></td><td>35</td><td>800 m</td><td>~56s</td><td>29%</td><td>2</td><td>123</td></tr><tr><td>Jul 23</td><td><span class='badge'>video era</span></td><td>25</td><td>572 m</td><td>~57s</td><td>42%</td><td>2</td><td>121</td></tr><tr><td>Jul 24</td><td><span class='badge'>video era</span></td><td>31</td><td>709 m</td><td>~56s</td><td>47%</td><td>2</td><td>111</td></tr><tr style='opacity:0.45'><td>Jul 27</td><td><span class='badge muted'>diving · not counted</span></td><td>63</td><td>1440 m</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Jul 28</td><td><span class='badge'>video era</span></td><td>39</td><td>892 m</td><td>~55s</td><td>32%</td><td>2</td><td>122</td></tr></tbody>
+</table>
+</div>
+<p class="small">* estimated for sessions recorded in open-water mode (through Jul 21); measured for training swims from Jul 22 onward — see below. Longest run is shown for measured sessions only: open-water estimation fabricates back-to-back runs (your fastest laps get rests estimated near zero, chaining into runs that never happened). Muted rows are recorded but not counted toward any stat.</p>
+</section>
+
+<section id="honesty">
+<h2>How this is measured (the honest part)</h2>
+<aside>
+<p><strong>Through July 21</strong> the watch was in open-water mode: no true laps or rests, just one timestamped record per detected length spanning <em>swim + the rest that followed</em>. For those sessions, swim time per length is estimated from the fastest cycles and rest = cycle − swim; every inherited number wears an asterisk or the word "estimated." <strong>From July 22</strong> training swims are in Pool Swim mode: each record spans only the swim, rest is the measured gap to the next push-off, and nothing is estimated. (Non-training sessions — e.g. diving — are archived as recorded but excluded from every stat.) In both eras, distances marked "true" are lengths × 22.86 m; the watch's own meters are discarded.</p>
+</aside>
+</section>
+
+<hr class="decorative">
+<p class="footer-note">Coach's canon: <a href="reference/protocol.md">the protocol</a>, extracted from <a href="reference/video.mp4">the video</a> (saved locally). Data: 13 sessions from the 2026-07-28 20:49:38 -0700 Apple Health export · rebuild with <code>./update.sh &lt;export.zip&gt;</code>.</p>
+
+</main>
+</body>
+</html>

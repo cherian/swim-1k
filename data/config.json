@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "pool_length_yd": 25,
+  "pool_length_m": 22.86,
+  "goal_m": 1000,
+  "goal_lengths": 44,
+  "protocol_start_date": "2026-07-19",
+  "prescribed_rest_s": 60,
+  "rest_tolerance_s": 20,
+  "session_tag_overrides": {},
+  "location_overrides": {},
+  "excluded_sessions": {"2026-07-27_1457": "diving"},
+  "notes": "Sessions through 2026-07-21 recorded as Open Water (rests estimated). Pool Swim mode from 2026-07-22 (rests measured). True distance = lengths * pool_length_m always. location_overrides: {\"<session-id>\": \"pool\"|\"open_water\"} forces classification when watch metadata is missing."
+}

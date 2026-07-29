@@ -1,0 +1,6376 @@
+{
+ "schema_version": 1,
+ "generated_from": {
+  "zip": "/Users/cherianthomas/Downloads/export 4.zip",
+  "export_date": "2026-07-28 20:49:38 -0700",
+  "sha256": "ee14f177d62f74d0f47ebe981699dc4008ce5b2e6df79ea35265d4a8912100f4"
+ },
+ "sessions": [
+  {
+   "id": "2024-08-03_0515",
+   "start": "2024-08-03T05:15:18-07:00",
+   "end": "2024-08-03T05:57:12-07:00",
+   "duration_min": 41.9,
+   "location_type": "pool",
+   "lap_length_setting": "50 m",
+   "era": "baseline",
+   "lengths": 18,
+   "true_distance_m": 411.5,
+   "gps_distance_m": 984.6,
+   "est_swim_per_length_s": 19.0,
+   "rest_measured": true,
+   "longest_run_lengths": 5,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-08-03T05:15:52-07:00",
+     "dur_s": 14.0,
+     "gps_m": 54.7,
+     "strokes": 8.0,
+     "rest_est_s": 89.0
+    },
+    {
+     "start": "2024-08-03T05:17:35-07:00",
+     "dur_s": 15.0,
+     "gps_m": 54.7,
+     "strokes": 11.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2024-08-03T05:17:56-07:00",
+     "dur_s": 31.0,
+     "gps_m": 54.7,
+     "strokes": 13.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-03T05:18:27-07:00",
+     "dur_s": 10.0,
+     "gps_m": 54.7,
+     "strokes": 5.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-03T05:18:37-07:00",
+     "dur_s": 32.0,
+     "gps_m": 54.7,
+     "strokes": 15.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2024-08-03T05:19:15-07:00",
+     "dur_s": 16.0,
+     "gps_m": 54.7,
+     "strokes": 12.0,
+     "rest_est_s": 225.0
+    },
+    {
+     "start": "2024-08-03T05:23:16-07:00",
+     "dur_s": 19.0,
+     "gps_m": 54.7,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-03T05:23:35-07:00",
+     "dur_s": 20.0,
+     "gps_m": 54.7,
+     "strokes": 9.0,
+     "rest_est_s": 7.0
+    },
+    {
+     "start": "2024-08-03T05:24:02-07:00",
+     "dur_s": 9.0,
+     "gps_m": 54.7,
+     "strokes": 5.0,
+     "rest_est_s": 80.0
+    },
+    {
+     "start": "2024-08-03T05:25:31-07:00",
+     "dur_s": 27.0,
+     "gps_m": 54.7,
+     "strokes": 13.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2024-08-03T05:26:00-07:00",
+     "dur_s": 33.0,
+     "gps_m": 54.7,
+     "strokes": 13.0,
+     "rest_est_s": 626.0
+    },
+    {
+     "start": "2024-08-03T05:28:06-07:00",
+     "dur_s": 54.0,
+     "gps_m": 54.7,
+     "strokes": 25.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2024-08-03T05:36:59-07:00",
+     "dur_s": 16.0,
+     "gps_m": 54.7,
+     "strokes": null,
+     "rest_est_s": 385.0
+    },
+    {
+     "start": "2024-08-03T05:38:17-07:00",
+     "dur_s": 41.0,
+     "gps_m": 54.7,
+     "strokes": 17.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2024-08-03T05:40:04-07:00",
+     "dur_s": 46.0,
+     "gps_m": 54.7,
+     "strokes": 21.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2024-08-03T05:43:40-07:00",
+     "dur_s": 15.0,
+     "gps_m": 54.7,
+     "strokes": 9.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-03T05:43:55-07:00",
+     "dur_s": 32.0,
+     "gps_m": 54.7,
+     "strokes": 16.0,
+     "rest_est_s": 385.0
+    },
+    {
+     "start": "2024-08-03T05:50:52-07:00",
+     "dur_s": 14.0,
+     "gps_m": 54.7,
+     "strokes": 5.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2024-08-03T05:51:50-07:00",
+     "dur_s": 31.0,
+     "gps_m": 54.7,
+     "strokes": 20.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2024-08-03T05:52:29-07:00",
+     "dur_s": 8.0,
+     "gps_m": 54.7,
+     "strokes": 6.0,
+     "rest_est_s": 204.0
+    },
+    {
+     "start": "2024-08-03T05:56:01-07:00",
+     "dur_s": 24.0,
+     "gps_m": 54.7,
+     "strokes": 21.0,
+     "rest_est_s": null
+    }
+   ]
+  },
+  {
+   "id": "2024-08-04_0352",
+   "start": "2024-08-04T03:52:19-07:00",
+   "end": "2024-08-04T05:57:21-07:00",
+   "duration_min": 76.5,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 32,
+   "true_distance_m": 731.5,
+   "gps_distance_m": 897.5,
+   "est_swim_per_length_s": 20.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-08-04T03:52:19-07:00",
+     "dur_s": 71.0,
+     "gps_m": 28.6,
+     "strokes": 16.0,
+     "rest_est_s": 51.0
+    },
+    {
+     "start": "2024-08-04T03:53:30-07:00",
+     "dur_s": 172.0,
+     "gps_m": 27.4,
+     "strokes": 31.0,
+     "rest_est_s": 152.0
+    },
+    {
+     "start": "2024-08-04T03:56:22-07:00",
+     "dur_s": 289.0,
+     "gps_m": 27.7,
+     "strokes": 45.0,
+     "rest_est_s": 269.0
+    },
+    {
+     "start": "2024-08-04T04:01:11-07:00",
+     "dur_s": 135.0,
+     "gps_m": 19.4,
+     "strokes": 10.0,
+     "rest_est_s": 115.0
+    },
+    {
+     "start": "2024-08-04T04:17:35-07:00",
+     "dur_s": 53.0,
+     "gps_m": 27.7,
+     "strokes": 20.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2024-08-04T04:18:28-07:00",
+     "dur_s": 274.0,
+     "gps_m": 2.1,
+     "strokes": null,
+     "rest_est_s": 254.0
+    },
+    {
+     "start": "2024-08-04T04:23:17-07:00",
+     "dur_s": 168.0,
+     "gps_m": 28.1,
+     "strokes": 15.0,
+     "rest_est_s": 148.0
+    },
+    {
+     "start": "2024-08-04T04:26:05-07:00",
+     "dur_s": 56.0,
+     "gps_m": 28.0,
+     "strokes": 13.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2024-08-04T04:27:01-07:00",
+     "dur_s": 403.0,
+     "gps_m": 14.9,
+     "strokes": 6.0,
+     "rest_est_s": 383.0
+    },
+    {
+     "start": "2024-08-04T04:34:08-07:00",
+     "dur_s": 44.0,
+     "gps_m": 28.3,
+     "strokes": 12.0,
+     "rest_est_s": 24.0
+    },
+    {
+     "start": "2024-08-04T04:34:52-07:00",
+     "dur_s": 93.0,
+     "gps_m": 28.1,
+     "strokes": 17.0,
+     "rest_est_s": 73.0
+    },
+    {
+     "start": "2024-08-04T04:36:25-07:00",
+     "dur_s": 24.0,
+     "gps_m": 2.5,
+     "strokes": null,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2024-08-04T04:39:24-07:00",
+     "dur_s": 141.0,
+     "gps_m": 27.8,
+     "strokes": 46.0,
+     "rest_est_s": 121.0
+    },
+    {
+     "start": "2024-08-04T04:41:45-07:00",
+     "dur_s": 29.0,
+     "gps_m": 14.7,
+     "strokes": null,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2024-08-04T04:56:55-07:00",
+     "dur_s": 20.0,
+     "gps_m": 91.3,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-04T04:57:15-07:00",
+     "dur_s": 39.0,
+     "gps_m": 27.6,
+     "strokes": 15.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2024-08-04T04:57:54-07:00",
+     "dur_s": 142.0,
+     "gps_m": 27.6,
+     "strokes": 24.0,
+     "rest_est_s": 122.0
+    },
+    {
+     "start": "2024-08-04T05:00:16-07:00",
+     "dur_s": 175.0,
+     "gps_m": 29.2,
+     "strokes": 19.0,
+     "rest_est_s": 155.0
+    },
+    {
+     "start": "2024-08-04T05:06:51-07:00",
+     "dur_s": 293.0,
+     "gps_m": 29.2,
+     "strokes": 35.0,
+     "rest_est_s": 273.0
+    },
+    {
+     "start": "2024-08-04T05:11:44-07:00",
+     "dur_s": 131.0,
+     "gps_m": 15.7,
+     "strokes": 20.0,
+     "rest_est_s": 111.0
+    },
+    {
+     "start": "2024-08-04T05:20:47-07:00",
+     "dur_s": 20.0,
+     "gps_m": 45.7,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-04T05:21:07-07:00",
+     "dur_s": 102.0,
+     "gps_m": 28.6,
+     "strokes": 22.0,
+     "rest_est_s": 82.0
+    },
+    {
+     "start": "2024-08-04T05:22:49-07:00",
+     "dur_s": 542.0,
+     "gps_m": 28.4,
+     "strokes": 27.0,
+     "rest_est_s": 522.0
+    },
+    {
+     "start": "2024-08-04T05:31:51-07:00",
+     "dur_s": 75.0,
+     "gps_m": 27.4,
+     "strokes": 21.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2024-08-04T05:33:06-07:00",
+     "dur_s": 142.0,
+     "gps_m": 5.5,
+     "strokes": null,
+     "rest_est_s": 122.0
+    },
+    {
+     "start": "2024-08-04T05:43:20-07:00",
+     "dur_s": 17.0,
+     "gps_m": 83.7,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-04T05:43:37-07:00",
+     "dur_s": 38.0,
+     "gps_m": 27.7,
+     "strokes": 14.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2024-08-04T05:44:15-07:00",
+     "dur_s": 201.0,
+     "gps_m": 27.4,
+     "strokes": 22.0,
+     "rest_est_s": 181.0
+    },
+    {
+     "start": "2024-08-04T05:47:36-07:00",
+     "dur_s": 60.0,
+     "gps_m": 27.7,
+     "strokes": 22.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2024-08-04T05:48:36-07:00",
+     "dur_s": 251.0,
+     "gps_m": 28.0,
+     "strokes": 7.0,
+     "rest_est_s": 231.0
+    },
+    {
+     "start": "2024-08-04T05:52:47-07:00",
+     "dur_s": 248.0,
+     "gps_m": 28.0,
+     "strokes": 46.0,
+     "rest_est_s": 228.0
+    },
+    {
+     "start": "2024-08-04T05:56:55-07:00",
+     "dur_s": 26.0,
+     "gps_m": 13.5,
+     "strokes": null,
+     "rest_est_s": 6.0
+    }
+   ]
+  },
+  {
+   "id": "2024-08-15_0527",
+   "start": "2024-08-15T05:27:20-07:00",
+   "end": "2024-08-15T06:06:32-07:00",
+   "duration_min": 33.1,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 7,
+   "true_distance_m": 160.0,
+   "gps_distance_m": 221.5,
+   "est_swim_per_length_s": 144.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-08-15T05:27:20-07:00",
+     "dur_s": 380.0,
+     "gps_m": 26.3,
+     "strokes": null,
+     "rest_est_s": 236.0
+    },
+    {
+     "start": "2024-08-15T05:36:43-07:00",
+     "dur_s": 184.0,
+     "gps_m": 5.6,
+     "strokes": 14.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2024-08-15T05:42:51-07:00",
+     "dur_s": 296.0,
+     "gps_m": 90.7,
+     "strokes": 4.0,
+     "rest_est_s": 152.0
+    },
+    {
+     "start": "2024-08-15T05:47:47-07:00",
+     "dur_s": 250.0,
+     "gps_m": 28.5,
+     "strokes": 40.0,
+     "rest_est_s": 106.0
+    },
+    {
+     "start": "2024-08-15T05:51:57-07:00",
+     "dur_s": 495.0,
+     "gps_m": 27.8,
+     "strokes": 23.0,
+     "rest_est_s": 351.0
+    },
+    {
+     "start": "2024-08-15T06:00:12-07:00",
+     "dur_s": 144.0,
+     "gps_m": 28.0,
+     "strokes": 18.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-15T06:02:36-07:00",
+     "dur_s": 236.0,
+     "gps_m": 14.6,
+     "strokes": 16.0,
+     "rest_est_s": 92.0
+    }
+   ]
+  },
+  {
+   "id": "2024-08-16_0224",
+   "start": "2024-08-16T02:24:41-07:00",
+   "end": "2024-08-16T04:01:01-07:00",
+   "duration_min": 76.7,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 31,
+   "true_distance_m": 708.7,
+   "gps_distance_m": 1132.1,
+   "est_swim_per_length_s": 48.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-08-16T02:24:41-07:00",
+     "dur_s": 194.0,
+     "gps_m": 27.5,
+     "strokes": 38.0,
+     "rest_est_s": 146.0
+    },
+    {
+     "start": "2024-08-16T02:27:55-07:00",
+     "dur_s": 211.0,
+     "gps_m": 29.4,
+     "strokes": 15.0,
+     "rest_est_s": 163.0
+    },
+    {
+     "start": "2024-08-16T02:31:26-07:00",
+     "dur_s": 151.0,
+     "gps_m": 27.7,
+     "strokes": 14.0,
+     "rest_est_s": 103.0
+    },
+    {
+     "start": "2024-08-16T02:33:57-07:00",
+     "dur_s": 338.0,
+     "gps_m": 28.4,
+     "strokes": 7.0,
+     "rest_est_s": 290.0
+    },
+    {
+     "start": "2024-08-16T02:39:35-07:00",
+     "dur_s": 339.0,
+     "gps_m": 69.8,
+     "strokes": 4.0,
+     "rest_est_s": 291.0
+    },
+    {
+     "start": "2024-08-16T02:45:14-07:00",
+     "dur_s": 328.0,
+     "gps_m": 53.2,
+     "strokes": 4.0,
+     "rest_est_s": 280.0
+    },
+    {
+     "start": "2024-08-16T02:50:42-07:00",
+     "dur_s": 93.0,
+     "gps_m": 27.6,
+     "strokes": 15.0,
+     "rest_est_s": 45.0
+    },
+    {
+     "start": "2024-08-16T02:52:15-07:00",
+     "dur_s": 67.0,
+     "gps_m": 28.5,
+     "strokes": 17.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2024-08-16T02:53:22-07:00",
+     "dur_s": 116.0,
+     "gps_m": 47.2,
+     "strokes": 4.0,
+     "rest_est_s": 68.0
+    },
+    {
+     "start": "2024-08-16T03:16:55-07:00",
+     "dur_s": 274.0,
+     "gps_m": 134.0,
+     "strokes": 37.0,
+     "rest_est_s": 226.0
+    },
+    {
+     "start": "2024-08-16T03:21:29-07:00",
+     "dur_s": 52.0,
+     "gps_m": 29.5,
+     "strokes": 4.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2024-08-16T03:22:21-07:00",
+     "dur_s": 93.0,
+     "gps_m": 28.3,
+     "strokes": 8.0,
+     "rest_est_s": 45.0
+    },
+    {
+     "start": "2024-08-16T03:23:54-07:00",
+     "dur_s": 156.0,
+     "gps_m": 29.5,
+     "strokes": 10.0,
+     "rest_est_s": 108.0
+    },
+    {
+     "start": "2024-08-16T03:26:30-07:00",
+     "dur_s": 123.0,
+     "gps_m": 27.8,
+     "strokes": 8.0,
+     "rest_est_s": 75.0
+    },
+    {
+     "start": "2024-08-16T03:28:33-07:00",
+     "dur_s": 62.0,
+     "gps_m": 33.5,
+     "strokes": 12.0,
+     "rest_est_s": 14.0
+    },
+    {
+     "start": "2024-08-16T03:29:35-07:00",
+     "dur_s": 213.0,
+     "gps_m": 28.7,
+     "strokes": 19.0,
+     "rest_est_s": 165.0
+    },
+    {
+     "start": "2024-08-16T03:33:08-07:00",
+     "dur_s": 227.0,
+     "gps_m": 27.4,
+     "strokes": 5.0,
+     "rest_est_s": 179.0
+    },
+    {
+     "start": "2024-08-16T03:36:55-07:00",
+     "dur_s": 128.0,
+     "gps_m": 27.4,
+     "strokes": 8.0,
+     "rest_est_s": 80.0
+    },
+    {
+     "start": "2024-08-16T03:39:03-07:00",
+     "dur_s": 103.0,
+     "gps_m": 34.9,
+     "strokes": 4.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2024-08-16T03:40:46-07:00",
+     "dur_s": 57.0,
+     "gps_m": 28.0,
+     "strokes": 4.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2024-08-16T03:41:43-07:00",
+     "dur_s": 114.0,
+     "gps_m": 30.0,
+     "strokes": 13.0,
+     "rest_est_s": 66.0
+    },
+    {
+     "start": "2024-08-16T03:43:37-07:00",
+     "dur_s": 119.0,
+     "gps_m": 36.0,
+     "strokes": 5.0,
+     "rest_est_s": 71.0
+    },
+    {
+     "start": "2024-08-16T03:45:36-07:00",
+     "dur_s": 134.0,
+     "gps_m": 27.5,
+     "strokes": 19.0,
+     "rest_est_s": 86.0
+    },
+    {
+     "start": "2024-08-16T03:47:50-07:00",
+     "dur_s": 83.0,
+     "gps_m": 27.8,
+     "strokes": 7.0,
+     "rest_est_s": 35.0
+    },
+    {
+     "start": "2024-08-16T03:49:13-07:00",
+     "dur_s": 42.0,
+     "gps_m": 28.1,
+     "strokes": 7.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-16T03:49:55-07:00",
+     "dur_s": 120.0,
+     "gps_m": 53.6,
+     "strokes": 6.0,
+     "rest_est_s": 72.0
+    },
+    {
+     "start": "2024-08-16T03:51:55-07:00",
+     "dur_s": 72.0,
+     "gps_m": 27.6,
+     "strokes": 6.0,
+     "rest_est_s": 24.0
+    },
+    {
+     "start": "2024-08-16T03:53:07-07:00",
+     "dur_s": 287.0,
+     "gps_m": 64.2,
+     "strokes": 4.0,
+     "rest_est_s": 239.0
+    },
+    {
+     "start": "2024-08-16T03:57:54-07:00",
+     "dur_s": 118.0,
+     "gps_m": 28.9,
+     "strokes": 6.0,
+     "rest_est_s": 70.0
+    },
+    {
+     "start": "2024-08-16T03:59:52-07:00",
+     "dur_s": 48.0,
+     "gps_m": 27.8,
+     "strokes": 9.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-16T04:00:40-07:00",
+     "dur_s": 22.0,
+     "gps_m": 12.3,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2024-08-16_2205",
+   "start": "2024-08-16T22:05:09-07:00",
+   "end": "2024-08-16T22:39:03-07:00",
+   "duration_min": 22.3,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 9,
+   "true_distance_m": 205.7,
+   "gps_distance_m": 426.0,
+   "est_swim_per_length_s": 16.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-08-16T22:07:18-07:00",
+     "dur_s": 313.0,
+     "gps_m": 74.7,
+     "strokes": 4.0,
+     "rest_est_s": 297.0
+    },
+    {
+     "start": "2024-08-16T22:12:31-07:00",
+     "dur_s": 58.0,
+     "gps_m": 28.3,
+     "strokes": 16.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2024-08-16T22:13:29-07:00",
+     "dur_s": 167.0,
+     "gps_m": 44.0,
+     "strokes": 19.0,
+     "rest_est_s": 151.0
+    },
+    {
+     "start": "2024-08-16T22:26:09-07:00",
+     "dur_s": 16.0,
+     "gps_m": 160.9,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-08-16T22:26:25-07:00",
+     "dur_s": 141.0,
+     "gps_m": 29.4,
+     "strokes": 20.0,
+     "rest_est_s": 125.0
+    },
+    {
+     "start": "2024-08-16T22:28:46-07:00",
+     "dur_s": 354.0,
+     "gps_m": 27.5,
+     "strokes": 24.0,
+     "rest_est_s": 338.0
+    },
+    {
+     "start": "2024-08-16T22:34:40-07:00",
+     "dur_s": 108.0,
+     "gps_m": 28.2,
+     "strokes": 10.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2024-08-16T22:36:28-07:00",
+     "dur_s": 69.0,
+     "gps_m": 27.5,
+     "strokes": 10.0,
+     "rest_est_s": 53.0
+    },
+    {
+     "start": "2024-08-16T22:37:37-07:00",
+     "dur_s": 86.0,
+     "gps_m": 5.5,
+     "strokes": null,
+     "rest_est_s": 70.0
+    }
+   ]
+  },
+  {
+   "id": "2024-09-05_1158",
+   "start": "2024-09-05T11:58:51-07:00",
+   "end": "2024-09-05T13:03:50-07:00",
+   "duration_min": 65.0,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 21,
+   "true_distance_m": 480.1,
+   "gps_distance_m": 689.6,
+   "est_swim_per_length_s": 95.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-09-05T11:58:51-07:00",
+     "dur_s": 127.0,
+     "gps_m": 69.9,
+     "strokes": 4.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2024-09-05T12:00:58-07:00",
+     "dur_s": 86.0,
+     "gps_m": 27.4,
+     "strokes": 25.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-09-05T12:02:24-07:00",
+     "dur_s": 151.0,
+     "gps_m": 27.5,
+     "strokes": 19.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2024-09-05T12:04:55-07:00",
+     "dur_s": 129.0,
+     "gps_m": 28.0,
+     "strokes": 14.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2024-09-05T12:07:04-07:00",
+     "dur_s": 155.0,
+     "gps_m": 29.9,
+     "strokes": 13.0,
+     "rest_est_s": 60.0
+    },
+    {
+     "start": "2024-09-05T12:09:39-07:00",
+     "dur_s": 223.0,
+     "gps_m": 27.4,
+     "strokes": 21.0,
+     "rest_est_s": 128.0
+    },
+    {
+     "start": "2024-09-05T12:13:22-07:00",
+     "dur_s": 268.0,
+     "gps_m": 27.4,
+     "strokes": 10.0,
+     "rest_est_s": 173.0
+    },
+    {
+     "start": "2024-09-05T12:17:50-07:00",
+     "dur_s": 372.0,
+     "gps_m": 27.7,
+     "strokes": 35.0,
+     "rest_est_s": 277.0
+    },
+    {
+     "start": "2024-09-05T12:24:02-07:00",
+     "dur_s": 294.0,
+     "gps_m": 81.2,
+     "strokes": 4.0,
+     "rest_est_s": 199.0
+    },
+    {
+     "start": "2024-09-05T12:28:56-07:00",
+     "dur_s": 225.0,
+     "gps_m": 33.3,
+     "strokes": 36.0,
+     "rest_est_s": 130.0
+    },
+    {
+     "start": "2024-09-05T12:32:41-07:00",
+     "dur_s": 161.0,
+     "gps_m": 28.2,
+     "strokes": 13.0,
+     "rest_est_s": 66.0
+    },
+    {
+     "start": "2024-09-05T12:35:22-07:00",
+     "dur_s": 198.0,
+     "gps_m": 32.3,
+     "strokes": 24.0,
+     "rest_est_s": 103.0
+    },
+    {
+     "start": "2024-09-05T12:38:40-07:00",
+     "dur_s": 215.0,
+     "gps_m": 28.0,
+     "strokes": 14.0,
+     "rest_est_s": 120.0
+    },
+    {
+     "start": "2024-09-05T12:42:15-07:00",
+     "dur_s": 113.0,
+     "gps_m": 28.1,
+     "strokes": 4.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2024-09-05T12:44:08-07:00",
+     "dur_s": 276.0,
+     "gps_m": 27.7,
+     "strokes": 10.0,
+     "rest_est_s": 181.0
+    },
+    {
+     "start": "2024-09-05T12:48:44-07:00",
+     "dur_s": 125.0,
+     "gps_m": 28.7,
+     "strokes": 13.0,
+     "rest_est_s": 30.0
+    },
+    {
+     "start": "2024-09-05T12:50:49-07:00",
+     "dur_s": 154.0,
+     "gps_m": 28.1,
+     "strokes": 17.0,
+     "rest_est_s": 59.0
+    },
+    {
+     "start": "2024-09-05T12:53:23-07:00",
+     "dur_s": 171.0,
+     "gps_m": 27.4,
+     "strokes": 15.0,
+     "rest_est_s": 76.0
+    },
+    {
+     "start": "2024-09-05T12:56:14-07:00",
+     "dur_s": 147.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2024-09-05T12:58:41-07:00",
+     "dur_s": 214.0,
+     "gps_m": 41.7,
+     "strokes": 4.0,
+     "rest_est_s": 119.0
+    },
+    {
+     "start": "2024-09-05T13:02:15-07:00",
+     "dur_s": 95.0,
+     "gps_m": 12.4,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2024-09-08_0652",
+   "start": "2024-09-08T06:52:05-07:00",
+   "end": "2024-09-08T06:54:16-07:00",
+   "duration_min": 2.2,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 1,
+   "true_distance_m": 22.9,
+   "gps_distance_m": 5400.7,
+   "est_swim_per_length_s": 130.0,
+   "rest_measured": false,
+   "longest_run_lengths": 1,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-09-08T06:52:05-07:00",
+     "dur_s": 130.0,
+     "gps_m": 5400.7,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2024-09-08_0654",
+   "start": "2024-09-08T06:54:24-07:00",
+   "end": "2024-09-08T08:01:04-07:00",
+   "duration_min": 66.6,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 19,
+   "true_distance_m": 434.3,
+   "gps_distance_m": 543.6,
+   "est_swim_per_length_s": 106.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-09-08T06:54:24-07:00",
+     "dur_s": 138.0,
+     "gps_m": 30.5,
+     "strokes": 26.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2024-09-08T06:56:42-07:00",
+     "dur_s": 231.0,
+     "gps_m": 29.5,
+     "strokes": 17.0,
+     "rest_est_s": 125.0
+    },
+    {
+     "start": "2024-09-08T07:00:33-07:00",
+     "dur_s": 159.0,
+     "gps_m": 27.8,
+     "strokes": 21.0,
+     "rest_est_s": 53.0
+    },
+    {
+     "start": "2024-09-08T07:03:12-07:00",
+     "dur_s": 117.0,
+     "gps_m": 27.7,
+     "strokes": 12.0,
+     "rest_est_s": 11.0
+    },
+    {
+     "start": "2024-09-08T07:05:09-07:00",
+     "dur_s": 159.0,
+     "gps_m": 27.5,
+     "strokes": 20.0,
+     "rest_est_s": 53.0
+    },
+    {
+     "start": "2024-09-08T07:07:48-07:00",
+     "dur_s": 112.0,
+     "gps_m": 28.1,
+     "strokes": 14.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2024-09-08T07:09:40-07:00",
+     "dur_s": 109.0,
+     "gps_m": 27.5,
+     "strokes": 8.0,
+     "rest_est_s": 3.0
+    },
+    {
+     "start": "2024-09-08T07:11:29-07:00",
+     "dur_s": 273.0,
+     "gps_m": 27.4,
+     "strokes": 37.0,
+     "rest_est_s": 167.0
+    },
+    {
+     "start": "2024-09-08T07:16:02-07:00",
+     "dur_s": 209.0,
+     "gps_m": 28.0,
+     "strokes": 22.0,
+     "rest_est_s": 103.0
+    },
+    {
+     "start": "2024-09-08T07:19:31-07:00",
+     "dur_s": 351.0,
+     "gps_m": 27.7,
+     "strokes": 25.0,
+     "rest_est_s": 245.0
+    },
+    {
+     "start": "2024-09-08T07:25:22-07:00",
+     "dur_s": 394.0,
+     "gps_m": 25.2,
+     "strokes": 13.0,
+     "rest_est_s": 288.0
+    },
+    {
+     "start": "2024-09-08T07:31:59-07:00",
+     "dur_s": 531.0,
+     "gps_m": 8.1,
+     "strokes": 62.0,
+     "rest_est_s": 425.0
+    },
+    {
+     "start": "2024-09-08T07:40:50-07:00",
+     "dur_s": 106.0,
+     "gps_m": 27.5,
+     "strokes": 8.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-09-08T07:42:36-07:00",
+     "dur_s": 215.0,
+     "gps_m": 28.3,
+     "strokes": 19.0,
+     "rest_est_s": 109.0
+    },
+    {
+     "start": "2024-09-08T07:46:11-07:00",
+     "dur_s": 103.0,
+     "gps_m": 28.1,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-09-08T07:47:54-07:00",
+     "dur_s": 198.0,
+     "gps_m": 28.9,
+     "strokes": 24.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2024-09-08T07:51:12-07:00",
+     "dur_s": 242.0,
+     "gps_m": 27.8,
+     "strokes": 21.0,
+     "rest_est_s": 136.0
+    },
+    {
+     "start": "2024-09-08T07:55:14-07:00",
+     "dur_s": 114.0,
+     "gps_m": 30.0,
+     "strokes": 13.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2024-09-08T07:57:08-07:00",
+     "dur_s": 236.0,
+     "gps_m": 58.0,
+     "strokes": 3.0,
+     "rest_est_s": 130.0
+    }
+   ]
+  },
+  {
+   "id": "2024-09-12_1155",
+   "start": "2024-09-12T11:55:52-07:00",
+   "end": "2024-09-12T13:02:01-07:00",
+   "duration_min": 66.2,
+   "location_type": "pool",
+   "lap_length_setting": "25 m",
+   "era": "baseline",
+   "lengths": 40,
+   "true_distance_m": 914.4,
+   "gps_distance_m": 1092.0,
+   "est_swim_per_length_s": 28.0,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-09-12T11:56:06-07:00",
+     "dur_s": 35.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2024-09-12T11:56:56-07:00",
+     "dur_s": 38.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2024-09-12T11:58:26-07:00",
+     "dur_s": 33.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2024-09-12T11:59:35-07:00",
+     "dur_s": 36.0,
+     "gps_m": 27.3,
+     "strokes": 14.0,
+     "rest_est_s": 87.0
+    },
+    {
+     "start": "2024-09-12T12:01:38-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 10.0
+    },
+    {
+     "start": "2024-09-12T12:02:13-07:00",
+     "dur_s": 33.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 152.0
+    },
+    {
+     "start": "2024-09-12T12:05:18-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2024-09-12T12:06:32-07:00",
+     "dur_s": 32.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 70.0
+    },
+    {
+     "start": "2024-09-12T12:08:14-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 186.0
+    },
+    {
+     "start": "2024-09-12T12:11:46-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 86.0
+    },
+    {
+     "start": "2024-09-12T12:13:43-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-09-12T12:14:13-07:00",
+     "dur_s": 32.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 130.0
+    },
+    {
+     "start": "2024-09-12T12:16:55-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2024-09-12T12:18:03-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 117.0
+    },
+    {
+     "start": "2024-09-12T12:20:31-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2024-09-12T12:22:29-07:00",
+     "dur_s": 28.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 112.0
+    },
+    {
+     "start": "2024-09-12T12:24:49-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 38.0
+    },
+    {
+     "start": "2024-09-12T12:25:53-07:00",
+     "dur_s": 27.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 143.0
+    },
+    {
+     "start": "2024-09-12T12:28:43-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2024-09-12T12:30:05-07:00",
+     "dur_s": 27.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 83.0
+    },
+    {
+     "start": "2024-09-12T12:31:55-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2024-09-12T12:32:54-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 80.0
+    },
+    {
+     "start": "2024-09-12T12:34:44-07:00",
+     "dur_s": 27.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2024-09-12T12:35:57-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 75.0
+    },
+    {
+     "start": "2024-09-12T12:37:36-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-09-12T12:38:00-07:00",
+     "dur_s": 33.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 159.0
+    },
+    {
+     "start": "2024-09-12T12:41:12-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2024-09-12T12:42:21-07:00",
+     "dur_s": 28.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 110.0
+    },
+    {
+     "start": "2024-09-12T12:44:39-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2024-09-12T12:45:52-07:00",
+     "dur_s": 28.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 146.0
+    },
+    {
+     "start": "2024-09-12T12:48:46-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 67.0
+    },
+    {
+     "start": "2024-09-12T12:50:17-07:00",
+     "dur_s": 16.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 16.0
+    },
+    {
+     "start": "2024-09-12T12:50:49-07:00",
+     "dur_s": 7.0,
+     "gps_m": 27.3,
+     "strokes": 7.0,
+     "rest_est_s": 28.0
+    },
+    {
+     "start": "2024-09-12T12:51:24-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 57.0
+    },
+    {
+     "start": "2024-09-12T12:51:53-07:00",
+     "dur_s": 51.0,
+     "gps_m": 27.3,
+     "strokes": null,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2024-09-12T12:52:50-07:00",
+     "dur_s": 28.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 70.0
+    },
+    {
+     "start": "2024-09-12T12:54:28-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2024-09-12T12:56:30-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 68.0
+    },
+    {
+     "start": "2024-09-12T12:58:08-07:00",
+     "dur_s": 32.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 27.0
+    },
+    {
+     "start": "2024-09-12T12:59:07-07:00",
+     "dur_s": 35.0,
+     "gps_m": 27.3,
+     "strokes": 14.0,
+     "rest_est_s": 87.0
+    },
+    {
+     "start": "2024-09-12T13:01:09-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": null
+    }
+   ]
+  },
+  {
+   "id": "2024-09-27_1159",
+   "start": "2024-09-27T11:59:49-07:00",
+   "end": "2024-09-27T12:56:49-07:00",
+   "duration_min": 57.0,
+   "location_type": "pool",
+   "lap_length_setting": "25 m",
+   "era": "baseline",
+   "lengths": 30,
+   "true_distance_m": 685.8,
+   "gps_distance_m": 819.0,
+   "est_swim_per_length_s": 26.0,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-09-27T12:00:31-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 11.0
+    },
+    {
+     "start": "2024-09-27T12:01:13-07:00",
+     "dur_s": 36.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 93.0
+    },
+    {
+     "start": "2024-09-27T12:03:22-07:00",
+     "dur_s": 32.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2024-09-27T12:04:30-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 103.0
+    },
+    {
+     "start": "2024-09-27T12:06:42-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 72.0
+    },
+    {
+     "start": "2024-09-27T12:08:25-07:00",
+     "dur_s": 28.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 166.0
+    },
+    {
+     "start": "2024-09-27T12:11:39-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2024-09-27T12:12:42-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 88.0
+    },
+    {
+     "start": "2024-09-27T12:14:40-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 153.0
+    },
+    {
+     "start": "2024-09-27T12:17:42-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 78.0
+    },
+    {
+     "start": "2024-09-27T12:19:29-07:00",
+     "dur_s": 21.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 69.0
+    },
+    {
+     "start": "2024-09-27T12:20:59-07:00",
+     "dur_s": 21.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2024-09-27T12:21:53-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 115.0
+    },
+    {
+     "start": "2024-09-27T12:24:14-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2024-09-27T12:25:19-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 136.0
+    },
+    {
+     "start": "2024-09-27T12:28:01-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 72.0
+    },
+    {
+     "start": "2024-09-27T12:29:37-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 85.0
+    },
+    {
+     "start": "2024-09-27T12:31:28-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 78.0
+    },
+    {
+     "start": "2024-09-27T12:33:12-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 89.0
+    },
+    {
+     "start": "2024-09-27T12:35:06-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 78.0
+    },
+    {
+     "start": "2024-09-27T12:36:50-07:00",
+     "dur_s": 28.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 116.0
+    },
+    {
+     "start": "2024-09-27T12:37:33-07:00",
+     "dur_s": 86.0,
+     "gps_m": 27.3,
+     "strokes": null,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2024-09-27T12:39:14-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 59.0
+    },
+    {
+     "start": "2024-09-27T12:40:39-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 118.0
+    },
+    {
+     "start": "2024-09-27T12:43:08-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2024-09-27T12:44:21-07:00",
+     "dur_s": 28.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2024-09-27T12:46:21-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2024-09-27T12:47:47-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 80.0
+    },
+    {
+     "start": "2024-09-27T12:49:32-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 66.0
+    },
+    {
+     "start": "2024-09-27T12:51:04-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 85.0
+    },
+    {
+     "start": "2024-09-27T12:52:54-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": null
+    },
+    {
+     "start": "2024-09-27T12:53:20-07:00",
+     "dur_s": 102.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": null,
+     "artifact": true
+    }
+   ]
+  },
+  {
+   "id": "2024-11-02_1541",
+   "start": "2024-11-02T15:41:40-07:00",
+   "end": "2024-11-02T16:35:07-07:00",
+   "duration_min": 50.4,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 3,
+   "true_distance_m": 68.6,
+   "gps_distance_m": 82.8,
+   "est_swim_per_length_s": 346.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-11-02T15:41:41-07:00",
+     "dur_s": 346.0,
+     "gps_m": 23.1,
+     "strokes": null,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-11-02T15:50:30-07:00",
+     "dur_s": 454.0,
+     "gps_m": 27.6,
+     "strokes": 54.0,
+     "rest_est_s": 108.0
+    },
+    {
+     "start": "2024-11-02T15:58:04-07:00",
+     "dur_s": 2223.0,
+     "gps_m": 32.1,
+     "strokes": null,
+     "rest_est_s": 1877.0
+    }
+   ]
+  },
+  {
+   "id": "2024-12-24_1200",
+   "start": "2024-12-24T12:00:04-07:00",
+   "end": "2024-12-24T13:15:55-07:00",
+   "duration_min": 74.7,
+   "location_type": "pool",
+   "lap_length_setting": "25 m",
+   "era": "baseline",
+   "lengths": 21,
+   "true_distance_m": 480.1,
+   "gps_distance_m": 573.3,
+   "est_swim_per_length_s": 25.0,
+   "rest_measured": true,
+   "longest_run_lengths": 4,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-12-24T12:01:39-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2024-12-24T12:02:49-07:00",
+     "dur_s": 16.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-12-24T12:03:05-07:00",
+     "dur_s": 17.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 50.0
+    },
+    {
+     "start": "2024-12-24T12:04:12-07:00",
+     "dur_s": 18.0,
+     "gps_m": 27.3,
+     "strokes": 7.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2024-12-24T12:04:32-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 8.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2024-12-24T12:05:00-07:00",
+     "dur_s": 46.0,
+     "gps_m": 27.3,
+     "strokes": null,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2024-12-24T12:05:48-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 47.0
+    },
+    {
+     "start": "2024-12-24T12:07:05-07:00",
+     "dur_s": 26.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 153.0
+    },
+    {
+     "start": "2024-12-24T12:10:04-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 102.0
+    },
+    {
+     "start": "2024-12-24T12:12:11-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 351.0
+    },
+    {
+     "start": "2024-12-24T12:18:33-07:00",
+     "dur_s": 34.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 23.0
+    },
+    {
+     "start": "2024-12-24T12:19:30-07:00",
+     "dur_s": 35.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 209.0
+    },
+    {
+     "start": "2024-12-24T12:23:34-07:00",
+     "dur_s": 22.0,
+     "gps_m": 27.3,
+     "strokes": 13.0,
+     "rest_est_s": 401.0
+    },
+    {
+     "start": "2024-12-24T12:30:37-07:00",
+     "dur_s": 30.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 456.0
+    },
+    {
+     "start": "2024-12-24T12:38:43-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 453.0
+    },
+    {
+     "start": "2024-12-24T12:40:36-07:00",
+     "dur_s": 94.0,
+     "gps_m": 27.3,
+     "strokes": 19.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2024-12-24T12:46:40-07:00",
+     "dur_s": 24.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2024-12-24T12:47:08-07:00",
+     "dur_s": 32.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 396.0
+    },
+    {
+     "start": "2024-12-24T12:54:16-07:00",
+     "dur_s": 36.0,
+     "gps_m": 27.3,
+     "strokes": 11.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2024-12-24T12:55:00-07:00",
+     "dur_s": 36.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 168.0
+    },
+    {
+     "start": "2024-12-24T12:58:24-07:00",
+     "dur_s": 18.0,
+     "gps_m": 27.3,
+     "strokes": null,
+     "rest_est_s": 956.0
+    },
+    {
+     "start": "2024-12-24T13:03:17-07:00",
+     "dur_s": 475.0,
+     "gps_m": 27.3,
+     "strokes": 4.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2024-12-24T13:14:38-07:00",
+     "dur_s": 16.0,
+     "gps_m": 27.3,
+     "strokes": 3.0,
+     "rest_est_s": null
+    }
+   ]
+  },
+  {
+   "id": "2024-12-27_1620",
+   "start": "2024-12-27T16:20:55-07:00",
+   "end": "2024-12-27T17:12:20-07:00",
+   "duration_min": 51.4,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 8,
+   "true_distance_m": 182.9,
+   "gps_distance_m": 763.1,
+   "est_swim_per_length_s": 93.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2024-12-27T16:20:56-07:00",
+     "dur_s": 845.0,
+     "gps_m": 118.7,
+     "strokes": 4.0,
+     "rest_est_s": 752.0
+    },
+    {
+     "start": "2024-12-27T16:35:01-07:00",
+     "dur_s": 135.0,
+     "gps_m": 27.4,
+     "strokes": 4.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2024-12-27T16:37:16-07:00",
+     "dur_s": 202.0,
+     "gps_m": 55.1,
+     "strokes": 5.0,
+     "rest_est_s": 109.0
+    },
+    {
+     "start": "2024-12-27T16:40:38-07:00",
+     "dur_s": 589.0,
+     "gps_m": 45.7,
+     "strokes": 4.0,
+     "rest_est_s": 496.0
+    },
+    {
+     "start": "2024-12-27T16:50:27-07:00",
+     "dur_s": 232.0,
+     "gps_m": 27.6,
+     "strokes": 41.0,
+     "rest_est_s": 139.0
+    },
+    {
+     "start": "2024-12-27T16:54:19-07:00",
+     "dur_s": 93.0,
+     "gps_m": 27.9,
+     "strokes": 17.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2024-12-27T16:55:52-07:00",
+     "dur_s": 189.0,
+     "gps_m": 27.8,
+     "strokes": 54.0,
+     "rest_est_s": 96.0
+    },
+    {
+     "start": "2024-12-27T16:59:01-07:00",
+     "dur_s": 799.0,
+     "gps_m": 432.9,
+     "strokes": null,
+     "rest_est_s": 706.0
+    }
+   ]
+  },
+  {
+   "id": "2025-06-12_2229",
+   "start": "2025-06-12T22:29:53-07:00",
+   "end": "2025-06-12T23:06:54-07:00",
+   "duration_min": 37.0,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 5,
+   "true_distance_m": 114.3,
+   "gps_distance_m": 1490.3,
+   "est_swim_per_length_s": 329.0,
+   "rest_measured": false,
+   "longest_run_lengths": 1,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2025-06-12T22:29:54-07:00",
+     "dur_s": 488.0,
+     "gps_m": 29.2,
+     "strokes": 8.0,
+     "rest_est_s": 159.0
+    },
+    {
+     "start": "2025-06-12T22:38:02-07:00",
+     "dur_s": 543.0,
+     "gps_m": 15.9,
+     "strokes": 63.0,
+     "rest_est_s": 214.0
+    },
+    {
+     "start": "2025-06-12T22:47:05-07:00",
+     "dur_s": 457.0,
+     "gps_m": 17.4,
+     "strokes": 60.0,
+     "rest_est_s": 128.0
+    },
+    {
+     "start": "2025-06-12T22:54:42-07:00",
+     "dur_s": 403.0,
+     "gps_m": 10.6,
+     "strokes": 60.0,
+     "rest_est_s": 74.0
+    },
+    {
+     "start": "2025-06-12T23:01:25-07:00",
+     "dur_s": 329.0,
+     "gps_m": 1417.2,
+     "strokes": 3.0,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2025-06-13_0005",
+   "start": "2025-06-13T00:05:29-07:00",
+   "end": "2025-06-13T00:30:06-07:00",
+   "duration_min": 24.6,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 3,
+   "true_distance_m": 68.6,
+   "gps_distance_m": 319.8,
+   "est_swim_per_length_s": 333.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2025-06-13T00:05:29-07:00",
+     "dur_s": 333.0,
+     "gps_m": 41.7,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2025-06-13T00:11:02-07:00",
+     "dur_s": 453.0,
+     "gps_m": 27.7,
+     "strokes": 9.0,
+     "rest_est_s": 120.0
+    },
+    {
+     "start": "2025-06-13T00:18:35-07:00",
+     "dur_s": 691.0,
+     "gps_m": 250.4,
+     "strokes": null,
+     "rest_est_s": 358.0
+    }
+   ]
+  },
+  {
+   "id": "2025-06-14_0218",
+   "start": "2025-06-14T02:18:14-07:00",
+   "end": "2025-06-14T02:42:27-07:00",
+   "duration_min": 24.2,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 10,
+   "true_distance_m": 228.6,
+   "gps_distance_m": 268.6,
+   "est_swim_per_length_s": 8.0,
+   "rest_measured": false,
+   "longest_run_lengths": 1,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2025-06-14T02:18:15-07:00",
+     "dur_s": 151.0,
+     "gps_m": 29.2,
+     "strokes": 6.0,
+     "rest_est_s": 143.0
+    },
+    {
+     "start": "2025-06-14T02:20:46-07:00",
+     "dur_s": 82.0,
+     "gps_m": 28.2,
+     "strokes": 14.0,
+     "rest_est_s": 74.0
+    },
+    {
+     "start": "2025-06-14T02:22:08-07:00",
+     "dur_s": 77.0,
+     "gps_m": 27.8,
+     "strokes": 9.0,
+     "rest_est_s": 69.0
+    },
+    {
+     "start": "2025-06-14T02:23:25-07:00",
+     "dur_s": 281.0,
+     "gps_m": 29.2,
+     "strokes": 24.0,
+     "rest_est_s": 273.0
+    },
+    {
+     "start": "2025-06-14T02:28:06-07:00",
+     "dur_s": 457.0,
+     "gps_m": 40.6,
+     "strokes": 4.0,
+     "rest_est_s": 449.0
+    },
+    {
+     "start": "2025-06-14T02:35:43-07:00",
+     "dur_s": 113.0,
+     "gps_m": 28.0,
+     "strokes": 13.0,
+     "rest_est_s": 105.0
+    },
+    {
+     "start": "2025-06-14T02:37:36-07:00",
+     "dur_s": 59.0,
+     "gps_m": 29.2,
+     "strokes": 18.0,
+     "rest_est_s": 51.0
+    },
+    {
+     "start": "2025-06-14T02:38:35-07:00",
+     "dur_s": 122.0,
+     "gps_m": 27.9,
+     "strokes": 7.0,
+     "rest_est_s": 114.0
+    },
+    {
+     "start": "2025-06-14T02:40:37-07:00",
+     "dur_s": 102.0,
+     "gps_m": 27.6,
+     "strokes": 14.0,
+     "rest_est_s": 94.0
+    },
+    {
+     "start": "2025-06-14T02:42:19-07:00",
+     "dur_s": 8.0,
+     "gps_m": 0.9,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2025-06-29_0001",
+   "start": "2025-06-29T00:01:33-07:00",
+   "end": "2025-06-29T01:15:48-07:00",
+   "duration_min": 74.2,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 7,
+   "true_distance_m": 160.0,
+   "gps_distance_m": 1031.8,
+   "est_swim_per_length_s": 237.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2025-06-29T00:01:34-07:00",
+     "dur_s": 1209.0,
+     "gps_m": 22.5,
+     "strokes": 60.0,
+     "rest_est_s": 972.0
+    },
+    {
+     "start": "2025-06-29T00:21:43-07:00",
+     "dur_s": 359.0,
+     "gps_m": 28.9,
+     "strokes": 45.0,
+     "rest_est_s": 122.0
+    },
+    {
+     "start": "2025-06-29T00:27:42-07:00",
+     "dur_s": 1104.0,
+     "gps_m": 25.9,
+     "strokes": 63.0,
+     "rest_est_s": 867.0
+    },
+    {
+     "start": "2025-06-29T00:46:06-07:00",
+     "dur_s": 373.0,
+     "gps_m": 27.6,
+     "strokes": 47.0,
+     "rest_est_s": 136.0
+    },
+    {
+     "start": "2025-06-29T00:52:19-07:00",
+     "dur_s": 527.0,
+     "gps_m": 6.6,
+     "strokes": 60.0,
+     "rest_est_s": 290.0
+    },
+    {
+     "start": "2025-06-29T01:01:06-07:00",
+     "dur_s": 237.0,
+     "gps_m": 27.4,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2025-06-29T01:05:03-07:00",
+     "dur_s": 645.0,
+     "gps_m": 892.9,
+     "strokes": 3.0,
+     "rest_est_s": 408.0
+    }
+   ]
+  },
+  {
+   "id": "2025-07-13_1238",
+   "start": "2025-07-13T12:38:47-07:00",
+   "end": "2025-07-13T13:20:29-07:00",
+   "duration_min": 41.7,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 10,
+   "true_distance_m": 228.6,
+   "gps_distance_m": 545.0,
+   "est_swim_per_length_s": 61.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2025-07-13T12:38:47-07:00",
+     "dur_s": 377.0,
+     "gps_m": 195.7,
+     "strokes": 4.0,
+     "rest_est_s": 316.0
+    },
+    {
+     "start": "2025-07-13T12:45:04-07:00",
+     "dur_s": 204.0,
+     "gps_m": 27.7,
+     "strokes": 35.0,
+     "rest_est_s": 143.0
+    },
+    {
+     "start": "2025-07-13T12:48:28-07:00",
+     "dur_s": 95.0,
+     "gps_m": 28.1,
+     "strokes": 15.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2025-07-13T12:50:03-07:00",
+     "dur_s": 439.0,
+     "gps_m": 27.9,
+     "strokes": 25.0,
+     "rest_est_s": 378.0
+    },
+    {
+     "start": "2025-07-13T12:57:22-07:00",
+     "dur_s": 375.0,
+     "gps_m": 28.3,
+     "strokes": 34.0,
+     "rest_est_s": 314.0
+    },
+    {
+     "start": "2025-07-13T13:03:37-07:00",
+     "dur_s": 285.0,
+     "gps_m": 27.6,
+     "strokes": 12.0,
+     "rest_est_s": 224.0
+    },
+    {
+     "start": "2025-07-13T13:08:22-07:00",
+     "dur_s": 136.0,
+     "gps_m": 27.9,
+     "strokes": 15.0,
+     "rest_est_s": 75.0
+    },
+    {
+     "start": "2025-07-13T13:10:38-07:00",
+     "dur_s": 362.0,
+     "gps_m": 28.2,
+     "strokes": 39.0,
+     "rest_est_s": 301.0
+    },
+    {
+     "start": "2025-07-13T13:16:40-07:00",
+     "dur_s": 61.0,
+     "gps_m": 28.1,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2025-07-13T13:17:41-07:00",
+     "dur_s": 168.0,
+     "gps_m": 125.5,
+     "strokes": null,
+     "rest_est_s": 107.0
+    }
+   ]
+  },
+  {
+   "id": "2025-08-06_1838",
+   "start": "2025-08-06T18:38:39-07:00",
+   "end": "2025-08-06T18:46:46-07:00",
+   "duration_min": 8.1,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 1,
+   "true_distance_m": 22.9,
+   "gps_distance_m": 102.2,
+   "est_swim_per_length_s": 486.0,
+   "rest_measured": false,
+   "longest_run_lengths": 1,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2025-08-06T18:38:40-07:00",
+     "dur_s": 486.0,
+     "gps_m": 102.2,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2025-08-23_1343",
+   "start": "2025-08-23T13:43:33-07:00",
+   "end": "2025-08-23T14:18:09-07:00",
+   "duration_min": 34.5,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 11,
+   "true_distance_m": 251.5,
+   "gps_distance_m": 272.2,
+   "est_swim_per_length_s": 2.0,
+   "rest_measured": false,
+   "longest_run_lengths": 1,
+   "hr_avg": null,
+   "hr_max": null,
+   "cycles": [
+    {
+     "start": "2025-08-23T13:43:34-07:00",
+     "dur_s": 129.0,
+     "gps_m": 29.7,
+     "strokes": 4.0,
+     "rest_est_s": 127.0
+    },
+    {
+     "start": "2025-08-23T13:45:43-07:00",
+     "dur_s": 212.0,
+     "gps_m": 28.0,
+     "strokes": 27.0,
+     "rest_est_s": 210.0
+    },
+    {
+     "start": "2025-08-23T13:49:15-07:00",
+     "dur_s": 45.0,
+     "gps_m": 28.9,
+     "strokes": 9.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2025-08-23T13:50:00-07:00",
+     "dur_s": 421.0,
+     "gps_m": 29.4,
+     "strokes": 38.0,
+     "rest_est_s": 419.0
+    },
+    {
+     "start": "2025-08-23T13:57:01-07:00",
+     "dur_s": 198.0,
+     "gps_m": 30.0,
+     "strokes": 24.0,
+     "rest_est_s": 196.0
+    },
+    {
+     "start": "2025-08-23T14:00:19-07:00",
+     "dur_s": 293.0,
+     "gps_m": 27.4,
+     "strokes": 9.0,
+     "rest_est_s": 291.0
+    },
+    {
+     "start": "2025-08-23T14:05:12-07:00",
+     "dur_s": 376.0,
+     "gps_m": 28.3,
+     "strokes": 46.0,
+     "rest_est_s": 374.0
+    },
+    {
+     "start": "2025-08-23T14:11:28-07:00",
+     "dur_s": 157.0,
+     "gps_m": 28.0,
+     "strokes": 14.0,
+     "rest_est_s": 155.0
+    },
+    {
+     "start": "2025-08-23T14:14:05-07:00",
+     "dur_s": 203.0,
+     "gps_m": 27.4,
+     "strokes": 25.0,
+     "rest_est_s": 201.0
+    },
+    {
+     "start": "2025-08-23T14:17:28-07:00",
+     "dur_s": 32.0,
+     "gps_m": 13.4,
+     "strokes": null,
+     "rest_est_s": 30.0
+    },
+    {
+     "start": "2025-08-23T14:18:07-07:00",
+     "dur_s": 2.0,
+     "gps_m": 1.7,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-10_1824",
+   "start": "2026-07-10T18:24:19-07:00",
+   "end": "2026-07-10T19:13:00-07:00",
+   "duration_min": 48.7,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 26,
+   "true_distance_m": 594.4,
+   "gps_distance_m": 769.7,
+   "est_swim_per_length_s": 55.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": 119.9,
+   "hr_max": 156.0,
+   "cycles": [
+    {
+     "start": "2026-07-10T18:24:20-07:00",
+     "dur_s": 294.0,
+     "gps_m": 27.8,
+     "strokes": 29.0,
+     "rest_est_s": 239.0
+    },
+    {
+     "start": "2026-07-10T18:29:14-07:00",
+     "dur_s": 70.0,
+     "gps_m": 30.6,
+     "strokes": 11.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-10T18:30:24-07:00",
+     "dur_s": 103.0,
+     "gps_m": 27.8,
+     "strokes": 10.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-10T18:32:07-07:00",
+     "dur_s": 299.0,
+     "gps_m": 49.8,
+     "strokes": 4.0,
+     "rest_est_s": 244.0
+    },
+    {
+     "start": "2026-07-10T18:37:06-07:00",
+     "dur_s": 55.0,
+     "gps_m": 27.8,
+     "strokes": 12.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-10T18:38:01-07:00",
+     "dur_s": 99.0,
+     "gps_m": 27.5,
+     "strokes": 15.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-10T18:39:40-07:00",
+     "dur_s": 96.0,
+     "gps_m": 27.4,
+     "strokes": 8.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-10T18:41:16-07:00",
+     "dur_s": 81.0,
+     "gps_m": 27.6,
+     "strokes": 6.0,
+     "rest_est_s": 26.0
+    },
+    {
+     "start": "2026-07-10T18:42:37-07:00",
+     "dur_s": 114.0,
+     "gps_m": 27.4,
+     "strokes": 13.0,
+     "rest_est_s": 59.0
+    },
+    {
+     "start": "2026-07-10T18:44:31-07:00",
+     "dur_s": 70.0,
+     "gps_m": 27.6,
+     "strokes": 5.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-10T18:45:41-07:00",
+     "dur_s": 55.0,
+     "gps_m": 27.5,
+     "strokes": 9.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-10T18:46:36-07:00",
+     "dur_s": 89.0,
+     "gps_m": 29.5,
+     "strokes": 13.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2026-07-10T18:48:05-07:00",
+     "dur_s": 103.0,
+     "gps_m": 30.2,
+     "strokes": 4.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-10T18:49:48-07:00",
+     "dur_s": 73.0,
+     "gps_m": 27.6,
+     "strokes": 9.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-10T18:51:01-07:00",
+     "dur_s": 187.0,
+     "gps_m": 27.5,
+     "strokes": 7.0,
+     "rest_est_s": 132.0
+    },
+    {
+     "start": "2026-07-10T18:54:08-07:00",
+     "dur_s": 174.0,
+     "gps_m": 47.0,
+     "strokes": 6.0,
+     "rest_est_s": 119.0
+    },
+    {
+     "start": "2026-07-10T18:57:02-07:00",
+     "dur_s": 117.0,
+     "gps_m": 29.2,
+     "strokes": 14.0,
+     "rest_est_s": 62.0
+    },
+    {
+     "start": "2026-07-10T18:58:59-07:00",
+     "dur_s": 55.0,
+     "gps_m": 29.0,
+     "strokes": 12.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-10T18:59:54-07:00",
+     "dur_s": 87.0,
+     "gps_m": 29.3,
+     "strokes": 7.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-10T19:01:21-07:00",
+     "dur_s": 63.0,
+     "gps_m": 27.9,
+     "strokes": 10.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-10T19:02:24-07:00",
+     "dur_s": 115.0,
+     "gps_m": 28.0,
+     "strokes": 12.0,
+     "rest_est_s": 60.0
+    },
+    {
+     "start": "2026-07-10T19:04:19-07:00",
+     "dur_s": 110.0,
+     "gps_m": 27.7,
+     "strokes": 6.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2026-07-10T19:06:09-07:00",
+     "dur_s": 95.0,
+     "gps_m": 29.0,
+     "strokes": 19.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-10T19:07:44-07:00",
+     "dur_s": 137.0,
+     "gps_m": 49.5,
+     "strokes": 4.0,
+     "rest_est_s": 82.0
+    },
+    {
+     "start": "2026-07-10T19:10:01-07:00",
+     "dur_s": 169.0,
+     "gps_m": 27.4,
+     "strokes": 24.0,
+     "rest_est_s": 114.0
+    },
+    {
+     "start": "2026-07-10T19:12:50-07:00",
+     "dur_s": 10.0,
+     "gps_m": 2.1,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-11_1259",
+   "start": "2026-07-11T12:59:05-07:00",
+   "end": "2026-07-11T13:00:42-07:00",
+   "duration_min": 1.6,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 1,
+   "true_distance_m": 22.9,
+   "gps_distance_m": 20.3,
+   "est_swim_per_length_s": 97.0,
+   "rest_measured": false,
+   "longest_run_lengths": 1,
+   "hr_avg": 90.6,
+   "hr_max": 93.0,
+   "cycles": [
+    {
+     "start": "2026-07-11T12:59:05-07:00",
+     "dur_s": 97.0,
+     "gps_m": 20.3,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-11_1302",
+   "start": "2026-07-11T13:02:23-07:00",
+   "end": "2026-07-11T13:43:35-07:00",
+   "duration_min": 41.2,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 20,
+   "true_distance_m": 457.2,
+   "gps_distance_m": 711.3,
+   "est_swim_per_length_s": 39.0,
+   "rest_measured": false,
+   "longest_run_lengths": 2,
+   "hr_avg": 107.8,
+   "hr_max": 140.0,
+   "cycles": [
+    {
+     "start": "2026-07-11T13:02:23-07:00",
+     "dur_s": 162.0,
+     "gps_m": 32.4,
+     "strokes": 4.0,
+     "rest_est_s": 123.0
+    },
+    {
+     "start": "2026-07-11T13:05:05-07:00",
+     "dur_s": 39.0,
+     "gps_m": 28.3,
+     "strokes": 14.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-11T13:05:44-07:00",
+     "dur_s": 144.0,
+     "gps_m": 28.0,
+     "strokes": 8.0,
+     "rest_est_s": 105.0
+    },
+    {
+     "start": "2026-07-11T13:08:08-07:00",
+     "dur_s": 81.0,
+     "gps_m": 27.7,
+     "strokes": 14.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-11T13:09:29-07:00",
+     "dur_s": 131.0,
+     "gps_m": 27.9,
+     "strokes": 10.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2026-07-11T13:11:40-07:00",
+     "dur_s": 92.0,
+     "gps_m": 38.9,
+     "strokes": 4.0,
+     "rest_est_s": 53.0
+    },
+    {
+     "start": "2026-07-11T13:13:12-07:00",
+     "dur_s": 52.0,
+     "gps_m": 28.5,
+     "strokes": 13.0,
+     "rest_est_s": 13.0
+    },
+    {
+     "start": "2026-07-11T13:14:04-07:00",
+     "dur_s": 193.0,
+     "gps_m": 114.2,
+     "strokes": 4.0,
+     "rest_est_s": 154.0
+    },
+    {
+     "start": "2026-07-11T13:17:17-07:00",
+     "dur_s": 97.0,
+     "gps_m": 37.0,
+     "strokes": 8.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-11T13:18:54-07:00",
+     "dur_s": 54.0,
+     "gps_m": 28.6,
+     "strokes": 15.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-11T13:19:48-07:00",
+     "dur_s": 211.0,
+     "gps_m": 38.5,
+     "strokes": 4.0,
+     "rest_est_s": 172.0
+    },
+    {
+     "start": "2026-07-11T13:23:19-07:00",
+     "dur_s": 149.0,
+     "gps_m": 28.7,
+     "strokes": 14.0,
+     "rest_est_s": 110.0
+    },
+    {
+     "start": "2026-07-11T13:25:48-07:00",
+     "dur_s": 38.0,
+     "gps_m": 28.9,
+     "strokes": 13.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-11T13:26:26-07:00",
+     "dur_s": 72.0,
+     "gps_m": 27.7,
+     "strokes": 15.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2026-07-11T13:27:38-07:00",
+     "dur_s": 213.0,
+     "gps_m": 36.1,
+     "strokes": 4.0,
+     "rest_est_s": 174.0
+    },
+    {
+     "start": "2026-07-11T13:31:11-07:00",
+     "dur_s": 160.0,
+     "gps_m": 31.1,
+     "strokes": 28.0,
+     "rest_est_s": 121.0
+    },
+    {
+     "start": "2026-07-11T13:33:51-07:00",
+     "dur_s": 93.0,
+     "gps_m": 28.1,
+     "strokes": 9.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-11T13:35:24-07:00",
+     "dur_s": 80.0,
+     "gps_m": 27.6,
+     "strokes": 7.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-11T13:36:44-07:00",
+     "dur_s": 63.0,
+     "gps_m": 29.2,
+     "strokes": 14.0,
+     "rest_est_s": 24.0
+    },
+    {
+     "start": "2026-07-11T13:37:47-07:00",
+     "dur_s": 349.0,
+     "gps_m": 43.9,
+     "strokes": null,
+     "rest_est_s": 310.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-13_1831",
+   "start": "2026-07-13T18:31:58-07:00",
+   "end": "2026-07-13T19:16:11-07:00",
+   "duration_min": 44.2,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 26,
+   "true_distance_m": 594.4,
+   "gps_distance_m": 760.7,
+   "est_swim_per_length_s": 50.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": 115.5,
+   "hr_max": 145.0,
+   "cycles": [
+    {
+     "start": "2026-07-13T18:31:58-07:00",
+     "dur_s": 139.0,
+     "gps_m": 29.3,
+     "strokes": 17.0,
+     "rest_est_s": 89.0
+    },
+    {
+     "start": "2026-07-13T18:34:17-07:00",
+     "dur_s": 124.0,
+     "gps_m": 36.7,
+     "strokes": 5.0,
+     "rest_est_s": 74.0
+    },
+    {
+     "start": "2026-07-13T18:36:21-07:00",
+     "dur_s": 50.0,
+     "gps_m": 29.8,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-13T18:37:11-07:00",
+     "dur_s": 92.0,
+     "gps_m": 27.5,
+     "strokes": 10.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-13T18:38:43-07:00",
+     "dur_s": 59.0,
+     "gps_m": 29.7,
+     "strokes": 9.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2026-07-13T18:39:42-07:00",
+     "dur_s": 84.0,
+     "gps_m": 39.5,
+     "strokes": 4.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2026-07-13T18:41:06-07:00",
+     "dur_s": 50.0,
+     "gps_m": 28.8,
+     "strokes": 12.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-13T18:41:56-07:00",
+     "dur_s": 61.0,
+     "gps_m": 29.3,
+     "strokes": 9.0,
+     "rest_est_s": 11.0
+    },
+    {
+     "start": "2026-07-13T18:42:57-07:00",
+     "dur_s": 111.0,
+     "gps_m": 28.8,
+     "strokes": 5.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-07-13T18:44:48-07:00",
+     "dur_s": 59.0,
+     "gps_m": 27.7,
+     "strokes": 12.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2026-07-13T18:45:47-07:00",
+     "dur_s": 223.0,
+     "gps_m": 28.9,
+     "strokes": 6.0,
+     "rest_est_s": 173.0
+    },
+    {
+     "start": "2026-07-13T18:49:30-07:00",
+     "dur_s": 164.0,
+     "gps_m": 34.8,
+     "strokes": 17.0,
+     "rest_est_s": 114.0
+    },
+    {
+     "start": "2026-07-13T18:52:14-07:00",
+     "dur_s": 115.0,
+     "gps_m": 27.4,
+     "strokes": 20.0,
+     "rest_est_s": 65.0
+    },
+    {
+     "start": "2026-07-13T18:54:09-07:00",
+     "dur_s": 135.0,
+     "gps_m": 27.4,
+     "strokes": 14.0,
+     "rest_est_s": 85.0
+    },
+    {
+     "start": "2026-07-13T18:56:24-07:00",
+     "dur_s": 145.0,
+     "gps_m": 28.8,
+     "strokes": 17.0,
+     "rest_est_s": 95.0
+    },
+    {
+     "start": "2026-07-13T18:58:49-07:00",
+     "dur_s": 151.0,
+     "gps_m": 27.4,
+     "strokes": 48.0,
+     "rest_est_s": 101.0
+    },
+    {
+     "start": "2026-07-13T19:01:20-07:00",
+     "dur_s": 109.0,
+     "gps_m": 29.7,
+     "strokes": 4.0,
+     "rest_est_s": 59.0
+    },
+    {
+     "start": "2026-07-13T19:03:09-07:00",
+     "dur_s": 44.0,
+     "gps_m": 28.0,
+     "strokes": 16.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-13T19:03:53-07:00",
+     "dur_s": 189.0,
+     "gps_m": 28.2,
+     "strokes": 11.0,
+     "rest_est_s": 139.0
+    },
+    {
+     "start": "2026-07-13T19:07:02-07:00",
+     "dur_s": 118.0,
+     "gps_m": 27.7,
+     "strokes": 14.0,
+     "rest_est_s": 68.0
+    },
+    {
+     "start": "2026-07-13T19:09:00-07:00",
+     "dur_s": 91.0,
+     "gps_m": 43.6,
+     "strokes": 6.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-13T19:10:31-07:00",
+     "dur_s": 84.0,
+     "gps_m": 27.6,
+     "strokes": 13.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2026-07-13T19:11:55-07:00",
+     "dur_s": 69.0,
+     "gps_m": 27.8,
+     "strokes": 11.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2026-07-13T19:13:04-07:00",
+     "dur_s": 79.0,
+     "gps_m": 28.6,
+     "strokes": 4.0,
+     "rest_est_s": 29.0
+    },
+    {
+     "start": "2026-07-13T19:14:23-07:00",
+     "dur_s": 62.0,
+     "gps_m": 27.3,
+     "strokes": 12.0,
+     "rest_est_s": 12.0
+    },
+    {
+     "start": "2026-07-13T19:15:25-07:00",
+     "dur_s": 46.0,
+     "gps_m": 10.4,
+     "strokes": null,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-14_1832",
+   "start": "2026-07-14T18:32:53-07:00",
+   "end": "2026-07-14T19:30:23-07:00",
+   "duration_min": 57.5,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 35,
+   "true_distance_m": 800.1,
+   "gps_distance_m": 1030.1,
+   "est_swim_per_length_s": 41.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": 110.4,
+   "hr_max": 150.0,
+   "cycles": [
+    {
+     "start": "2026-07-14T18:32:54-07:00",
+     "dur_s": 201.0,
+     "gps_m": 29.9,
+     "strokes": 29.0,
+     "rest_est_s": 160.0
+    },
+    {
+     "start": "2026-07-14T18:36:15-07:00",
+     "dur_s": 95.0,
+     "gps_m": 34.2,
+     "strokes": 12.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-14T18:37:50-07:00",
+     "dur_s": 64.0,
+     "gps_m": 28.8,
+     "strokes": 12.0,
+     "rest_est_s": 23.0
+    },
+    {
+     "start": "2026-07-14T18:38:54-07:00",
+     "dur_s": 212.0,
+     "gps_m": 29.5,
+     "strokes": 12.0,
+     "rest_est_s": 171.0
+    },
+    {
+     "start": "2026-07-14T18:42:26-07:00",
+     "dur_s": 156.0,
+     "gps_m": 27.8,
+     "strokes": 13.0,
+     "rest_est_s": 115.0
+    },
+    {
+     "start": "2026-07-14T18:45:02-07:00",
+     "dur_s": 47.0,
+     "gps_m": 33.5,
+     "strokes": 4.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-07-14T18:45:49-07:00",
+     "dur_s": 58.0,
+     "gps_m": 28.6,
+     "strokes": 8.0,
+     "rest_est_s": 17.0
+    },
+    {
+     "start": "2026-07-14T18:46:47-07:00",
+     "dur_s": 131.0,
+     "gps_m": 28.6,
+     "strokes": 4.0,
+     "rest_est_s": 90.0
+    },
+    {
+     "start": "2026-07-14T18:48:58-07:00",
+     "dur_s": 42.0,
+     "gps_m": 28.1,
+     "strokes": 16.0,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-07-14T18:49:40-07:00",
+     "dur_s": 116.0,
+     "gps_m": 27.7,
+     "strokes": 8.0,
+     "rest_est_s": 75.0
+    },
+    {
+     "start": "2026-07-14T18:51:36-07:00",
+     "dur_s": 77.0,
+     "gps_m": 31.6,
+     "strokes": 4.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2026-07-14T18:52:53-07:00",
+     "dur_s": 42.0,
+     "gps_m": 30.2,
+     "strokes": 17.0,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-07-14T18:53:35-07:00",
+     "dur_s": 404.0,
+     "gps_m": 27.8,
+     "strokes": 23.0,
+     "rest_est_s": 363.0
+    },
+    {
+     "start": "2026-07-14T19:00:19-07:00",
+     "dur_s": 56.0,
+     "gps_m": 28.4,
+     "strokes": 11.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-14T19:01:15-07:00",
+     "dur_s": 118.0,
+     "gps_m": 29.1,
+     "strokes": 12.0,
+     "rest_est_s": 77.0
+    },
+    {
+     "start": "2026-07-14T19:03:13-07:00",
+     "dur_s": 95.0,
+     "gps_m": 30.7,
+     "strokes": 13.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-14T19:04:48-07:00",
+     "dur_s": 22.0,
+     "gps_m": 29.2,
+     "strokes": 9.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-14T19:05:10-07:00",
+     "dur_s": 28.0,
+     "gps_m": 28.2,
+     "strokes": 5.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-14T19:05:38-07:00",
+     "dur_s": 138.0,
+     "gps_m": 34.7,
+     "strokes": 4.0,
+     "rest_est_s": 97.0
+    },
+    {
+     "start": "2026-07-14T19:07:56-07:00",
+     "dur_s": 66.0,
+     "gps_m": 27.6,
+     "strokes": 12.0,
+     "rest_est_s": 25.0
+    },
+    {
+     "start": "2026-07-14T19:09:02-07:00",
+     "dur_s": 132.0,
+     "gps_m": 28.7,
+     "strokes": 11.0,
+     "rest_est_s": 91.0
+    },
+    {
+     "start": "2026-07-14T19:11:14-07:00",
+     "dur_s": 83.0,
+     "gps_m": 28.4,
+     "strokes": 14.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-14T19:12:37-07:00",
+     "dur_s": 163.0,
+     "gps_m": 27.8,
+     "strokes": 10.0,
+     "rest_est_s": 122.0
+    },
+    {
+     "start": "2026-07-14T19:15:20-07:00",
+     "dur_s": 69.0,
+     "gps_m": 29.1,
+     "strokes": 7.0,
+     "rest_est_s": 28.0
+    },
+    {
+     "start": "2026-07-14T19:16:29-07:00",
+     "dur_s": 44.0,
+     "gps_m": 34.9,
+     "strokes": 8.0,
+     "rest_est_s": 3.0
+    },
+    {
+     "start": "2026-07-14T19:17:13-07:00",
+     "dur_s": 66.0,
+     "gps_m": 35.3,
+     "strokes": 4.0,
+     "rest_est_s": 25.0
+    },
+    {
+     "start": "2026-07-14T19:18:19-07:00",
+     "dur_s": 89.0,
+     "gps_m": 27.3,
+     "strokes": 9.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-14T19:19:48-07:00",
+     "dur_s": 68.0,
+     "gps_m": 27.5,
+     "strokes": 12.0,
+     "rest_est_s": 27.0
+    },
+    {
+     "start": "2026-07-14T19:20:56-07:00",
+     "dur_s": 41.0,
+     "gps_m": 27.5,
+     "strokes": 6.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-14T19:21:37-07:00",
+     "dur_s": 98.0,
+     "gps_m": 28.8,
+     "strokes": 7.0,
+     "rest_est_s": 57.0
+    },
+    {
+     "start": "2026-07-14T19:23:15-07:00",
+     "dur_s": 103.0,
+     "gps_m": 29.9,
+     "strokes": 14.0,
+     "rest_est_s": 62.0
+    },
+    {
+     "start": "2026-07-14T19:24:58-07:00",
+     "dur_s": 83.0,
+     "gps_m": 30.4,
+     "strokes": 14.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-14T19:26:21-07:00",
+     "dur_s": 102.0,
+     "gps_m": 27.6,
+     "strokes": 15.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-07-14T19:28:03-07:00",
+     "dur_s": 77.0,
+     "gps_m": 28.9,
+     "strokes": 10.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2026-07-14T19:29:20-07:00",
+     "dur_s": 63.0,
+     "gps_m": 23.8,
+     "strokes": 12.0,
+     "rest_est_s": 22.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-15_1848",
+   "start": "2026-07-15T18:48:41-07:00",
+   "end": "2026-07-15T19:30:39-07:00",
+   "duration_min": 42.0,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 26,
+   "true_distance_m": 594.4,
+   "gps_distance_m": 755.0,
+   "est_swim_per_length_s": 43.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": 115.2,
+   "hr_max": 144.0,
+   "cycles": [
+    {
+     "start": "2026-07-15T18:48:41-07:00",
+     "dur_s": 62.0,
+     "gps_m": 27.4,
+     "strokes": 13.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2026-07-15T18:49:43-07:00",
+     "dur_s": 45.0,
+     "gps_m": 28.5,
+     "strokes": 16.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-15T18:50:28-07:00",
+     "dur_s": 101.0,
+     "gps_m": 27.6,
+     "strokes": 9.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-15T18:52:09-07:00",
+     "dur_s": 164.0,
+     "gps_m": 31.7,
+     "strokes": 14.0,
+     "rest_est_s": 121.0
+    },
+    {
+     "start": "2026-07-15T18:54:53-07:00",
+     "dur_s": 62.0,
+     "gps_m": 28.5,
+     "strokes": 9.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2026-07-15T18:55:55-07:00",
+     "dur_s": 89.0,
+     "gps_m": 37.3,
+     "strokes": 4.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2026-07-15T18:57:24-07:00",
+     "dur_s": 76.0,
+     "gps_m": 30.4,
+     "strokes": 10.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2026-07-15T18:58:40-07:00",
+     "dur_s": 9.0,
+     "gps_m": 29.4,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-15T18:58:49-07:00",
+     "dur_s": 43.0,
+     "gps_m": 29.4,
+     "strokes": 8.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-15T18:59:32-07:00",
+     "dur_s": 218.0,
+     "gps_m": 27.5,
+     "strokes": 8.0,
+     "rest_est_s": 175.0
+    },
+    {
+     "start": "2026-07-15T19:03:10-07:00",
+     "dur_s": 86.0,
+     "gps_m": 27.8,
+     "strokes": 11.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2026-07-15T19:04:36-07:00",
+     "dur_s": 118.0,
+     "gps_m": 28.1,
+     "strokes": 7.0,
+     "rest_est_s": 75.0
+    },
+    {
+     "start": "2026-07-15T19:06:34-07:00",
+     "dur_s": 108.0,
+     "gps_m": 38.2,
+     "strokes": 10.0,
+     "rest_est_s": 65.0
+    },
+    {
+     "start": "2026-07-15T19:08:22-07:00",
+     "dur_s": 169.0,
+     "gps_m": 27.7,
+     "strokes": 12.0,
+     "rest_est_s": 126.0
+    },
+    {
+     "start": "2026-07-15T19:11:11-07:00",
+     "dur_s": 43.0,
+     "gps_m": 27.8,
+     "strokes": 16.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-15T19:11:54-07:00",
+     "dur_s": 99.0,
+     "gps_m": 30.9,
+     "strokes": 8.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2026-07-15T19:13:33-07:00",
+     "dur_s": 50.0,
+     "gps_m": 27.5,
+     "strokes": 8.0,
+     "rest_est_s": 7.0
+    },
+    {
+     "start": "2026-07-15T19:14:23-07:00",
+     "dur_s": 257.0,
+     "gps_m": 29.1,
+     "strokes": 4.0,
+     "rest_est_s": 214.0
+    },
+    {
+     "start": "2026-07-15T19:18:40-07:00",
+     "dur_s": 128.0,
+     "gps_m": 27.6,
+     "strokes": 17.0,
+     "rest_est_s": 85.0
+    },
+    {
+     "start": "2026-07-15T19:20:48-07:00",
+     "dur_s": 114.0,
+     "gps_m": 30.2,
+     "strokes": 11.0,
+     "rest_est_s": 71.0
+    },
+    {
+     "start": "2026-07-15T19:22:42-07:00",
+     "dur_s": 47.0,
+     "gps_m": 27.8,
+     "strokes": 18.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2026-07-15T19:23:29-07:00",
+     "dur_s": 108.0,
+     "gps_m": 28.0,
+     "strokes": 9.0,
+     "rest_est_s": 65.0
+    },
+    {
+     "start": "2026-07-15T19:25:17-07:00",
+     "dur_s": 103.0,
+     "gps_m": 28.8,
+     "strokes": 7.0,
+     "rest_est_s": 60.0
+    },
+    {
+     "start": "2026-07-15T19:27:00-07:00",
+     "dur_s": 76.0,
+     "gps_m": 28.0,
+     "strokes": 13.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2026-07-15T19:28:16-07:00",
+     "dur_s": 58.0,
+     "gps_m": 27.6,
+     "strokes": 10.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-15T19:29:14-07:00",
+     "dur_s": 84.0,
+     "gps_m": 22.2,
+     "strokes": 18.0,
+     "rest_est_s": 41.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-16_1840",
+   "start": "2026-07-16T18:40:01-07:00",
+   "end": "2026-07-16T19:29:53-07:00",
+   "duration_min": 49.9,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 43,
+   "true_distance_m": 983.0,
+   "gps_distance_m": 1373.4,
+   "est_swim_per_length_s": 31.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": 114.8,
+   "hr_max": 143.0,
+   "cycles": [
+    {
+     "start": "2026-07-16T18:40:01-07:00",
+     "dur_s": 112.0,
+     "gps_m": 35.4,
+     "strokes": 19.0,
+     "rest_est_s": 81.0
+    },
+    {
+     "start": "2026-07-16T18:41:53-07:00",
+     "dur_s": 120.0,
+     "gps_m": 52.5,
+     "strokes": 4.0,
+     "rest_est_s": 89.0
+    },
+    {
+     "start": "2026-07-16T18:43:53-07:00",
+     "dur_s": 53.0,
+     "gps_m": 27.5,
+     "strokes": 10.0,
+     "rest_est_s": 22.0
+    },
+    {
+     "start": "2026-07-16T18:44:46-07:00",
+     "dur_s": 46.0,
+     "gps_m": 29.9,
+     "strokes": 8.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-16T18:45:32-07:00",
+     "dur_s": 106.0,
+     "gps_m": 29.4,
+     "strokes": 4.0,
+     "rest_est_s": 75.0
+    },
+    {
+     "start": "2026-07-16T18:47:18-07:00",
+     "dur_s": 32.0,
+     "gps_m": 29.3,
+     "strokes": 11.0,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-07-16T18:47:50-07:00",
+     "dur_s": 89.0,
+     "gps_m": 38.5,
+     "strokes": 4.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-16T18:49:19-07:00",
+     "dur_s": 49.0,
+     "gps_m": 29.3,
+     "strokes": 7.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-16T18:50:08-07:00",
+     "dur_s": 68.0,
+     "gps_m": 29.5,
+     "strokes": 6.0,
+     "rest_est_s": 37.0
+    },
+    {
+     "start": "2026-07-16T18:51:16-07:00",
+     "dur_s": 33.0,
+     "gps_m": 27.8,
+     "strokes": 12.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-16T18:51:49-07:00",
+     "dur_s": 52.0,
+     "gps_m": 29.5,
+     "strokes": 6.0,
+     "rest_est_s": 21.0
+    },
+    {
+     "start": "2026-07-16T18:52:41-07:00",
+     "dur_s": 94.0,
+     "gps_m": 72.0,
+     "strokes": 4.0,
+     "rest_est_s": 63.0
+    },
+    {
+     "start": "2026-07-16T18:54:15-07:00",
+     "dur_s": 63.0,
+     "gps_m": 28.7,
+     "strokes": 7.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-16T18:55:18-07:00",
+     "dur_s": 32.0,
+     "gps_m": 31.3,
+     "strokes": 12.0,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-07-16T18:55:50-07:00",
+     "dur_s": 122.0,
+     "gps_m": 35.3,
+     "strokes": 4.0,
+     "rest_est_s": 91.0
+    },
+    {
+     "start": "2026-07-16T18:57:52-07:00",
+     "dur_s": 46.0,
+     "gps_m": 28.8,
+     "strokes": 8.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-16T18:58:38-07:00",
+     "dur_s": 95.0,
+     "gps_m": 31.3,
+     "strokes": 5.0,
+     "rest_est_s": 64.0
+    },
+    {
+     "start": "2026-07-16T19:00:13-07:00",
+     "dur_s": 50.0,
+     "gps_m": 28.2,
+     "strokes": 9.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2026-07-16T19:01:03-07:00",
+     "dur_s": 49.0,
+     "gps_m": 28.1,
+     "strokes": 7.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-16T19:01:52-07:00",
+     "dur_s": 78.0,
+     "gps_m": 29.6,
+     "strokes": 5.0,
+     "rest_est_s": 47.0
+    },
+    {
+     "start": "2026-07-16T19:03:10-07:00",
+     "dur_s": 46.0,
+     "gps_m": 31.2,
+     "strokes": 13.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-16T19:03:56-07:00",
+     "dur_s": 56.0,
+     "gps_m": 36.4,
+     "strokes": 4.0,
+     "rest_est_s": 25.0
+    },
+    {
+     "start": "2026-07-16T19:04:52-07:00",
+     "dur_s": 102.0,
+     "gps_m": 27.4,
+     "strokes": 9.0,
+     "rest_est_s": 71.0
+    },
+    {
+     "start": "2026-07-16T19:06:34-07:00",
+     "dur_s": 99.0,
+     "gps_m": 27.3,
+     "strokes": 18.0,
+     "rest_est_s": 68.0
+    },
+    {
+     "start": "2026-07-16T19:08:13-07:00",
+     "dur_s": 88.0,
+     "gps_m": 28.3,
+     "strokes": 8.0,
+     "rest_est_s": 57.0
+    },
+    {
+     "start": "2026-07-16T19:09:41-07:00",
+     "dur_s": 94.0,
+     "gps_m": 27.9,
+     "strokes": 9.0,
+     "rest_est_s": 63.0
+    },
+    {
+     "start": "2026-07-16T19:11:15-07:00",
+     "dur_s": 31.0,
+     "gps_m": 29.0,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-16T19:11:46-07:00",
+     "dur_s": 128.0,
+     "gps_m": 27.3,
+     "strokes": 10.0,
+     "rest_est_s": 97.0
+    },
+    {
+     "start": "2026-07-16T19:13:54-07:00",
+     "dur_s": 71.0,
+     "gps_m": 28.2,
+     "strokes": 7.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-16T19:15:05-07:00",
+     "dur_s": 95.0,
+     "gps_m": 32.7,
+     "strokes": 8.0,
+     "rest_est_s": 64.0
+    },
+    {
+     "start": "2026-07-16T19:16:40-07:00",
+     "dur_s": 125.0,
+     "gps_m": 27.5,
+     "strokes": 10.0,
+     "rest_est_s": 94.0
+    },
+    {
+     "start": "2026-07-16T19:18:45-07:00",
+     "dur_s": 39.0,
+     "gps_m": 28.9,
+     "strokes": 15.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-16T19:19:24-07:00",
+     "dur_s": 44.0,
+     "gps_m": 28.0,
+     "strokes": 12.0,
+     "rest_est_s": 13.0
+    },
+    {
+     "start": "2026-07-16T19:20:08-07:00",
+     "dur_s": 123.0,
+     "gps_m": 42.4,
+     "strokes": 4.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2026-07-16T19:22:11-07:00",
+     "dur_s": 48.0,
+     "gps_m": 28.1,
+     "strokes": 8.0,
+     "rest_est_s": 17.0
+    },
+    {
+     "start": "2026-07-16T19:22:59-07:00",
+     "dur_s": 33.0,
+     "gps_m": 27.6,
+     "strokes": 8.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-16T19:23:32-07:00",
+     "dur_s": 87.0,
+     "gps_m": 30.5,
+     "strokes": 4.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2026-07-16T19:24:59-07:00",
+     "dur_s": 29.0,
+     "gps_m": 29.7,
+     "strokes": 10.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-16T19:25:28-07:00",
+     "dur_s": 71.0,
+     "gps_m": 49.4,
+     "strokes": 5.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-16T19:26:39-07:00",
+     "dur_s": 19.0,
+     "gps_m": 30.8,
+     "strokes": 7.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-16T19:26:58-07:00",
+     "dur_s": 76.0,
+     "gps_m": 29.7,
+     "strokes": 6.0,
+     "rest_est_s": 45.0
+    },
+    {
+     "start": "2026-07-16T19:28:14-07:00",
+     "dur_s": 30.0,
+     "gps_m": 28.5,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-16T19:28:44-07:00",
+     "dur_s": 69.0,
+     "gps_m": 24.7,
+     "strokes": 2.0,
+     "rest_est_s": 38.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-17_1831",
+   "start": "2026-07-17T18:31:22-07:00",
+   "end": "2026-07-17T19:30:31-07:00",
+   "duration_min": 59.1,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "baseline",
+   "lengths": 53,
+   "true_distance_m": 1211.6,
+   "gps_distance_m": 1641.4,
+   "est_swim_per_length_s": 31.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": 121.5,
+   "hr_max": 151.0,
+   "cycles": [
+    {
+     "start": "2026-07-17T18:31:23-07:00",
+     "dur_s": 110.0,
+     "gps_m": 27.9,
+     "strokes": 14.0,
+     "rest_est_s": 79.0
+    },
+    {
+     "start": "2026-07-17T18:33:13-07:00",
+     "dur_s": 35.0,
+     "gps_m": 27.8,
+     "strokes": 12.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2026-07-17T18:33:48-07:00",
+     "dur_s": 51.0,
+     "gps_m": 28.2,
+     "strokes": 5.0,
+     "rest_est_s": 20.0
+    },
+    {
+     "start": "2026-07-17T18:34:39-07:00",
+     "dur_s": 56.0,
+     "gps_m": 27.8,
+     "strokes": 22.0,
+     "rest_est_s": 25.0
+    },
+    {
+     "start": "2026-07-17T18:35:35-07:00",
+     "dur_s": 103.0,
+     "gps_m": 66.1,
+     "strokes": 4.0,
+     "rest_est_s": 72.0
+    },
+    {
+     "start": "2026-07-17T18:37:18-07:00",
+     "dur_s": 46.0,
+     "gps_m": 30.8,
+     "strokes": 8.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-17T18:38:04-07:00",
+     "dur_s": 46.0,
+     "gps_m": 27.7,
+     "strokes": 10.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-17T18:38:50-07:00",
+     "dur_s": 73.0,
+     "gps_m": 28.4,
+     "strokes": 5.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-17T18:40:03-07:00",
+     "dur_s": 87.0,
+     "gps_m": 28.0,
+     "strokes": 9.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2026-07-17T18:41:30-07:00",
+     "dur_s": 39.0,
+     "gps_m": 29.0,
+     "strokes": 11.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-17T18:42:09-07:00",
+     "dur_s": 61.0,
+     "gps_m": 28.4,
+     "strokes": 7.0,
+     "rest_est_s": 30.0
+    },
+    {
+     "start": "2026-07-17T18:43:10-07:00",
+     "dur_s": 49.0,
+     "gps_m": 29.0,
+     "strokes": 6.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-17T18:43:59-07:00",
+     "dur_s": 39.0,
+     "gps_m": 27.8,
+     "strokes": 6.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-17T18:44:38-07:00",
+     "dur_s": 71.0,
+     "gps_m": 27.8,
+     "strokes": 7.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-17T18:45:49-07:00",
+     "dur_s": 26.0,
+     "gps_m": 28.1,
+     "strokes": 10.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-17T18:46:15-07:00",
+     "dur_s": 76.0,
+     "gps_m": 27.6,
+     "strokes": 6.0,
+     "rest_est_s": 45.0
+    },
+    {
+     "start": "2026-07-17T18:47:31-07:00",
+     "dur_s": 81.0,
+     "gps_m": 27.6,
+     "strokes": 9.0,
+     "rest_est_s": 50.0
+    },
+    {
+     "start": "2026-07-17T18:48:52-07:00",
+     "dur_s": 37.0,
+     "gps_m": 27.4,
+     "strokes": 12.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-07-17T18:49:29-07:00",
+     "dur_s": 95.0,
+     "gps_m": 27.7,
+     "strokes": 8.0,
+     "rest_est_s": 64.0
+    },
+    {
+     "start": "2026-07-17T18:51:04-07:00",
+     "dur_s": 89.0,
+     "gps_m": 28.0,
+     "strokes": 6.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-17T18:52:33-07:00",
+     "dur_s": 31.0,
+     "gps_m": 29.9,
+     "strokes": 9.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-17T18:53:04-07:00",
+     "dur_s": 64.0,
+     "gps_m": 29.0,
+     "strokes": 6.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2026-07-17T18:54:08-07:00",
+     "dur_s": 75.0,
+     "gps_m": 30.9,
+     "strokes": 7.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-17T18:55:23-07:00",
+     "dur_s": 31.0,
+     "gps_m": 28.1,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-17T18:55:54-07:00",
+     "dur_s": 70.0,
+     "gps_m": 39.3,
+     "strokes": 4.0,
+     "rest_est_s": 39.0
+    },
+    {
+     "start": "2026-07-17T18:57:04-07:00",
+     "dur_s": 78.0,
+     "gps_m": 27.8,
+     "strokes": 8.0,
+     "rest_est_s": 47.0
+    },
+    {
+     "start": "2026-07-17T18:58:22-07:00",
+     "dur_s": 54.0,
+     "gps_m": 27.5,
+     "strokes": 11.0,
+     "rest_est_s": 23.0
+    },
+    {
+     "start": "2026-07-17T18:59:16-07:00",
+     "dur_s": 52.0,
+     "gps_m": 32.2,
+     "strokes": 5.0,
+     "rest_est_s": 21.0
+    },
+    {
+     "start": "2026-07-17T19:00:08-07:00",
+     "dur_s": 78.0,
+     "gps_m": 30.2,
+     "strokes": 7.0,
+     "rest_est_s": 47.0
+    },
+    {
+     "start": "2026-07-17T19:01:26-07:00",
+     "dur_s": 75.0,
+     "gps_m": 27.4,
+     "strokes": 11.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-17T19:02:41-07:00",
+     "dur_s": 32.0,
+     "gps_m": 27.5,
+     "strokes": 8.0,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-07-17T19:03:13-07:00",
+     "dur_s": 80.0,
+     "gps_m": 28.9,
+     "strokes": 7.0,
+     "rest_est_s": 49.0
+    },
+    {
+     "start": "2026-07-17T19:04:33-07:00",
+     "dur_s": 69.0,
+     "gps_m": 27.8,
+     "strokes": 8.0,
+     "rest_est_s": 38.0
+    },
+    {
+     "start": "2026-07-17T19:05:42-07:00",
+     "dur_s": 35.0,
+     "gps_m": 27.5,
+     "strokes": 10.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2026-07-17T19:06:17-07:00",
+     "dur_s": 80.0,
+     "gps_m": 28.7,
+     "strokes": 7.0,
+     "rest_est_s": 49.0
+    },
+    {
+     "start": "2026-07-17T19:07:37-07:00",
+     "dur_s": 74.0,
+     "gps_m": 27.4,
+     "strokes": 8.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2026-07-17T19:08:51-07:00",
+     "dur_s": 41.0,
+     "gps_m": 29.5,
+     "strokes": 12.0,
+     "rest_est_s": 10.0
+    },
+    {
+     "start": "2026-07-17T19:09:32-07:00",
+     "dur_s": 83.0,
+     "gps_m": 31.1,
+     "strokes": 7.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2026-07-17T19:10:55-07:00",
+     "dur_s": 83.0,
+     "gps_m": 27.7,
+     "strokes": 7.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2026-07-17T19:12:18-07:00",
+     "dur_s": 61.0,
+     "gps_m": 31.9,
+     "strokes": 10.0,
+     "rest_est_s": 30.0
+    },
+    {
+     "start": "2026-07-17T19:13:19-07:00",
+     "dur_s": 44.0,
+     "gps_m": 28.1,
+     "strokes": 13.0,
+     "rest_est_s": 13.0
+    },
+    {
+     "start": "2026-07-17T19:14:03-07:00",
+     "dur_s": 79.0,
+     "gps_m": 32.4,
+     "strokes": 4.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-17T19:15:22-07:00",
+     "dur_s": 91.0,
+     "gps_m": 30.6,
+     "strokes": 9.0,
+     "rest_est_s": 60.0
+    },
+    {
+     "start": "2026-07-17T19:16:53-07:00",
+     "dur_s": 89.0,
+     "gps_m": 28.9,
+     "strokes": 10.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-17T19:18:22-07:00",
+     "dur_s": 63.0,
+     "gps_m": 28.6,
+     "strokes": 11.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-17T19:19:25-07:00",
+     "dur_s": 49.0,
+     "gps_m": 28.2,
+     "strokes": 8.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-17T19:20:14-07:00",
+     "dur_s": 85.0,
+     "gps_m": 29.7,
+     "strokes": 9.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-17T19:21:39-07:00",
+     "dur_s": 73.0,
+     "gps_m": 27.4,
+     "strokes": 7.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-17T19:22:52-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.6,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-17T19:23:23-07:00",
+     "dur_s": 80.0,
+     "gps_m": 27.6,
+     "strokes": 8.0,
+     "rest_est_s": 49.0
+    },
+    {
+     "start": "2026-07-17T19:24:43-07:00",
+     "dur_s": 61.0,
+     "gps_m": 27.5,
+     "strokes": 5.0,
+     "rest_est_s": 30.0
+    },
+    {
+     "start": "2026-07-17T19:25:44-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.9,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-17T19:26:13-07:00",
+     "dur_s": 258.0,
+     "gps_m": 105.5,
+     "strokes": 1.0,
+     "rest_est_s": 227.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-20_1836",
+   "start": "2026-07-20T18:36:57-07:00",
+   "end": "2026-07-20T19:29:49-07:00",
+   "duration_min": 52.9,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "video-era",
+   "lengths": 47,
+   "true_distance_m": 1074.4,
+   "gps_distance_m": 1416.9,
+   "est_swim_per_length_s": 33.0,
+   "rest_measured": false,
+   "longest_run_lengths": 4,
+   "hr_avg": 115.6,
+   "hr_max": 146.0,
+   "cycles": [
+    {
+     "start": "2026-07-20T18:36:58-07:00",
+     "dur_s": 116.0,
+     "gps_m": 29.6,
+     "strokes": 6.0,
+     "rest_est_s": 83.0
+    },
+    {
+     "start": "2026-07-20T18:38:54-07:00",
+     "dur_s": 71.0,
+     "gps_m": 30.3,
+     "strokes": 9.0,
+     "rest_est_s": 38.0
+    },
+    {
+     "start": "2026-07-20T18:40:05-07:00",
+     "dur_s": 50.0,
+     "gps_m": 30.3,
+     "strokes": 12.0,
+     "rest_est_s": 17.0
+    },
+    {
+     "start": "2026-07-20T18:40:55-07:00",
+     "dur_s": 68.0,
+     "gps_m": 28.6,
+     "strokes": 8.0,
+     "rest_est_s": 35.0
+    },
+    {
+     "start": "2026-07-20T18:42:03-07:00",
+     "dur_s": 88.0,
+     "gps_m": 47.4,
+     "strokes": 4.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2026-07-20T18:43:31-07:00",
+     "dur_s": 49.0,
+     "gps_m": 27.5,
+     "strokes": 10.0,
+     "rest_est_s": 16.0
+    },
+    {
+     "start": "2026-07-20T18:44:20-07:00",
+     "dur_s": 45.0,
+     "gps_m": 27.4,
+     "strokes": 4.0,
+     "rest_est_s": 12.0
+    },
+    {
+     "start": "2026-07-20T18:45:05-07:00",
+     "dur_s": 51.0,
+     "gps_m": 27.4,
+     "strokes": 5.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-20T18:45:56-07:00",
+     "dur_s": 42.0,
+     "gps_m": 28.6,
+     "strokes": 6.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2026-07-20T18:46:38-07:00",
+     "dur_s": 75.0,
+     "gps_m": 31.0,
+     "strokes": 6.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-20T18:47:53-07:00",
+     "dur_s": 39.0,
+     "gps_m": 30.9,
+     "strokes": 4.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-07-20T18:48:32-07:00",
+     "dur_s": 74.0,
+     "gps_m": 29.0,
+     "strokes": 8.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-20T18:49:46-07:00",
+     "dur_s": 27.0,
+     "gps_m": 28.1,
+     "strokes": 10.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-20T18:50:13-07:00",
+     "dur_s": 323.0,
+     "gps_m": 73.1,
+     "strokes": 4.0,
+     "rest_est_s": 290.0
+    },
+    {
+     "start": "2026-07-20T18:55:36-07:00",
+     "dur_s": 73.0,
+     "gps_m": 30.7,
+     "strokes": 10.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-20T18:56:49-07:00",
+     "dur_s": 40.0,
+     "gps_m": 30.1,
+     "strokes": 9.0,
+     "rest_est_s": 7.0
+    },
+    {
+     "start": "2026-07-20T18:57:29-07:00",
+     "dur_s": 69.0,
+     "gps_m": 40.2,
+     "strokes": 4.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2026-07-20T18:58:38-07:00",
+     "dur_s": 54.0,
+     "gps_m": 28.5,
+     "strokes": 8.0,
+     "rest_est_s": 21.0
+    },
+    {
+     "start": "2026-07-20T18:59:32-07:00",
+     "dur_s": 41.0,
+     "gps_m": 30.8,
+     "strokes": 4.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-20T19:00:13-07:00",
+     "dur_s": 99.0,
+     "gps_m": 27.7,
+     "strokes": 8.0,
+     "rest_est_s": 66.0
+    },
+    {
+     "start": "2026-07-20T19:01:52-07:00",
+     "dur_s": 41.0,
+     "gps_m": 29.6,
+     "strokes": 12.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-20T19:02:33-07:00",
+     "dur_s": 61.0,
+     "gps_m": 29.0,
+     "strokes": 4.0,
+     "rest_est_s": 28.0
+    },
+    {
+     "start": "2026-07-20T19:03:34-07:00",
+     "dur_s": 51.0,
+     "gps_m": 28.7,
+     "strokes": 9.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-20T19:04:25-07:00",
+     "dur_s": 107.0,
+     "gps_m": 36.0,
+     "strokes": 4.0,
+     "rest_est_s": 74.0
+    },
+    {
+     "start": "2026-07-20T19:06:12-07:00",
+     "dur_s": 31.0,
+     "gps_m": 27.6,
+     "strokes": 10.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-20T19:06:43-07:00",
+     "dur_s": 101.0,
+     "gps_m": 27.9,
+     "strokes": 11.0,
+     "rest_est_s": 68.0
+    },
+    {
+     "start": "2026-07-20T19:08:24-07:00",
+     "dur_s": 98.0,
+     "gps_m": 27.8,
+     "strokes": 11.0,
+     "rest_est_s": 65.0
+    },
+    {
+     "start": "2026-07-20T19:10:02-07:00",
+     "dur_s": 52.0,
+     "gps_m": 33.6,
+     "strokes": 4.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2026-07-20T19:10:54-07:00",
+     "dur_s": 41.0,
+     "gps_m": 27.5,
+     "strokes": 9.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-20T19:11:35-07:00",
+     "dur_s": 43.0,
+     "gps_m": 28.1,
+     "strokes": 7.0,
+     "rest_est_s": 10.0
+    },
+    {
+     "start": "2026-07-20T19:12:18-07:00",
+     "dur_s": 57.0,
+     "gps_m": 28.1,
+     "strokes": 5.0,
+     "rest_est_s": 24.0
+    },
+    {
+     "start": "2026-07-20T19:13:15-07:00",
+     "dur_s": 39.0,
+     "gps_m": 27.4,
+     "strokes": 12.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-07-20T19:13:54-07:00",
+     "dur_s": 68.0,
+     "gps_m": 27.4,
+     "strokes": 7.0,
+     "rest_est_s": 35.0
+    },
+    {
+     "start": "2026-07-20T19:15:02-07:00",
+     "dur_s": 66.0,
+     "gps_m": 27.6,
+     "strokes": 4.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2026-07-20T19:16:08-07:00",
+     "dur_s": 39.0,
+     "gps_m": 27.7,
+     "strokes": 12.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-07-20T19:16:47-07:00",
+     "dur_s": 65.0,
+     "gps_m": 29.0,
+     "strokes": 8.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-20T19:17:52-07:00",
+     "dur_s": 88.0,
+     "gps_m": 32.2,
+     "strokes": 4.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2026-07-20T19:19:20-07:00",
+     "dur_s": 131.0,
+     "gps_m": 27.5,
+     "strokes": 11.0,
+     "rest_est_s": 98.0
+    },
+    {
+     "start": "2026-07-20T19:21:31-07:00",
+     "dur_s": 28.0,
+     "gps_m": 28.7,
+     "strokes": 9.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-20T19:21:59-07:00",
+     "dur_s": 42.0,
+     "gps_m": 27.6,
+     "strokes": 4.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2026-07-20T19:22:41-07:00",
+     "dur_s": 38.0,
+     "gps_m": 28.9,
+     "strokes": 7.0,
+     "rest_est_s": 5.0
+    },
+    {
+     "start": "2026-07-20T19:23:19-07:00",
+     "dur_s": 57.0,
+     "gps_m": 27.7,
+     "strokes": 11.0,
+     "rest_est_s": 24.0
+    },
+    {
+     "start": "2026-07-20T19:24:16-07:00",
+     "dur_s": 76.0,
+     "gps_m": 27.4,
+     "strokes": 5.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2026-07-20T19:25:32-07:00",
+     "dur_s": 41.0,
+     "gps_m": 29.0,
+     "strokes": 10.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-20T19:26:13-07:00",
+     "dur_s": 109.0,
+     "gps_m": 28.2,
+     "strokes": 7.0,
+     "rest_est_s": 76.0
+    },
+    {
+     "start": "2026-07-20T19:28:02-07:00",
+     "dur_s": 33.0,
+     "gps_m": 27.6,
+     "strokes": 14.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-20T19:28:35-07:00",
+     "dur_s": 74.0,
+     "gps_m": 11.9,
+     "strokes": 6.0,
+     "rest_est_s": 41.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-21_1833",
+   "start": "2026-07-21T18:33:31-07:00",
+   "end": "2026-07-21T19:30:46-07:00",
+   "duration_min": 57.2,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "video-era",
+   "lengths": 42,
+   "true_distance_m": 960.1,
+   "gps_distance_m": 1178.1,
+   "est_swim_per_length_s": 46.0,
+   "rest_measured": false,
+   "longest_run_lengths": 4,
+   "hr_avg": 123.6,
+   "hr_max": 150.0,
+   "cycles": [
+    {
+     "start": "2026-07-21T18:33:31-07:00",
+     "dur_s": 133.0,
+     "gps_m": 27.3,
+     "strokes": 25.0,
+     "rest_est_s": 87.0
+    },
+    {
+     "start": "2026-07-21T18:35:44-07:00",
+     "dur_s": 100.0,
+     "gps_m": 28.0,
+     "strokes": 4.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-21T18:37:24-07:00",
+     "dur_s": 93.0,
+     "gps_m": 27.7,
+     "strokes": 9.0,
+     "rest_est_s": 47.0
+    },
+    {
+     "start": "2026-07-21T18:38:57-07:00",
+     "dur_s": 86.0,
+     "gps_m": 28.9,
+     "strokes": 12.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-21T18:40:23-07:00",
+     "dur_s": 88.0,
+     "gps_m": 28.2,
+     "strokes": 11.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-21T18:41:51-07:00",
+     "dur_s": 98.0,
+     "gps_m": 29.6,
+     "strokes": 14.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2026-07-21T18:43:29-07:00",
+     "dur_s": 60.0,
+     "gps_m": 27.7,
+     "strokes": 11.0,
+     "rest_est_s": 14.0
+    },
+    {
+     "start": "2026-07-21T18:44:29-07:00",
+     "dur_s": 54.0,
+     "gps_m": 29.1,
+     "strokes": 9.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-21T18:45:23-07:00",
+     "dur_s": 57.0,
+     "gps_m": 27.4,
+     "strokes": 9.0,
+     "rest_est_s": 11.0
+    },
+    {
+     "start": "2026-07-21T18:46:20-07:00",
+     "dur_s": 87.0,
+     "gps_m": 28.4,
+     "strokes": 13.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-21T18:47:47-07:00",
+     "dur_s": 92.0,
+     "gps_m": 28.0,
+     "strokes": 10.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2026-07-21T18:49:19-07:00",
+     "dur_s": 146.0,
+     "gps_m": 30.6,
+     "strokes": 7.0,
+     "rest_est_s": 100.0
+    },
+    {
+     "start": "2026-07-21T18:51:45-07:00",
+     "dur_s": 37.0,
+     "gps_m": 27.4,
+     "strokes": 13.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-21T18:52:22-07:00",
+     "dur_s": 90.0,
+     "gps_m": 29.3,
+     "strokes": 10.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-21T18:53:52-07:00",
+     "dur_s": 82.0,
+     "gps_m": 28.3,
+     "strokes": 13.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2026-07-21T18:55:14-07:00",
+     "dur_s": 78.0,
+     "gps_m": 27.4,
+     "strokes": 12.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-21T18:56:32-07:00",
+     "dur_s": 100.0,
+     "gps_m": 32.2,
+     "strokes": 13.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-21T18:58:12-07:00",
+     "dur_s": 112.0,
+     "gps_m": 30.3,
+     "strokes": 13.0,
+     "rest_est_s": 66.0
+    },
+    {
+     "start": "2026-07-21T19:00:04-07:00",
+     "dur_s": 145.0,
+     "gps_m": 28.0,
+     "strokes": 11.0,
+     "rest_est_s": 99.0
+    },
+    {
+     "start": "2026-07-21T19:02:29-07:00",
+     "dur_s": 45.0,
+     "gps_m": 28.6,
+     "strokes": 18.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-21T19:03:14-07:00",
+     "dur_s": 92.0,
+     "gps_m": 27.7,
+     "strokes": 12.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2026-07-21T19:04:46-07:00",
+     "dur_s": 106.0,
+     "gps_m": 27.8,
+     "strokes": 12.0,
+     "rest_est_s": 60.0
+    },
+    {
+     "start": "2026-07-21T19:06:32-07:00",
+     "dur_s": 72.0,
+     "gps_m": 28.6,
+     "strokes": 10.0,
+     "rest_est_s": 26.0
+    },
+    {
+     "start": "2026-07-21T19:07:44-07:00",
+     "dur_s": 75.0,
+     "gps_m": 27.4,
+     "strokes": 12.0,
+     "rest_est_s": 29.0
+    },
+    {
+     "start": "2026-07-21T19:08:59-07:00",
+     "dur_s": 77.0,
+     "gps_m": 28.0,
+     "strokes": 11.0,
+     "rest_est_s": 31.0
+    },
+    {
+     "start": "2026-07-21T19:10:16-07:00",
+     "dur_s": 67.0,
+     "gps_m": 28.0,
+     "strokes": 13.0,
+     "rest_est_s": 21.0
+    },
+    {
+     "start": "2026-07-21T19:11:23-07:00",
+     "dur_s": 74.0,
+     "gps_m": 27.4,
+     "strokes": 13.0,
+     "rest_est_s": 28.0
+    },
+    {
+     "start": "2026-07-21T19:12:37-07:00",
+     "dur_s": 47.0,
+     "gps_m": 27.9,
+     "strokes": 12.0,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-07-21T19:13:24-07:00",
+     "dur_s": 71.0,
+     "gps_m": 27.5,
+     "strokes": 13.0,
+     "rest_est_s": 25.0
+    },
+    {
+     "start": "2026-07-21T19:14:35-07:00",
+     "dur_s": 55.0,
+     "gps_m": 27.5,
+     "strokes": 8.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2026-07-21T19:15:30-07:00",
+     "dur_s": 79.0,
+     "gps_m": 29.3,
+     "strokes": 12.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2026-07-21T19:16:49-07:00",
+     "dur_s": 87.0,
+     "gps_m": 29.0,
+     "strokes": 12.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-21T19:18:16-07:00",
+     "dur_s": 90.0,
+     "gps_m": 28.5,
+     "strokes": 12.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-21T19:19:46-07:00",
+     "dur_s": 107.0,
+     "gps_m": 27.5,
+     "strokes": 7.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-07-21T19:21:33-07:00",
+     "dur_s": 62.0,
+     "gps_m": 27.4,
+     "strokes": 12.0,
+     "rest_est_s": 16.0
+    },
+    {
+     "start": "2026-07-21T19:22:35-07:00",
+     "dur_s": 107.0,
+     "gps_m": 27.6,
+     "strokes": 4.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-07-21T19:24:22-07:00",
+     "dur_s": 46.0,
+     "gps_m": 29.0,
+     "strokes": 19.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-21T19:25:08-07:00",
+     "dur_s": 90.0,
+     "gps_m": 27.6,
+     "strokes": 12.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-21T19:26:38-07:00",
+     "dur_s": 63.0,
+     "gps_m": 29.9,
+     "strokes": 9.0,
+     "rest_est_s": 17.0
+    },
+    {
+     "start": "2026-07-21T19:27:41-07:00",
+     "dur_s": 69.0,
+     "gps_m": 28.2,
+     "strokes": 12.0,
+     "rest_est_s": 23.0
+    },
+    {
+     "start": "2026-07-21T19:28:50-07:00",
+     "dur_s": 83.0,
+     "gps_m": 27.5,
+     "strokes": 11.0,
+     "rest_est_s": 37.0
+    },
+    {
+     "start": "2026-07-21T19:30:13-07:00",
+     "dur_s": 33.0,
+     "gps_m": 16.4,
+     "strokes": 8.0,
+     "rest_est_s": 0.0
+    }
+   ]
+  },
+  {
+   "id": "2026-07-22_1836",
+   "start": "2026-07-22T18:36:42-07:00",
+   "end": "2026-07-22T19:30:18-07:00",
+   "duration_min": 53.6,
+   "location_type": "pool",
+   "lap_length_setting": "22.86 m",
+   "era": "video-era",
+   "lengths": 35,
+   "true_distance_m": 800.1,
+   "gps_distance_m": 875.0,
+   "est_swim_per_length_s": 28.0,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": 122.9,
+   "hr_max": 147.0,
+   "cycles": [
+    {
+     "start": "2026-07-22T18:38:46-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 50.0
+    },
+    {
+     "start": "2026-07-22T18:40:04-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-22T18:41:19-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-22T18:42:46-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-07-22T18:44:14-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2026-07-22T18:45:34-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 68.0
+    },
+    {
+     "start": "2026-07-22T18:47:10-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2026-07-22T18:48:30-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 59.0
+    },
+    {
+     "start": "2026-07-22T18:49:58-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 57.0
+    },
+    {
+     "start": "2026-07-22T18:51:22-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 124.0
+    },
+    {
+     "start": "2026-07-22T18:53:55-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-07-22T18:54:26-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 74.0
+    },
+    {
+     "start": "2026-07-22T18:56:07-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 86.0
+    },
+    {
+     "start": "2026-07-22T18:58:00-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 86.0
+    },
+    {
+     "start": "2026-07-22T18:59:54-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-22T19:00:53-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2026-07-22T19:02:06-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2026-07-22T19:03:21-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2026-07-22T19:04:40-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-22T19:06:04-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 76.0
+    },
+    {
+     "start": "2026-07-22T19:07:47-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 33.0
+    },
+    {
+     "start": "2026-07-22T19:08:46-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-22T19:09:56-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2026-07-22T19:10:25-07:00",
+     "dur_s": 55.0,
+     "gps_m": 25.0,
+     "strokes": null,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2026-07-22T19:11:20-07:00",
+     "dur_s": 20.0,
+     "gps_m": 25.0,
+     "strokes": null,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-22T19:11:40-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 108.0
+    },
+    {
+     "start": "2026-07-22T19:13:57-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 77.0
+    },
+    {
+     "start": "2026-07-22T19:15:44-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 7.0
+    },
+    {
+     "start": "2026-07-22T19:16:20-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 297.0
+    },
+    {
+     "start": "2026-07-22T19:21:44-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-07-22T19:22:20-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 86.0
+    },
+    {
+     "start": "2026-07-22T19:24:16-07:00",
+     "dur_s": 34.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2026-07-22T19:25:26-07:00",
+     "dur_s": 32.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 47.0
+    },
+    {
+     "start": "2026-07-22T19:26:45-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 58.0
+    },
+    {
+     "start": "2026-07-22T19:28:13-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-22T19:29:25-07:00",
+     "dur_s": 36.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": null
+    }
+   ]
+  },
+  {
+   "id": "2026-07-23_1840",
+   "start": "2026-07-23T18:40:33-07:00",
+   "end": "2026-07-23T19:31:43-07:00",
+   "duration_min": 51.2,
+   "location_type": "pool",
+   "lap_length_setting": "22.86 m",
+   "era": "video-era",
+   "lengths": 25,
+   "true_distance_m": 571.5,
+   "gps_distance_m": 625.0,
+   "est_swim_per_length_s": 27.0,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": 121.4,
+   "hr_max": 147.0,
+   "cycles": [
+    {
+     "start": "2026-07-23T18:41:38-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 87.0
+    },
+    {
+     "start": "2026-07-23T18:43:35-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 43.0
+    },
+    {
+     "start": "2026-07-23T18:44:44-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 53.0
+    },
+    {
+     "start": "2026-07-23T18:46:03-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 62.0
+    },
+    {
+     "start": "2026-07-23T18:47:30-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2026-07-23T18:48:47-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 57.0
+    },
+    {
+     "start": "2026-07-23T18:50:09-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 119.0
+    },
+    {
+     "start": "2026-07-23T18:52:35-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-23T18:53:03-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 133.0
+    },
+    {
+     "start": "2026-07-23T18:55:44-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2026-07-23T18:56:13-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 140.0
+    },
+    {
+     "start": "2026-07-23T18:59:00-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-23T19:00:06-07:00",
+     "dur_s": 34.0,
+     "gps_m": 25.0,
+     "strokes": 28.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-23T19:00:40-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "rest_est_s": 176.0
+    },
+    {
+     "start": "2026-07-23T19:04:04-07:00",
+     "dur_s": 24.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-23T19:04:30-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 159.0
+    },
+    {
+     "start": "2026-07-23T19:07:39-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 27.0
+    },
+    {
+     "start": "2026-07-23T19:08:35-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 181.0
+    },
+    {
+     "start": "2026-07-23T19:12:03-07:00",
+     "dur_s": 24.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-23T19:12:29-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 251.0
+    },
+    {
+     "start": "2026-07-23T19:17:10-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-23T19:17:36-07:00",
+     "dur_s": 35.0,
+     "gps_m": 25.0,
+     "strokes": 15.0,
+     "rest_est_s": 98.0
+    },
+    {
+     "start": "2026-07-23T19:19:49-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2026-07-23T19:20:25-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 604.0
+    },
+    {
+     "start": "2026-07-23T19:30:58-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": null
+    }
+   ],
+   "source_export_date": "2026-07-23 20:54:44 -0700"
+  },
+  {
+   "id": "2026-07-24_1829",
+   "start": "2026-07-24T18:29:39-07:00",
+   "end": "2026-07-24T19:31:19-07:00",
+   "duration_min": 61.6,
+   "location_type": "pool",
+   "lap_length_setting": "22.86 m",
+   "era": "video-era",
+   "lengths": 31,
+   "true_distance_m": 708.7,
+   "gps_distance_m": 775.0,
+   "est_swim_per_length_s": 28.0,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": 111.2,
+   "hr_max": 146.0,
+   "cycles": [
+    {
+     "start": "2026-07-24T18:31:29-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-24T18:32:48-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-24T18:33:57-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2026-07-24T18:35:18-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 35.0
+    },
+    {
+     "start": "2026-07-24T18:36:20-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 116.0
+    },
+    {
+     "start": "2026-07-24T18:38:47-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2026-07-24T18:39:17-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 115.0
+    },
+    {
+     "start": "2026-07-24T18:41:40-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-24T18:42:08-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 122.0
+    },
+    {
+     "start": "2026-07-24T18:44:41-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-24T18:45:50-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 60.0
+    },
+    {
+     "start": "2026-07-24T18:47:19-07:00",
+     "dur_s": 11.0,
+     "gps_m": 25.0,
+     "strokes": 8.0,
+     "rest_est_s": 13.0
+    },
+    {
+     "start": "2026-07-24T18:47:43-07:00",
+     "dur_s": 18.0,
+     "gps_m": 25.0,
+     "strokes": 6.0,
+     "rest_est_s": 407.0
+    },
+    {
+     "start": "2026-07-24T18:49:57-07:00",
+     "dur_s": 58.0,
+     "gps_m": 25.0,
+     "strokes": 25.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2026-07-24T18:52:31-07:00",
+     "dur_s": 59.0,
+     "gps_m": 25.0,
+     "strokes": 22.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2026-07-24T18:54:48-07:00",
+     "dur_s": 23.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2026-07-24T18:55:15-07:00",
+     "dur_s": 24.0,
+     "gps_m": 25.0,
+     "strokes": 18.0,
+     "rest_est_s": 109.0
+    },
+    {
+     "start": "2026-07-24T18:57:28-07:00",
+     "dur_s": 38.0,
+     "gps_m": 25.0,
+     "strokes": 35.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-24T18:58:08-07:00",
+     "dur_s": 13.0,
+     "gps_m": 25.0,
+     "strokes": 8.0,
+     "rest_est_s": 617.0
+    },
+    {
+     "start": "2026-07-24T18:58:21-07:00",
+     "dur_s": 588.0,
+     "gps_m": 25.0,
+     "strokes": 27.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2026-07-24T19:08:38-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 59.0
+    },
+    {
+     "start": "2026-07-24T19:10:08-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-24T19:11:23-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 151.0
+    },
+    {
+     "start": "2026-07-24T19:14:23-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 62.0
+    },
+    {
+     "start": "2026-07-24T19:15:54-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 41.0
+    },
+    {
+     "start": "2026-07-24T19:17:06-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 9.0,
+     "rest_est_s": 71.0
+    },
+    {
+     "start": "2026-07-24T19:18:43-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-24T19:19:12-07:00",
+     "dur_s": 32.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 156.0
+    },
+    {
+     "start": "2026-07-24T19:22:20-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 38.0
+    },
+    {
+     "start": "2026-07-24T19:23:29-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 134.0
+    },
+    {
+     "start": "2026-07-24T19:26:13-07:00",
+     "dur_s": 20.0,
+     "gps_m": 25.0,
+     "strokes": null,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-24T19:26:35-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-24T19:27:44-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 112.0
+    },
+    {
+     "start": "2026-07-24T19:30:04-07:00",
+     "dur_s": 33.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": null
+    }
+   ],
+   "source_export_date": "2026-07-28 17:35:29 -0700"
+  },
+  {
+   "id": "2026-07-27_1457",
+   "start": "2026-07-27T14:57:52-07:00",
+   "end": "2026-07-27T16:06:42-07:00",
+   "duration_min": 68.8,
+   "location_type": "open_water",
+   "lap_length_setting": null,
+   "era": "video-era",
+   "lengths": 63,
+   "true_distance_m": 1440.2,
+   "gps_distance_m": 2353.5,
+   "est_swim_per_length_s": 17.0,
+   "rest_measured": false,
+   "longest_run_lengths": 3,
+   "hr_avg": 118.8,
+   "hr_max": 148.0,
+   "cycles": [
+    {
+     "start": "2026-07-27T14:57:52-07:00",
+     "dur_s": 49.0,
+     "gps_m": 30.3,
+     "strokes": 4.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-27T14:58:41-07:00",
+     "dur_s": 24.0,
+     "gps_m": 33.5,
+     "strokes": 4.0,
+     "rest_est_s": 7.0
+    },
+    {
+     "start": "2026-07-27T14:59:05-07:00",
+     "dur_s": 39.0,
+     "gps_m": 27.6,
+     "strokes": 7.0,
+     "rest_est_s": 22.0
+    },
+    {
+     "start": "2026-07-27T14:59:44-07:00",
+     "dur_s": 137.0,
+     "gps_m": 45.7,
+     "strokes": 4.0,
+     "rest_est_s": 120.0
+    },
+    {
+     "start": "2026-07-27T15:02:01-07:00",
+     "dur_s": 78.0,
+     "gps_m": 37.5,
+     "strokes": 6.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-07-27T15:03:19-07:00",
+     "dur_s": 72.0,
+     "gps_m": 56.2,
+     "strokes": 6.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2026-07-27T15:04:31-07:00",
+     "dur_s": 7.0,
+     "gps_m": 29.3,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-27T15:04:38-07:00",
+     "dur_s": 90.0,
+     "gps_m": 32.7,
+     "strokes": 6.0,
+     "rest_est_s": 73.0
+    },
+    {
+     "start": "2026-07-27T15:06:08-07:00",
+     "dur_s": 100.0,
+     "gps_m": 29.0,
+     "strokes": 6.0,
+     "rest_est_s": 83.0
+    },
+    {
+     "start": "2026-07-27T15:07:48-07:00",
+     "dur_s": 46.0,
+     "gps_m": 28.1,
+     "strokes": 7.0,
+     "rest_est_s": 29.0
+    },
+    {
+     "start": "2026-07-27T15:08:34-07:00",
+     "dur_s": 87.0,
+     "gps_m": 36.9,
+     "strokes": 4.0,
+     "rest_est_s": 70.0
+    },
+    {
+     "start": "2026-07-27T15:10:01-07:00",
+     "dur_s": 150.0,
+     "gps_m": 57.1,
+     "strokes": 5.0,
+     "rest_est_s": 133.0
+    },
+    {
+     "start": "2026-07-27T15:12:31-07:00",
+     "dur_s": 46.0,
+     "gps_m": 27.5,
+     "strokes": 6.0,
+     "rest_est_s": 29.0
+    },
+    {
+     "start": "2026-07-27T15:13:17-07:00",
+     "dur_s": 17.0,
+     "gps_m": 28.7,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-27T15:13:34-07:00",
+     "dur_s": 57.0,
+     "gps_m": 49.9,
+     "strokes": 7.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-27T15:14:31-07:00",
+     "dur_s": 63.0,
+     "gps_m": 27.7,
+     "strokes": 7.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2026-07-27T15:15:34-07:00",
+     "dur_s": 37.0,
+     "gps_m": 27.5,
+     "strokes": 7.0,
+     "rest_est_s": 20.0
+    },
+    {
+     "start": "2026-07-27T15:16:11-07:00",
+     "dur_s": 43.0,
+     "gps_m": 27.9,
+     "strokes": 7.0,
+     "rest_est_s": 26.0
+    },
+    {
+     "start": "2026-07-27T15:16:54-07:00",
+     "dur_s": 33.0,
+     "gps_m": 31.7,
+     "strokes": 4.0,
+     "rest_est_s": 16.0
+    },
+    {
+     "start": "2026-07-27T15:17:27-07:00",
+     "dur_s": 45.0,
+     "gps_m": 27.5,
+     "strokes": 6.0,
+     "rest_est_s": 28.0
+    },
+    {
+     "start": "2026-07-27T15:18:12-07:00",
+     "dur_s": 25.0,
+     "gps_m": 28.1,
+     "strokes": 4.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-27T15:18:37-07:00",
+     "dur_s": 92.0,
+     "gps_m": 29.5,
+     "strokes": 5.0,
+     "rest_est_s": 75.0
+    },
+    {
+     "start": "2026-07-27T15:20:09-07:00",
+     "dur_s": 95.0,
+     "gps_m": 29.7,
+     "strokes": 8.0,
+     "rest_est_s": 78.0
+    },
+    {
+     "start": "2026-07-27T15:21:44-07:00",
+     "dur_s": 39.0,
+     "gps_m": 30.5,
+     "strokes": 6.0,
+     "rest_est_s": 22.0
+    },
+    {
+     "start": "2026-07-27T15:22:23-07:00",
+     "dur_s": 9.0,
+     "gps_m": 35.8,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-27T15:22:32-07:00",
+     "dur_s": 33.0,
+     "gps_m": 30.9,
+     "strokes": 4.0,
+     "rest_est_s": 16.0
+    },
+    {
+     "start": "2026-07-27T15:23:05-07:00",
+     "dur_s": 76.0,
+     "gps_m": 30.9,
+     "strokes": 5.0,
+     "rest_est_s": 59.0
+    },
+    {
+     "start": "2026-07-27T15:24:21-07:00",
+     "dur_s": 49.0,
+     "gps_m": 27.9,
+     "strokes": 6.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-27T15:25:10-07:00",
+     "dur_s": 38.0,
+     "gps_m": 29.9,
+     "strokes": 8.0,
+     "rest_est_s": 21.0
+    },
+    {
+     "start": "2026-07-27T15:25:48-07:00",
+     "dur_s": 40.0,
+     "gps_m": 28.7,
+     "strokes": 8.0,
+     "rest_est_s": 23.0
+    },
+    {
+     "start": "2026-07-27T15:26:28-07:00",
+     "dur_s": 46.0,
+     "gps_m": 31.2,
+     "strokes": 7.0,
+     "rest_est_s": 29.0
+    },
+    {
+     "start": "2026-07-27T15:27:14-07:00",
+     "dur_s": 27.0,
+     "gps_m": 34.4,
+     "strokes": 4.0,
+     "rest_est_s": 10.0
+    },
+    {
+     "start": "2026-07-27T15:27:41-07:00",
+     "dur_s": 63.0,
+     "gps_m": 30.3,
+     "strokes": 11.0,
+     "rest_est_s": 46.0
+    },
+    {
+     "start": "2026-07-27T15:28:44-07:00",
+     "dur_s": 18.0,
+     "gps_m": 28.6,
+     "strokes": 6.0,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-07-27T15:29:02-07:00",
+     "dur_s": 91.0,
+     "gps_m": 27.7,
+     "strokes": 6.0,
+     "rest_est_s": 74.0
+    },
+    {
+     "start": "2026-07-27T15:30:33-07:00",
+     "dur_s": 34.0,
+     "gps_m": 29.5,
+     "strokes": 5.0,
+     "rest_est_s": 17.0
+    },
+    {
+     "start": "2026-07-27T15:31:07-07:00",
+     "dur_s": 298.0,
+     "gps_m": 27.4,
+     "strokes": 6.0,
+     "rest_est_s": 281.0
+    },
+    {
+     "start": "2026-07-27T15:36:05-07:00",
+     "dur_s": 67.0,
+     "gps_m": 27.6,
+     "strokes": 5.0,
+     "rest_est_s": 50.0
+    },
+    {
+     "start": "2026-07-27T15:37:12-07:00",
+     "dur_s": 45.0,
+     "gps_m": 27.9,
+     "strokes": 8.0,
+     "rest_est_s": 28.0
+    },
+    {
+     "start": "2026-07-27T15:37:57-07:00",
+     "dur_s": 26.0,
+     "gps_m": 29.7,
+     "strokes": 5.0,
+     "rest_est_s": 9.0
+    },
+    {
+     "start": "2026-07-27T15:38:23-07:00",
+     "dur_s": 97.0,
+     "gps_m": 27.6,
+     "strokes": 7.0,
+     "rest_est_s": 80.0
+    },
+    {
+     "start": "2026-07-27T15:40:00-07:00",
+     "dur_s": 36.0,
+     "gps_m": 27.4,
+     "strokes": 7.0,
+     "rest_est_s": 19.0
+    },
+    {
+     "start": "2026-07-27T15:40:36-07:00",
+     "dur_s": 25.0,
+     "gps_m": 27.7,
+     "strokes": 4.0,
+     "rest_est_s": 8.0
+    },
+    {
+     "start": "2026-07-27T15:41:01-07:00",
+     "dur_s": 83.0,
+     "gps_m": 32.0,
+     "strokes": 13.0,
+     "rest_est_s": 66.0
+    },
+    {
+     "start": "2026-07-27T15:42:24-07:00",
+     "dur_s": 78.0,
+     "gps_m": 69.2,
+     "strokes": 4.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-07-27T15:43:42-07:00",
+     "dur_s": 8.0,
+     "gps_m": 43.8,
+     "strokes": 5.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-27T15:43:50-07:00",
+     "dur_s": 147.0,
+     "gps_m": 40.9,
+     "strokes": 4.0,
+     "rest_est_s": 130.0
+    },
+    {
+     "start": "2026-07-27T15:46:17-07:00",
+     "dur_s": 35.0,
+     "gps_m": 43.3,
+     "strokes": 4.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-07-27T15:46:52-07:00",
+     "dur_s": 20.0,
+     "gps_m": 27.6,
+     "strokes": 4.0,
+     "rest_est_s": 3.0
+    },
+    {
+     "start": "2026-07-27T15:47:12-07:00",
+     "dur_s": 57.0,
+     "gps_m": 98.7,
+     "strokes": 4.0,
+     "rest_est_s": 40.0
+    },
+    {
+     "start": "2026-07-27T15:48:09-07:00",
+     "dur_s": 7.0,
+     "gps_m": 56.9,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-27T15:48:16-07:00",
+     "dur_s": 29.0,
+     "gps_m": 36.8,
+     "strokes": 5.0,
+     "rest_est_s": 12.0
+    },
+    {
+     "start": "2026-07-27T15:48:45-07:00",
+     "dur_s": 132.0,
+     "gps_m": 27.9,
+     "strokes": 4.0,
+     "rest_est_s": 115.0
+    },
+    {
+     "start": "2026-07-27T15:50:57-07:00",
+     "dur_s": 112.0,
+     "gps_m": 29.7,
+     "strokes": 10.0,
+     "rest_est_s": 95.0
+    },
+    {
+     "start": "2026-07-27T15:52:49-07:00",
+     "dur_s": 12.0,
+     "gps_m": 49.9,
+     "strokes": 4.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-27T15:53:01-07:00",
+     "dur_s": 37.0,
+     "gps_m": 36.0,
+     "strokes": 8.0,
+     "rest_est_s": 20.0
+    },
+    {
+     "start": "2026-07-27T15:53:38-07:00",
+     "dur_s": 45.0,
+     "gps_m": 30.9,
+     "strokes": 8.0,
+     "rest_est_s": 28.0
+    },
+    {
+     "start": "2026-07-27T15:54:23-07:00",
+     "dur_s": 94.0,
+     "gps_m": 34.3,
+     "strokes": 5.0,
+     "rest_est_s": 77.0
+    },
+    {
+     "start": "2026-07-27T15:55:57-07:00",
+     "dur_s": 90.0,
+     "gps_m": 79.7,
+     "strokes": 6.0,
+     "rest_est_s": 73.0
+    },
+    {
+     "start": "2026-07-27T15:57:27-07:00",
+     "dur_s": 49.0,
+     "gps_m": 31.7,
+     "strokes": 6.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-27T15:58:16-07:00",
+     "dur_s": 96.0,
+     "gps_m": 78.0,
+     "strokes": 7.0,
+     "rest_est_s": 79.0
+    },
+    {
+     "start": "2026-07-27T15:59:52-07:00",
+     "dur_s": 29.0,
+     "gps_m": 27.4,
+     "strokes": 8.0,
+     "rest_est_s": 12.0
+    },
+    {
+     "start": "2026-07-27T16:00:21-07:00",
+     "dur_s": 381.0,
+     "gps_m": 107.6,
+     "strokes": 3.0,
+     "rest_est_s": 364.0
+    }
+   ],
+   "source_export_date": "2026-07-28 17:35:29 -0700"
+  },
+  {
+   "id": "2026-07-28_1827",
+   "start": "2026-07-28T18:27:49-07:00",
+   "end": "2026-07-28T19:31:48-07:00",
+   "duration_min": 64.0,
+   "location_type": "pool",
+   "lap_length_setting": "22.86 m",
+   "era": "video-era",
+   "lengths": 39,
+   "true_distance_m": 891.5,
+   "gps_distance_m": 975.0,
+   "est_swim_per_length_s": 27.0,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": 121.6,
+   "hr_max": 154.0,
+   "cycles": [
+    {
+     "start": "2026-07-28T18:28:54-07:00",
+     "dur_s": 36.0,
+     "gps_m": 25.0,
+     "strokes": 15.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-28T18:30:24-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 53.0
+    },
+    {
+     "start": "2026-07-28T18:31:48-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 109.0
+    },
+    {
+     "start": "2026-07-28T18:34:03-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 38.0
+    },
+    {
+     "start": "2026-07-28T18:35:07-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 54.0
+    },
+    {
+     "start": "2026-07-28T18:36:30-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 44.0
+    },
+    {
+     "start": "2026-07-28T18:37:41-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 45.0
+    },
+    {
+     "start": "2026-07-28T18:38:54-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 55.0
+    },
+    {
+     "start": "2026-07-28T18:40:15-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2026-07-28T18:41:38-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 83.0
+    },
+    {
+     "start": "2026-07-28T18:43:27-07:00",
+     "dur_s": 24.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 121.0
+    },
+    {
+     "start": "2026-07-28T18:45:52-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-07-28T18:46:19-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 124.0
+    },
+    {
+     "start": "2026-07-28T18:48:53-07:00",
+     "dur_s": 24.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 3.0
+    },
+    {
+     "start": "2026-07-28T18:49:20-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2026-07-28T18:49:50-07:00",
+     "dur_s": 83.0,
+     "gps_m": 25.0,
+     "strokes": 1.0,
+     "rest_est_s": null,
+     "artifact": true
+    },
+    {
+     "start": "2026-07-28T18:51:22-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 81.0
+    },
+    {
+     "start": "2026-07-28T18:53:08-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-28T18:54:23-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 89.0
+    },
+    {
+     "start": "2026-07-28T18:56:17-07:00",
+     "dur_s": 35.0,
+     "gps_m": 25.0,
+     "strokes": null,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-07-28T18:56:52-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 99.0
+    },
+    {
+     "start": "2026-07-28T18:58:58-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 36.0
+    },
+    {
+     "start": "2026-07-28T18:59:59-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 93.0
+    },
+    {
+     "start": "2026-07-28T19:01:57-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 50.0
+    },
+    {
+     "start": "2026-07-28T19:03:13-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 137.0
+    },
+    {
+     "start": "2026-07-28T19:05:57-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "rest_est_s": 15.0
+    },
+    {
+     "start": "2026-07-28T19:06:37-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 70.0
+    },
+    {
+     "start": "2026-07-28T19:08:16-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 141.0
+    },
+    {
+     "start": "2026-07-28T19:11:05-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2026-07-28T19:12:24-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 72.0
+    },
+    {
+     "start": "2026-07-28T19:14:04-07:00",
+     "dur_s": 47.0,
+     "gps_m": 25.0,
+     "strokes": 19.0,
+     "rest_est_s": 271.0
+    },
+    {
+     "start": "2026-07-28T19:19:22-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 15.0,
+     "rest_est_s": 3.0
+    },
+    {
+     "start": "2026-07-28T19:19:54-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 117.0
+    },
+    {
+     "start": "2026-07-28T19:22:22-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 32.0
+    },
+    {
+     "start": "2026-07-28T19:23:20-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 127.0
+    },
+    {
+     "start": "2026-07-28T19:25:53-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "rest_est_s": 3.0
+    },
+    {
+     "start": "2026-07-28T19:26:23-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "rest_est_s": 95.0
+    },
+    {
+     "start": "2026-07-28T19:28:28-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "rest_est_s": 48.0
+    },
+    {
+     "start": "2026-07-28T19:29:45-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": 42.0
+    },
+    {
+     "start": "2026-07-28T19:30:55-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "rest_est_s": null
+    }
+   ],
+   "source_export_date": "2026-07-28 20:49:38 -0700"
+  }
+ ]
+}
