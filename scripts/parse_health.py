@@ -10,6 +10,7 @@ Usage: python3 parse_health.py "/path/to/Apple Health export.zip"
 import hashlib
 import json
 import os
+import statistics
 import sys
 import zipfile
 import xml.etree.ElementTree as ET
@@ -47,10 +48,15 @@ def parse_export(zip_path):
                     export_date = elem.get("value")
                 elif tag == "Record":
                     rtype = elem.get("type")
-                    if rtype == DIST or rtype == STROKES:
-                        rec = (ts(elem.get("startDate")), ts(elem.get("endDate")),
-                               float(elem.get("value")))
-                        (dist_recs if rtype == DIST else stroke_recs).append(rec)
+                    if rtype == DIST:
+                        dist_recs.append((ts(elem.get("startDate")), ts(elem.get("endDate")),
+                                          float(elem.get("value"))))
+                    elif rtype == STROKES:
+                        style = {m.get("key"): m.get("value")
+                                 for m in elem.findall("MetadataEntry")}.get("HKSwimmingStrokeStyle")
+                        stroke_recs.append((ts(elem.get("startDate")), ts(elem.get("endDate")),
+                                            float(elem.get("value")),
+                                            int(style) if style is not None else None))
                     elif rtype == HR:
                         start = ts(elem.get("startDate"))
                         if start >= HR_SINCE:
@@ -112,23 +118,108 @@ def classify_location(w, dists, sid):
     return "open_water"
 
 
-def derive_pool(cycles):
+MIN_CYCLES_FOR_ARTIFACT_CHECK = 6  # too few candidates to trust a session median
+FREESTYLE = 2  # HKSwimmingStrokeStyle: 1 mixed, 2 free, 3 back, 4 breast, 5 fly, 6 kick
+
+
+def free_medians(real_cycles):
+    """(med_dur, med_strokes) over FREESTYLE cycles only, or (None, None) when
+    too few to trust — non-free lengths (slow breaststroke play) would shift
+    the medians and falsely demote genuine freestyle runs."""
+    free = [c for c in real_cycles if c.get("stroke_style") == FREESTYLE]
+    if len(free) < MIN_CYCLES_FOR_ARTIFACT_CHECK:
+        return None, None
+    med_dur = statistics.median([c["dur_s"] for c in free])
+    sts = [c["strokes"] for c in free if c.get("strokes") is not None]
+    med_strokes = statistics.median(sts) if sts else None
+    return med_dur, med_strokes
+
+
+def walk_runs(real_cycles, join_max_s, med_dur, med_strokes, overrides):
+    """The one shared run walker. A run is consecutive FREESTYLE lengths
+    joined by turn gaps <= join_max_s; non-free or style-less cycles never
+    join or start a run (they're volume, not laps) and flush the current
+    chain. Returns [{"cycles", "length" (credited), "recovery_rest_s"
+    (rest ending the run; None if flushed by style-change/session end
+    without a measured rest... the last cycle's rest_est_s, which may be
+    None), "end_hr"}]."""
+    runs, cur = [], []
+
+    def flush():
+        if cur:
+            runs.append({
+                "cycles": cur[:],
+                "length": credit_run(cur, med_dur, med_strokes, overrides),
+                "recovery_rest_s": cur[-1]["rest_est_s"],
+                "end_hr": cur[-1].get("hr_end"),
+            })
+            cur.clear()
+
+    for i, c in enumerate(real_cycles):
+        if c.get("stroke_style") != FREESTYLE:
+            flush()
+            continue
+        cur.append(c)
+        r = c["rest_est_s"]
+        nxt_free = (i + 1 < len(real_cycles)
+                    and real_cycles[i + 1].get("stroke_style") == FREESTYLE)
+        if r is None or r > join_max_s or not nxt_free:
+            flush()
+    flush()
+    return runs
+
+
+def credit_run(run_cycles, med_dur, med_strokes, overrides):
+    """Credited length of a completed run. The watch sometimes splits one real
+    length into several records (plausible durations, low strokes, ~0s gaps)
+    that chain into phantom multi-lap runs. Demote a run only when duration
+    AND stroke totals BOTH say it's shorter (strokes alone undercount in
+    genuine runs — push-off glide), crediting the higher of the two estimates.
+    Never promote above the raw count. A config override wins — it covers
+    what no rule can see (mid-pool standing rests). Pass med_dur/med_strokes
+    as None when the session median isn't trustworthy (no demotion then)."""
+    n = len(run_cycles)
+    ov = overrides.get(run_cycles[0]["start"])
+    if ov is not None:
+        if isinstance(ov, int) and not isinstance(ov, bool) and 1 <= ov <= n:
+            return ov
+        print(f"  WARN run_credit_override {run_cycles[0]['start']}: invalid {ov!r}, ignored")
+    if n < 2 or not med_dur or not med_strokes:
+        return n
+    strokes = [c.get("strokes") for c in run_cycles]
+    if any(st is None for st in strokes):
+        return n
+    dur_est = int(sum(c["dur_s"] for c in run_cycles) / med_dur + 0.5)
+    stroke_est = int(sum(strokes) / med_strokes + 0.5)
+    if dur_est < n and stroke_est < n:
+        return max(dur_est, stroke_est, 1)
+    return n
+
+
+def derive_pool(cycles, sid):
     """Derive measured metrics for a pool session from its cycle records.
 
     The watch sometimes logs wall-rest or drift as a "length" (e.g. 83s with
-    1 stroke, or a 588s monster). Any record far longer than a plausible
-    length (> 1.8 × median duration) is marked artifact and treated
-    as rest, not swimming. Also used to reprocess archived sessions, so it
-    must depend only on cycle dicts (start/dur_s), not raw export records.
-    Returns (est_swim_s, real_cycles, longest_run) and mutates cycles in place.
+    1 stroke, or a 588s monster) — any record far longer than a plausible
+    length (> 1.8 × median duration) is marked artifact and treated as rest,
+    not swimming. The mirror-image bug: a wall-touch/turn can get logged as
+    its own extra-short "length" (e.g. 6s with 4 strokes) sitting next to the
+    real one — any record far shorter than plausible (< median / 1.8) gets
+    the same treatment. Both rules are skipped if there are too few candidate
+    cycles to compute a trustworthy median. Also used to reprocess archived
+    sessions, so it must depend only on cycle dicts (start/dur_s), not raw
+    export records. Returns (est_swim_s, real_cycles, longest_run) and
+    mutates cycles in place.
     """
-    durs = sorted(c["dur_s"] for c in cycles)
-    med = durs[len(durs) // 2] if durs else None
-    threshold = 1.8 * med if med else None
+    durs = [c["dur_s"] for c in cycles]
+    med = statistics.median(durs) if durs else None
+    trust_median = med is not None and len(cycles) >= MIN_CYCLES_FOR_ARTIFACT_CHECK
+    hi = 1.8 * med if trust_median else None
+    lo = med / 1.8 if trust_median else None
     real = []
     for c in cycles:
         c.pop("artifact", None)
-        if threshold and c["dur_s"] > threshold:
+        if hi and (c["dur_s"] > hi or c["dur_s"] < lo):
             c["artifact"] = True
             c["rest_est_s"] = None
         else:
@@ -140,30 +231,46 @@ def derive_pool(cycles):
             c["rest_est_s"] = round(nxt - end, 1)
         else:
             c["rest_est_s"] = None
-    rdurs = sorted(c["dur_s"] for c in real)
-    est_swim_s = rdurs[len(rdurs) // 2] if rdurs else None
-    longest_run, run = 0, 0
-    for c in real:
-        run += 1
-        longest_run = max(longest_run, run)
-        if c["rest_est_s"] is None or c["rest_est_s"] > 15:
-            run = 0
+    rdurs = [c["dur_s"] for c in real]
+    est_swim_s = statistics.median(rdurs) if rdurs else None
+    med_dur, med_strokes = free_medians(real)
+    overrides = CONFIG.get("run_credit_overrides", {}).get(sid, {})
+    runs = walk_runs(real, CONFIG["run_join_max_s"], med_dur, med_strokes, overrides)
+    longest_run = max((r["length"] for r in runs), default=0)
     return est_swim_s, real, longest_run
+
+
+def hr_end_for_cycle(hrs_session, cycle_end):
+    """Mean HR in the last 20s before cycle_end; fallback nearest sample
+    within ±30s; else None. hrs_session is a session-local (ts, value) list."""
+    end_ts = cycle_end.timestamp()
+    window = [v for t, v in hrs_session if end_ts - 20 <= t.timestamp() <= end_ts]
+    if window:
+        return round(sum(window) / len(window), 1)
+    nearest = [(abs(t.timestamp() - end_ts), v) for t, v in hrs_session
+               if abs(t.timestamp() - end_ts) <= 30]
+    if nearest:
+        return round(min(nearest, key=lambda n: n[0])[1], 1)
+    return None
 
 
 def build_session(w, dist_recs, stroke_recs, hr_recs):
     dists = in_window(dist_recs, w["start"], w["end"])
     strokes = in_window(stroke_recs, w["start"], w["end"])
-    hrs = [v for _, v in in_window(hr_recs, w["start"], w["end"])]
-    stroke_by_start = {s.isoformat(): v for s, _, v in strokes}
+    hrs_session = in_window(hr_recs, w["start"], w["end"])
+    hrs = [v for _, v in hrs_session]
+    stroke_by_start = {s.isoformat(): (v, style) for s, _, v, style in strokes}
 
     cycles = []
     for start, end, gps_m in dists:
+        stroke_v, stroke_style = stroke_by_start.get(start.isoformat(), (None, None))
         cycles.append({
             "start": start.isoformat(),
             "dur_s": round((end - start).total_seconds(), 1),
             "gps_m": round(gps_m, 1),
-            "strokes": stroke_by_start.get(start.isoformat()),
+            "strokes": stroke_v,
+            "stroke_style": stroke_style,
+            "hr_end": hr_end_for_cycle(hrs_session, end),
         })
     sid = w["start"].strftime("%Y-%m-%d_%H%M")
     location = classify_location(w, dists, sid)
@@ -171,7 +278,7 @@ def build_session(w, dist_recs, stroke_recs, hr_recs):
     if rest_measured:
         # Pool Swim mode: each record spans ONLY the swim; rest is the gap
         # until the next real record's start. Swim and rest are both measured.
-        est_swim_s, real_cycles, longest_run = derive_pool(cycles)
+        est_swim_s, real_cycles, longest_run = derive_pool(cycles, sid)
     else:
         # Open-water mode: each record tiles length-swum + rest-until-next-
         # push-off ("cycle"). Estimated pure-swim time per length = a low
