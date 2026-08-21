@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
  "generated_from": {
-  "zip": "/Users/cherianthomas/Downloads/export 2.zip",
-  "export_date": "2026-08-18 20:19:52 -0700",
-  "sha256": "8660abcb9d5cb5c026fad831d116d5519b051f0033cc22e7edf3e04871247d80"
+  "zip": "/Users/cherianthomas/Downloads/export.zip",
+  "export_date": "2026-08-21 08:38:56 -0700",
+  "sha256": "e4b96aa83ea8066464a8a791360e68dc8373cc3b8f0a57a401810cadc8430b93"
  },
  "sessions": [
   {
@@ -13465,6 +13465,723 @@
     }
    ],
    "source_export_date": "2026-08-18 20:19:52 -0700"
+  },
+  {
+   "id": "2026-08-19_1656",
+   "start": "2026-08-19T16:56:34-07:00",
+   "end": "2026-08-19T17:43:40-07:00",
+   "duration_min": 47.1,
+   "location_type": "pool",
+   "lap_length_setting": "22.86 m",
+   "era": "video-era",
+   "lengths": 37,
+   "true_distance_m": 845.8,
+   "gps_distance_m": 925.0,
+   "est_swim_per_length_s": 28.0,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": 122.1,
+   "hr_max": 147.0,
+   "cycles": [
+    {
+     "start": "2026-08-19T16:56:55-07:00",
+     "dur_s": 32.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 23.0
+    },
+    {
+     "start": "2026-08-19T16:57:50-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 138.0,
+     "rest_est_s": 50.0
+    },
+    {
+     "start": "2026-08-19T16:59:08-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 126.0,
+     "rest_est_s": 47.0
+    },
+    {
+     "start": "2026-08-19T17:00:22-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 130.0,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-08-19T17:01:06-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 139.0,
+     "rest_est_s": 70.0
+    },
+    {
+     "start": "2026-08-19T17:02:44-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 6.0
+    },
+    {
+     "start": "2026-08-19T17:03:15-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "stroke_style": 2,
+     "hr_end": 138.0,
+     "rest_est_s": 50.0
+    },
+    {
+     "start": "2026-08-19T17:04:30-07:00",
+     "dur_s": 24.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 139.0,
+     "rest_est_s": 56.0
+    },
+    {
+     "start": "2026-08-19T17:05:50-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-08-19T17:06:19-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 145.0,
+     "rest_est_s": 92.0
+    },
+    {
+     "start": "2026-08-19T17:08:19-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 113.0,
+     "rest_est_s": 13.0
+    },
+    {
+     "start": "2026-08-19T17:08:49-07:00",
+     "dur_s": 9.0,
+     "gps_m": 25.0,
+     "strokes": 6.0,
+     "stroke_style": 3,
+     "hr_end": null,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-19T17:08:59-07:00",
+     "dur_s": 48.0,
+     "gps_m": 25.0,
+     "strokes": 21.0,
+     "stroke_style": 2,
+     "hr_end": 136.0,
+     "rest_est_s": 108.0
+    },
+    {
+     "start": "2026-08-19T17:09:52-07:00",
+     "dur_s": 102.0,
+     "gps_m": 25.0,
+     "strokes": 16.0,
+     "stroke_style": 2,
+     "hr_end": 111.0,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-19T17:11:35-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 119.0,
+     "rest_est_s": 65.0
+    },
+    {
+     "start": "2026-08-19T17:13:07-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 114.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-08-19T17:13:38-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 133.0,
+     "rest_est_s": 67.0
+    },
+    {
+     "start": "2026-08-19T17:15:16-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-08-19T17:15:45-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 15.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 79.0
+    },
+    {
+     "start": "2026-08-19T17:17:35-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 118.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-08-19T17:18:05-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 131.0,
+     "rest_est_s": 121.0
+    },
+    {
+     "start": "2026-08-19T17:18:34-07:00",
+     "dur_s": 94.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-19T17:20:35-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 133.0,
+     "rest_est_s": 38.0
+    },
+    {
+     "start": "2026-08-19T17:21:40-07:00",
+     "dur_s": 27.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 132.0,
+     "rest_est_s": 114.0
+    },
+    {
+     "start": "2026-08-19T17:24:01-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 110.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-08-19T17:24:31-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 133.0,
+     "rest_est_s": 97.0
+    },
+    {
+     "start": "2026-08-19T17:26:36-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 109.0,
+     "rest_est_s": 5.0
+    },
+    {
+     "start": "2026-08-19T17:27:10-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 131.0,
+     "rest_est_s": 174.0
+    },
+    {
+     "start": "2026-08-19T17:29:35-07:00",
+     "dur_s": 13.0,
+     "gps_m": 25.0,
+     "strokes": 6.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-19T17:30:12-07:00",
+     "dur_s": 15.0,
+     "gps_m": 25.0,
+     "strokes": 9.0,
+     "stroke_style": 2,
+     "hr_end": 122.0,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-19T17:30:32-07:00",
+     "dur_s": 22.0,
+     "gps_m": 25.0,
+     "strokes": 8.0,
+     "stroke_style": 2,
+     "hr_end": 123.0,
+     "rest_est_s": 61.0
+    },
+    {
+     "start": "2026-08-19T17:31:55-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-08-19T17:32:25-07:00",
+     "dur_s": 33.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 129.0,
+     "rest_est_s": 34.0
+    },
+    {
+     "start": "2026-08-19T17:33:32-07:00",
+     "dur_s": 33.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 135.0,
+     "rest_est_s": 49.0
+    },
+    {
+     "start": "2026-08-19T17:34:54-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 115.0,
+     "rest_est_s": 4.0
+    },
+    {
+     "start": "2026-08-19T17:35:26-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 140.0,
+     "rest_est_s": 101.0
+    },
+    {
+     "start": "2026-08-19T17:37:38-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-08-19T17:38:07-07:00",
+     "dur_s": 32.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 130.0,
+     "rest_est_s": 105.0
+    },
+    {
+     "start": "2026-08-19T17:40:24-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-08-19T17:40:53-07:00",
+     "dur_s": 29.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 129.0,
+     "rest_est_s": 52.0
+    },
+    {
+     "start": "2026-08-19T17:42:14-07:00",
+     "dur_s": 20.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "stroke_style": 1,
+     "hr_end": 119.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-08-19T17:42:34-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "stroke_style": 2,
+     "hr_end": 130.0,
+     "rest_est_s": null
+    }
+   ],
+   "source_export_date": "2026-08-21 08:38:56 -0700"
+  },
+  {
+   "id": "2026-08-20_1647",
+   "start": "2026-08-20T16:47:42-07:00",
+   "end": "2026-08-20T17:42:44-07:00",
+   "duration_min": 55.0,
+   "location_type": "pool",
+   "lap_length_setting": "22.86 m",
+   "era": "video-era",
+   "lengths": 26,
+   "true_distance_m": 594.4,
+   "gps_distance_m": 650.0,
+   "est_swim_per_length_s": 30.5,
+   "rest_measured": true,
+   "longest_run_lengths": 2,
+   "hr_avg": 116.9,
+   "hr_max": 144.0,
+   "cycles": [
+    {
+     "start": "2026-08-20T16:48:57-07:00",
+     "dur_s": 32.0,
+     "gps_m": 25.0,
+     "strokes": 15.0,
+     "stroke_style": 2,
+     "hr_end": 116.0,
+     "rest_est_s": 68.0
+    },
+    {
+     "start": "2026-08-20T16:50:37-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 97.0,
+     "rest_est_s": 7.0
+    },
+    {
+     "start": "2026-08-20T16:51:09-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 121.0
+    },
+    {
+     "start": "2026-08-20T16:53:36-07:00",
+     "dur_s": 24.0,
+     "gps_m": 25.0,
+     "strokes": 11.0,
+     "stroke_style": 2,
+     "hr_end": 103.0,
+     "rest_est_s": 57.0
+    },
+    {
+     "start": "2026-08-20T16:54:57-07:00",
+     "dur_s": 23.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 111.0,
+     "rest_est_s": 3.0
+    },
+    {
+     "start": "2026-08-20T16:55:23-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 143.0,
+     "rest_est_s": 86.0
+    },
+    {
+     "start": "2026-08-20T16:57:15-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": 113.0,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-08-20T16:57:41-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 115.0,
+     "rest_est_s": 102.0
+    },
+    {
+     "start": "2026-08-20T16:59:51-07:00",
+     "dur_s": 25.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 131.0,
+     "rest_est_s": 104.0
+    },
+    {
+     "start": "2026-08-20T17:02:00-07:00",
+     "dur_s": 33.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 123.0,
+     "rest_est_s": 154.0
+    },
+    {
+     "start": "2026-08-20T17:02:35-07:00",
+     "dur_s": 73.0,
+     "gps_m": 25.0,
+     "strokes": 19.0,
+     "stroke_style": 2,
+     "hr_end": 130.0,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-20T17:05:07-07:00",
+     "dur_s": 43.0,
+     "gps_m": 25.0,
+     "strokes": 27.0,
+     "stroke_style": 2,
+     "hr_end": 132.0,
+     "rest_est_s": 99.0
+    },
+    {
+     "start": "2026-08-20T17:07:29-07:00",
+     "dur_s": 43.0,
+     "gps_m": 25.0,
+     "strokes": 20.0,
+     "stroke_style": 2,
+     "hr_end": 132.0,
+     "rest_est_s": 101.0
+    },
+    {
+     "start": "2026-08-20T17:09:53-07:00",
+     "dur_s": 47.0,
+     "gps_m": 25.0,
+     "strokes": 22.0,
+     "stroke_style": 2,
+     "hr_end": 117.0,
+     "rest_est_s": 201.0
+    },
+    {
+     "start": "2026-08-20T17:10:40-07:00",
+     "dur_s": 109.0,
+     "gps_m": 25.0,
+     "strokes": 21.0,
+     "stroke_style": 2,
+     "hr_end": 144.0,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-20T17:12:29-07:00",
+     "dur_s": 92.0,
+     "gps_m": 25.0,
+     "strokes": null,
+     "stroke_style": null,
+     "hr_end": 113.7,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-20T17:14:01-07:00",
+     "dur_s": 44.0,
+     "gps_m": 25.0,
+     "strokes": 20.0,
+     "stroke_style": 2,
+     "hr_end": 134.0,
+     "rest_est_s": 179.0
+    },
+    {
+     "start": "2026-08-20T17:17:44-07:00",
+     "dur_s": 44.0,
+     "gps_m": 25.0,
+     "strokes": 20.0,
+     "stroke_style": 2,
+     "hr_end": 136.0,
+     "rest_est_s": 79.0
+    },
+    {
+     "start": "2026-08-20T17:19:47-07:00",
+     "dur_s": 42.0,
+     "gps_m": 25.0,
+     "strokes": 19.0,
+     "stroke_style": 2,
+     "hr_end": 137.0,
+     "rest_est_s": 392.0
+    },
+    {
+     "start": "2026-08-20T17:20:29-07:00",
+     "dur_s": 102.0,
+     "gps_m": 25.0,
+     "strokes": null,
+     "stroke_style": null,
+     "hr_end": 118.0,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-20T17:22:11-07:00",
+     "dur_s": 220.0,
+     "gps_m": 25.0,
+     "strokes": 35.0,
+     "stroke_style": 2,
+     "hr_end": 125.3,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-20T17:27:01-07:00",
+     "dur_s": 55.0,
+     "gps_m": 25.0,
+     "strokes": 30.0,
+     "stroke_style": 2,
+     "hr_end": 116.5,
+     "rest_est_s": 5.0
+    },
+    {
+     "start": "2026-08-20T17:28:01-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 126.0,
+     "rest_est_s": 228.0
+    },
+    {
+     "start": "2026-08-20T17:32:15-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 13.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 1.0
+    },
+    {
+     "start": "2026-08-20T17:32:46-07:00",
+     "dur_s": 31.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 112.0,
+     "rest_est_s": 90.0
+    },
+    {
+     "start": "2026-08-20T17:34:47-07:00",
+     "dur_s": 26.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 0.0
+    },
+    {
+     "start": "2026-08-20T17:35:13-07:00",
+     "dur_s": 32.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 60.0
+    },
+    {
+     "start": "2026-08-20T17:36:45-07:00",
+     "dur_s": 48.0,
+     "gps_m": 25.0,
+     "strokes": 21.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 18.0
+    },
+    {
+     "start": "2026-08-20T17:37:33-07:00",
+     "dur_s": 16.0,
+     "gps_m": 25.0,
+     "strokes": 8.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "artifact": true,
+     "rest_est_s": null
+    },
+    {
+     "start": "2026-08-20T17:37:51-07:00",
+     "dur_s": 30.0,
+     "gps_m": 25.0,
+     "strokes": 10.0,
+     "stroke_style": 2,
+     "hr_end": null,
+     "rest_est_s": 133.0
+    },
+    {
+     "start": "2026-08-20T17:40:34-07:00",
+     "dur_s": 28.0,
+     "gps_m": 25.0,
+     "strokes": 12.0,
+     "stroke_style": 2,
+     "hr_end": 102.0,
+     "rest_est_s": 2.0
+    },
+    {
+     "start": "2026-08-20T17:41:04-07:00",
+     "dur_s": 34.0,
+     "gps_m": 25.0,
+     "strokes": 14.0,
+     "stroke_style": 2,
+     "hr_end": 132.0,
+     "rest_est_s": null
+    }
+   ],
+   "source_export_date": "2026-08-21 08:38:56 -0700"
   }
  ]
 }
