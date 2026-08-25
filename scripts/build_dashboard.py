@@ -262,12 +262,17 @@ def frontier_stats(measured, cap_stats, ratchet):
         prior_idx = ids.index(prior_session_id)
         promo_idx = ids.index(ratchet["promotion_session"])
         held_sessions = promo_idx - prior_idx
+    sessions_since_promotion = None
+    if ratchet["promotion_session"] is not None:
+        ids = [s["id"] for s in measured]
+        sessions_since_promotion = ids.index(latest_session["id"]) - ids.index(ratchet["promotion_session"])
     return {
         "value": frontier,
         "times_hit": times_hit,
         "moved_this_session": moved_this_session,
         "prev_value": prev_value,
         "held_sessions": held_sessions,
+        "sessions_since_promotion": sessions_since_promotion,
         "median_rest": cap_stats[-1]["frontier_rest_median"],
         "min_rest": cap_stats[-1]["frontier_rest_min"],
         "n_rests": len(cap_stats[-1]["frontier_rests"]),
@@ -666,43 +671,62 @@ def chart_rest_band(measured):
     return "".join(g)
 
 
-def fifty_stat_row(cap_stats):
-    """Three tiles for the latest measured session: 50-yd run count, share of
-    volume, median back-to-back rest — vs the immediately previous measured
-    session, shown as an em dash when only one measured session exists."""
-    if not cap_stats:
+def fifty_stat_row(cap_stats, frontier):
+    """Four tiles for the latest measured session: longest swim (frontier),
+    laps swum, count of 2+-length runs, and median rest next to the longest
+    swim — vs the immediately previous measured session, shown as an em
+    dash only when there's no previous session or no rest to compare.
+    Zero multi-runs is data, not missing data, so that tile shows 0."""
+    if not cap_stats or frontier is None:
         return ""
 
-    def tile(caption, value, delta):
+    def tile(caption, value, delta, title=None):
         delta_html = (f' <span style="font-size:0.95rem;font-weight:500;color:#8a8580">{esc(delta)}</span>'
                       if delta else "")
-        return (f'<div style="flex:1"><p class="caption">{esc(caption)}</p>'
+        title_attr = f' title="{esc(title)}"' if title else ""
+        return (f'<div style="flex:1"{title_attr}><p class="caption">{esc(caption)}</p>'
                 f'<p style="font-size:1.6rem;font-weight:600;margin:0">{esc(value)}{delta_html}</p></div>')
 
     cur = cap_stats[-1]
     prv = cap_stats[-2] if len(cap_stats) >= 2 else None
     cur_runs, prv_runs = cur["count2"] + cur["count3plus"], (prv["count2"] + prv["count3plus"]) if prv else None
 
-    runs_val, share_val = str(cur_runs), f"{cur['share_pct']:.0f}%"
-    b2b_val = f"{cur['b2b_median']:.0f}s" if cur["b2b_median"] is not None else "—"
+    if frontier["times_hit"] > 0:
+        frontier_val = f'{frontier["value"]} laps ×{frontier["times_hit"]}'
+    else:
+        frontier_val = f'{frontier["value"]} laps · not hit this session'
+    frontier_delta = "▲ new" if frontier["moved_this_session"] else ""
+
+    laps_val = str(cur["laps"])
+    runs_val = str(cur_runs)
+
+    med = cur["frontier_rest_median"]
+    n_rests = len(cur["frontier_rests"])
+    rest_val = f"{med:.0f}s" if med is not None else "—"
+    rest_title = None
+    if med is not None:
+        rest_title = f'min {cur["frontier_rest_min"]:.0f}s over n={n_rests} qualifying rests'
+        if n_rests == 1:
+            rest_title += " — only 1 rest this session, same as the minimum, low confidence"
 
     if prv is None:
-        runs_delta = share_delta = b2b_delta = "—"
+        laps_delta = runs_delta = rest_delta = "—"
     else:
+        dlaps = cur["laps"] - prv["laps"]
+        laps_delta = f"{'▲' if dlaps > 0 else '▼' if dlaps < 0 else '–'}{abs(dlaps)}"
         drun = cur_runs - prv_runs
         runs_delta = f"{'▲' if drun > 0 else '▼' if drun < 0 else '–'}{abs(drun)}"
-        dshare = round(cur["share_pct"] - prv["share_pct"])
-        share_delta = f"{'▲' if dshare > 0 else '▼' if dshare < 0 else '–'}{abs(dshare)}pp"
-        if cur["b2b_median"] is not None and prv["b2b_median"] is not None:
-            db2b = cur["b2b_median"] - prv["b2b_median"]
-            b2b_delta = f"{'▼' if db2b < 0 else '▲' if db2b > 0 else '–'}{abs(db2b):.0f}s"
+        if med is not None and prv["frontier_rest_median"] is not None:
+            drest = med - prv["frontier_rest_median"]
+            rest_delta = f"{'▼' if drest < 0 else '▲' if drest > 0 else '–'}{abs(drest):.0f}s"
         else:
-            b2b_delta = "—"
+            rest_delta = "—"
 
     return (f'<div class="card"><div class="card-body"><div class="card-row">'
-            f'{tile("50-yd runs", runs_val, runs_delta)}'
-            f'{tile("share of volume", share_val, share_delta)}'
-            f'{tile("median b2b rest", b2b_val, b2b_delta)}'
+            f'{tile("longest swim", frontier_val, frontier_delta)}'
+            f'{tile("laps this session", laps_val, laps_delta)}'
+            f'{tile("2+-length runs", runs_val, runs_delta)}'
+            f'{tile("rest by longest swim", rest_val, rest_delta, rest_title)}'
             f'</div></div></div>')
 
 
@@ -1090,7 +1114,28 @@ def goal_meter(longest_run, goal_lengths):
 
 # ---------------------------------------------------------------- verdict
 
-def make_verdict(latest, prev, stats, prev_stats):
+def chunk_fix_text(latest, frontier):
+    """Computed chunk-size fix-text, replacing the old hardcoded 'your
+    repeats are one length long.' Uses the latest session's own run
+    histogram when it's measured. latest here is the overall latest
+    session (make_verdict's caller), which may be unmeasured open-water
+    while frontier stats are measured-only -- describing a different
+    session's chunks as this one's would be misleading, so unmeasured
+    sessions get estimate-safe wording with no run-length claims."""
+    if not latest.get("rest_measured") or frontier is None:
+        return ("The protocol's smallest unit is 100 m — four lengths. Keep chunking up "
+                "toward that once this session's rests are measured, not estimated.")
+    runs = session_runs(latest)
+    biggest = max((r["length"] for r in runs), default=1)
+    if biggest >= 4:
+        return "You're already chunking in fours or better. Rest discipline is no longer your gap; chunk size is."
+    gap = 4 - biggest
+    return (f"Your biggest chunk this session was {biggest} length{'s' if biggest != 1 else ''}; "
+            f"the protocol's smallest unit is 4. Close the {gap}-length gap next — your longest swim "
+            f"overall is {frontier['value']} lengths.")
+
+
+def make_verdict(latest, prev, stats, prev_stats, frontier=None):
     med = stats["median_rest"]
     if latest.get("rest_measured"):
         first_measured = not prev.get("rest_measured")
@@ -1114,8 +1159,7 @@ def make_verdict(latest, prev, stats, prev_stats):
         else:
             headline = ("First measured swim — and the rest discipline is real." if first_measured
                         else "Rests in band, measured. Now stretch the chunks.")
-            fix = ("Your repeats are one length long. The protocol's smallest unit is 100 m — four lengths. "
-                   "Rest discipline is no longer your gap; chunk size is.")
+            fix = chunk_fix_text(latest, frontier)
         return headline, win, fix
     win, fix = [], []
     if stats["inband_pct"] is not None and prev_stats["inband_pct"] is not None:
@@ -1125,11 +1169,70 @@ def make_verdict(latest, prev, stats, prev_stats):
             win.append(f"Median rest held at ~{stats['median_rest']:.0f}s — inside the protocol band, which is where endurance is built.")
     if latest["longest_run_lengths"] >= prev["longest_run_lengths"]:
         win.append(f"Longest back-to-back run: {latest['longest_run_lengths']} lengths ({latest['longest_run_lengths']*22.86:.0f} m) without a real stop.")
-    fix.append("Your repeats are one length long. The protocol's smallest unit is 100 m — four lengths. "
-               "Rest discipline is no longer your gap; chunk size is.")
+    fix.append(chunk_fix_text(latest, frontier))
     headline = ("Your rest is closer to protocol than you think. "
                 "Your chunks are the gap now.")
     return headline, win[0], fix[0]
+
+
+def run_pace_s_per_length(run):
+    return sum(c["dur_s"] for c in run["cycles"]) / run["length"]
+
+
+def frontier_pace_note(latest_session, frontier_value):
+    """Median pace (s/length) on frontier-length runs vs single-length runs
+    in the same session -- the sustainability check the frontier number
+    alone can't give. Uses sum(dur_s)/credited_length per run rather than
+    raw cycle durations, since credit_run() can demote several watch
+    cycles into fewer credited lengths (e.g. the Aug 7 session) -- a raw
+    per-cycle median would silently mix real and phantom-split lengths."""
+    runs = session_runs(latest_session)
+    frontier_runs = [r for r in runs if r["length"] == frontier_value]
+    single_runs = [r for r in runs if r["length"] == 1]
+    if not frontier_runs or not single_runs:
+        return ""
+    f_pace = statistics.median(run_pace_s_per_length(r) for r in frontier_runs)
+    s_pace = statistics.median(run_pace_s_per_length(r) for r in single_runs)
+    diff = f_pace - s_pace
+    if abs(diff) <= 3:
+        read = "about the same as your single lengths — a good sign it's sustainable, not a sprint."
+    elif diff > 0:
+        read = f"about {diff:.0f}s/length slower than your single lengths — you're pacing it, not sprinting it."
+    else:
+        read = f"about {-diff:.0f}s/length faster than your single lengths — worth a second look at the data."
+    return f" Pace on your longest swims runs {f_pace:.0f}s/length, {read}"
+
+
+def frontier_lead(frontier, cap_stats):
+    """Computed lead paragraph for the 50-yard capacity section, replacing
+    the old hardcoded 'stuck at 2 lengths for a month' prose that goes
+    stale at every unlock. Three cases: the longest swim moved this
+    session, was touched but didn't move, or wasn't touched at all. Page
+    language stays plain English ('longest swim') -- 'frontier' is an
+    internal code name, not page vocabulary (see CONTEXT.md)."""
+    if frontier is None:
+        return ""
+    v = frontier["value"]
+    v_m = v * LENGTH_M
+    latest_session = cap_stats[-1]["session"]
+    pace_note = frontier_pace_note(latest_session, v)
+    rest_note = (f" This session's closest gap next to one was {frontier['min_rest']:.0f}s — runs fuse when "
+                 f"a gap compresses toward ≤{RUN_JOIN:.0f}s, so that's a merge opportunity, not a guaranteed next rung."
+                 if frontier["min_rest"] is not None else "")
+
+    if frontier["moved_this_session"]:
+        held = (f" — up from a {frontier['prev_value']}-length ceiling held {frontier['held_sessions']} sessions"
+                if frontier["prev_value"] is not None else "")
+        return (f'Your longest swim just moved to {v} lengths ({v_m:.0f} m), hit {frontier["times_hit"]}× this '
+                f'session{held}.{rest_note}{pace_note}')
+    if frontier["times_hit"] > 0:
+        return (f'Your longest swim holds at {v} lengths ({v_m:.0f} m) — touched {frontier["times_hit"]}× this '
+                f'session.{rest_note}{pace_note}')
+    stuck_for = frontier["sessions_since_promotion"]
+    stuck = f" for {stuck_for} sessions" if stuck_for else ""
+    return (f'Your longest swim is stuck at {v} lengths ({v_m:.0f} m){stuck} — not touched this session. '
+            f'The two dials that move it: more multi-length runs per session, and the rest next to your '
+            f'longest swims compressing toward ≤{RUN_JOIN:.0f}s.')
 
 
 # ---------------------------------------------------------------- page
@@ -1140,13 +1243,16 @@ def build():
 
     latest, prev = july[-1], july[-2]
     l_stats, p_stats = session_stats(latest), session_stats(prev)
-    headline, win, fix = make_verdict(latest, prev, l_stats, p_stats)
+    measured = [s for s in july if s.get("rest_measured")]
+    frontier_ratchet = compute_frontier(measured)
+    fifty_stats = fifty_capacity_stats(measured, frontier_ratchet["value"])
+    frontier = frontier_stats(measured, fifty_stats, frontier_ratchet)
+    headline, win, fix = make_verdict(latest, prev, l_stats, p_stats, frontier)
     # Trust measured sessions over open-water estimates for the headline number.
     measured_runs = [s["longest_run_lengths"] for s in july if s.get("rest_measured")]
     best_run = max(measured_runs) if measured_runs else max(s["longest_run_lengths"] for s in july)
     era_sessions = [s for s in july if s["era"] == "video-era"]
     era_med = sorted(session_stats(s)["median_rest"] for s in era_sessions)[len(era_sessions) // 2]
-    measured = [s for s in july if s.get("rest_measured")]
     gen_date = data["generated_from"]["export_date"] or "unknown"
     l_date = datetime.fromisoformat(latest["start"]).strftime("%A, %B %-d")
 
@@ -1162,9 +1268,6 @@ def build():
     comfort_rungs, comfort_per_session = comfort_ladder_stats(measured)
     comfort_baseline, _ = compute_comfort_baseline(comfort_rungs, comfort_per_session, cfg)
     comfort_base_line, comfort_missing = comfort_badge(comfort_baseline, comfort_rungs, comfort_per_session, cfg)
-    frontier_ratchet = compute_frontier(measured)
-    fifty_stats = fifty_capacity_stats(measured, frontier_ratchet["value"])
-    frontier = frontier_stats(measured, fifty_stats, frontier_ratchet)
 
     if latest.get("rest_measured") and not prev.get("rest_measured"):
         spotlight_p = (f"<p>First swim with the watch in Pool Swim mode — so for the first time these bars are "
@@ -1267,8 +1370,8 @@ def build():
 
 <section>
 <h2>50-yard capacity — multiply it, then compress it</h2>
-<p>The headline "longest run" number just moved from 2 to 3 lengths — landed four times in one session on Aug 24, the first real break past the old 2-length ceiling. The two dials underneath are what turn that repeat into a routine, not a one-off: more multi-length runs per session, and the rest between them compressing.</p>
-{fifty_stat_row(fifty_stats)}
+<p>{esc(frontier_lead(frontier, fifty_stats))}</p>
+{fifty_stat_row(fifty_stats, frontier)}
 {chart_fifty_count(fifty_stats)}
 <p style="margin-top:0.5rem"><span class="tag" style="background:{BLUE};color:#fff">2-length</span> <span class="tag" style="background:{AMBER};color:#fff">3+ length</span></p>
 <p class="small">Bar = count of runs of 2+ credited lengths that session, stacked by length; % label = share of that session's total lengths spent inside a 2+ run.</p>
