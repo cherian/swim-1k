@@ -1153,7 +1153,7 @@ def build():
 
 <section>
 <h2>50-yard capacity — multiply it, then compress it</h2>
-<p>The headline "longest run" number has been stuck at 2 lengths for a month — but that hides the real progress underneath: you're now landing more 50s per session, and the rest between back-to-back 50s is compressing. These two dials are what turn a single 50 into a routine, not a personal best.</p>
+<p>The headline "longest run" number just moved from 2 to 3 lengths — landed four times in one session on Aug 24, the first real break past the old 2-length ceiling. The two dials underneath are what turn that repeat into a routine, not a one-off: more multi-length runs per session, and the rest between them compressing.</p>
 {fifty_stat_row(fifty_stats)}
 {chart_fifty_count(fifty_stats)}
 <p style="margin-top:0.5rem"><span class="tag" style="background:{BLUE};color:#fff">2-length</span> <span class="tag" style="background:{AMBER};color:#fff">3+ length</span></p>
@@ -1202,7 +1202,7 @@ def build():
 <tbody>
 <tr><td><strong>1 · Random laps, no plan</strong> <span class="small">(01:30)</span></td><td><span class="badge" style="background:{BLUE};color:#fff">B+</span></td><td>You now show up with a plan and repeat it. That's base training. Write it down before each swim to make it an A.</td></tr>
 <tr><td><strong>2 · The wrong kind of rest</strong> <span class="small">(04:54)</span></td><td><span class="badge" style="background:{BLUE};color:#fff">B</span></td><td>Median rest ~{era_med:.0f}s is inside the 20–45s band. The remaining leak: the 90s+ full resets that aren't feeding a bigger chunk. One hand on the wall, stay ready.</td></tr>
-<tr><td><strong>3 · Chasing the goal distance</strong> <span class="small">(08:12)</span></td><td><span class="badge" style="background:{AMBER};color:#fff">C</span></td><td>You're not overreaching — you're underreaching. One length per repeat is smaller than anything on the ladder. Time to chunk up: this is your growth edge.</td></tr>
+<tr><td><strong>3 · Chasing the goal distance</strong> <span class="small">(08:12)</span></td><td><span class="badge" style="background:{AMBER};color:#fff">C</span></td><td>You're not overreaching — you're underreaching. Most reps are still one length, and even your longest run (3 lengths) is smaller than anything on the ladder. Time to chunk up: this is your growth edge.</td></tr>
 </tbody>
 </table>
 </section>
@@ -1215,11 +1215,11 @@ def build():
 </div>
 <div class="callout">
 <p class="callout-title">2 · Double the chunk, keep the rest</p>
-<p>This week: <strong>8 × 50 yd with 30–45 s rest</strong>, easy pace, every repeat at the same speed. Two lengths, touch, breathe, go — make the 50 the plan instead of the ceiling.</p>
+<p>This week: <strong>8 × 50 yd with 30–45 s rest</strong>, easy pace, every repeat at the same speed. Two lengths, touch, breathe, go — make your current longest run the plan, not the ceiling.</p>
 </div>
 <div class="callout">
 <p class="callout-title">3 · Kill the innocent full resets</p>
-<p>A 2-minute rest that buys a 50 is spent well. A 2-minute rest that buys another single 25 is Mistake #2 — your heart restarts from zero. If you're going to rest long, make it feed something bigger.</p>
+<p>A 2-minute rest that buys a multi-length run is spent well. A 2-minute rest that buys another single 25 is Mistake #2 — your heart restarts from zero. If you're going to rest long, make it feed something bigger.</p>
 </div>
 </section>
 
