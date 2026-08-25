@@ -28,6 +28,10 @@ WAY_OVER = 90                      # beyond this, rest is a full reset
 RUN_JOIN = parse_health.CONFIG["run_join_max_s"]  # turn gap that keeps a run alive
 FREESTYLE = parse_health.FREESTYLE
 MIN_LENGTHS = 5                    # ignore false-start recordings
+LENGTH_M = 22.86                   # one 25-yard pool length, in meters
+GOAL_LENGTHS = 44                  # 44 lengths ~= 1000m -- pin the conversion in one place
+GOAL_M = round(GOAL_LENGTHS * LENGTH_M, 1)
+assert abs(GOAL_M - 1000) < 10, "GOAL_LENGTHS * LENGTH_M should be ~1000m"
 
 
 def esc(s):
@@ -125,14 +129,79 @@ def session_runs(s):
     return parse_health.walk_runs(cycles, RUN_JOIN, med_dur, med_strokes, overrides)
 
 
-def fifty_capacity_stats(measured):
+def all_adjacent_pairs(s):
+    """Every physically adjacent pair of freestyle runs in a session.
+    session_runs() returns freestyle-only runs, so consecutive entries in
+    that list are NOT necessarily physically adjacent — a non-freestyle
+    length can sit between them. A pair counts only when run i+1's first
+    cycle immediately follows run i's last cycle in the session's
+    artifact-filtered cycle list. Unlike the old >=2/>=2-only b2b_rests,
+    this includes 1-length (single) neighbors — needed to find the rest
+    next to a frontier-length run when its neighbor is a single length.
+    Each record: {"rest_s", "left_length", "right_length"}."""
+    runs = session_runs(s)
+    cycles = [c for c in s["cycles"] if not c.get("artifact")]
+    pos = {id(c): i for i, c in enumerate(cycles)}
+    pairs = []
+    for r1, r2 in zip(runs, runs[1:]):
+        if pos.get(id(r1["cycles"][-1]), -1) + 1 == pos.get(id(r2["cycles"][0]), -2):
+            pairs.append({
+                "rest_s": r1["recovery_rest_s"],
+                "left_length": r1["length"],
+                "right_length": r2["length"],
+            })
+    return pairs
+
+
+def compute_frontier(measured):
+    """The frontier is the highest credited run length CONFIRMED by two
+    touches — either twice within one measured session, or once each in two
+    different measured sessions. A one-touch ratchet would promote on a
+    single misdetected watch cycle and permanently corrupt every computed
+    sentence downstream; two touches is the cheap guard against that.
+    Starts at 1 (every swimmer touches a 1-length run; not worth tracking
+    as a promotion). Processes measured sessions in chronological order.
+    Returns {"value", "promotion_session" (id where current value was
+    confirmed), "first_touch_session" (id of its first, unconfirmed touch),
+    "history": [(value, promotion_session_id), ...]}."""
+    value = 1
+    first_touch = {}   # candidate N -> session id of its first touch
+    touch_count = {}   # candidate N -> confirmed touch count so far
+    history = []
+    for s in measured:
+        lengths_here = [r["length"] for r in session_runs(s)]
+        if not lengths_here:
+            continue
+        session_max = max(lengths_here)
+        if session_max <= value:
+            continue
+        for n in range(value + 1, session_max + 1):
+            count_here = sum(1 for l in lengths_here if l >= n)
+            if count_here >= 2:
+                value = n
+                history.append((value, s["id"]))
+                first_touch.setdefault(n, s["id"])
+                continue
+            first_touch.setdefault(n, s["id"])
+            touch_count[n] = touch_count.get(n, 0) + 1
+            if touch_count[n] >= 2:
+                value = n
+                history.append((value, s["id"]))
+    return {
+        "value": value,
+        "promotion_session": history[-1][1] if history else None,
+        "first_touch_session": first_touch.get(value),
+        "history": history,
+    }
+
+
+def fifty_capacity_stats(measured, frontier=None):
     """Per measured session: counts of >=2-length runs (split 2 vs 3+), their
-    share of session volume, and back-to-back recovery rests between
-    consecutive >=2 runs. session_runs() returns freestyle runs only, so
-    consecutive entries in that list are NOT necessarily physically adjacent
-    — a non-freestyle length can sit between them. A pair counts only when
-    run i+1's first cycle immediately follows run i's last cycle in the
-    session's artifact-filtered cycle list.
+    share of session volume, laps swum, and the full set of physically
+    adjacent run pairs (see all_adjacent_pairs) each flagged is_b2b (both
+    sides >=2, feeds the existing pooled b2b view) and frontier_adjacent
+    (either side == frontier). Pooled and highlight chart layers share this
+    one list/index so their jitter aligns.
     share_pct numerator = credited freestyle lengths in >=2 runs; denominator
     = s["lengths"] (all recorded lengths incl. non-freestyle and
     credit-demoted) — a deliberately conservative hybrid that slightly
@@ -147,26 +216,62 @@ def fifty_capacity_stats(measured):
         run_hist = Counter(r["length"] for r in multi)
         share_pct = 100 * multi_lengths / s["lengths"] if s["lengths"] else 0
 
-        cycles = [c for c in s["cycles"] if not c.get("artifact")]
-        pos = {id(c): i for i, c in enumerate(cycles)}
-        b2b_rests = []
-        for r1, r2 in zip(runs, runs[1:]):
-            if (r1["length"] >= 2 and r2["length"] >= 2
-                    and r1["recovery_rest_s"] is not None
-                    and pos.get(id(r1["cycles"][-1]), -1) + 1 == pos.get(id(r2["cycles"][0]), -2)):
-                b2b_rests.append(r1["recovery_rest_s"])
+        pairs = []
+        for p in all_adjacent_pairs(s):
+            is_b2b = p["left_length"] >= 2 and p["right_length"] >= 2 and p["rest_s"] is not None
+            frontier_adjacent = (frontier is not None and p["rest_s"] is not None
+                                  and (p["left_length"] == frontier or p["right_length"] == frontier))
+            pairs.append({**p, "is_b2b": is_b2b, "frontier_adjacent": frontier_adjacent})
+        b2b_rests = [p["rest_s"] for p in pairs if p["is_b2b"]]
+        frontier_rests = [p["rest_s"] for p in pairs if p["frontier_adjacent"]]
 
         out.append({
             "session": s,
+            "laps": s["lengths"],
             "count2": count2,
             "count3plus": count3plus,
             "multi_lengths": multi_lengths,
             "run_hist": run_hist,
             "share_pct": share_pct,
+            "pairs": pairs,
             "b2b_rests": b2b_rests,
             "b2b_median": statistics.median(b2b_rests) if b2b_rests else None,
+            "frontier_rests": frontier_rests,
+            "frontier_rest_median": statistics.median(frontier_rests) if frontier_rests else None,
+            "frontier_rest_min": min(frontier_rests) if frontier_rests else None,
         })
     return out
+
+
+def frontier_stats(measured, cap_stats, ratchet):
+    """Tile-ready summary of the current frontier as of the latest measured
+    session: value, times hit this session, whether it moved this session,
+    and the previous value + how many measured sessions it held (None for
+    the first confirmed frontier -- there's no prior ceiling to report)."""
+    if not measured or not cap_stats:
+        return None
+    frontier = ratchet["value"]
+    latest_session = measured[-1]
+    latest_runs = session_runs(latest_session)
+    times_hit = sum(1 for r in latest_runs if r["length"] == frontier)
+    moved_this_session = ratchet["promotion_session"] == latest_session["id"]
+    prev_value, held_sessions = None, None
+    if moved_this_session and len(ratchet["history"]) >= 2:
+        prev_value, prior_session_id = ratchet["history"][-2]
+        ids = [s["id"] for s in measured]
+        prior_idx = ids.index(prior_session_id)
+        promo_idx = ids.index(ratchet["promotion_session"])
+        held_sessions = promo_idx - prior_idx
+    return {
+        "value": frontier,
+        "times_hit": times_hit,
+        "moved_this_session": moved_this_session,
+        "prev_value": prev_value,
+        "held_sessions": held_sessions,
+        "median_rest": cap_stats[-1]["frontier_rest_median"],
+        "min_rest": cap_stats[-1]["frontier_rest_min"],
+        "n_rests": len(cap_stats[-1]["frontier_rests"]),
+    }
 
 
 def comfort_ladder_stats(measured):
@@ -678,9 +783,16 @@ def chart_fifty_b2b(cap_stats):
     col_x = [pad_l + i * slot + slot / 2 for i in range(n)]
 
     for i, c in enumerate(cap_stats):
-        for j, v in enumerate(c["b2b_rests"]):
+        for j, p in enumerate(c["pairs"]):
+            if p["rest_s"] is None:
+                continue
             dx = col_x[i] + _jitter(c["session"]["id"], j, 14)
-            g.append(f'<circle cx="{dx:.1f}" cy="{y(min(v, B2B_Y_CAP_S)):.1f}" r="3.5" fill="{BLUE}" opacity="0.35"/>')
+            v = p["rest_s"]
+            if p["frontier_adjacent"]:
+                g.append(f'<circle cx="{dx:.1f}" cy="{y(min(v, B2B_Y_CAP_S)):.1f}" r="4.5" fill="{RED}" opacity="0.85">'
+                         f'<title>frontier-adjacent rest: {v:.0f}s ({p["left_length"]}↔{p["right_length"]} lengths)</title></circle>')
+            elif p["is_b2b"]:
+                g.append(f'<circle cx="{dx:.1f}" cy="{y(min(v, B2B_Y_CAP_S)):.1f}" r="3.5" fill="{BLUE}" opacity="0.35"/>')
 
     for i in range(n - 1):
         m0, m1 = cap_stats[i]["b2b_median"], cap_stats[i + 1]["b2b_median"]
@@ -1050,7 +1162,9 @@ def build():
     comfort_rungs, comfort_per_session = comfort_ladder_stats(measured)
     comfort_baseline, _ = compute_comfort_baseline(comfort_rungs, comfort_per_session, cfg)
     comfort_base_line, comfort_missing = comfort_badge(comfort_baseline, comfort_rungs, comfort_per_session, cfg)
-    fifty_stats = fifty_capacity_stats(measured)
+    frontier_ratchet = compute_frontier(measured)
+    fifty_stats = fifty_capacity_stats(measured, frontier_ratchet["value"])
+    frontier = frontier_stats(measured, fifty_stats, frontier_ratchet)
 
     if latest.get("rest_measured") and not prev.get("rest_measured"):
         spotlight_p = (f"<p>First swim with the watch in Pool Swim mode — so for the first time these bars are "
@@ -1159,7 +1273,7 @@ def build():
 <p style="margin-top:0.5rem"><span class="tag" style="background:{BLUE};color:#fff">2-length</span> <span class="tag" style="background:{AMBER};color:#fff">3+ length</span></p>
 <p class="small">Bar = count of runs of 2+ credited lengths that session, stacked by length; % label = share of that session's total lengths spent inside a 2+ run.</p>
 {chart_fifty_b2b(fifty_stats)}
-<p class="small">Dot = each rest between back-to-back ≥2-length runs (only counted when the two runs are physically adjacent — no other length in between) · line = session median · dashed = {B2B_TARGET_S}s gateway target.</p>
+<p class="small">Blue dot = each rest between back-to-back ≥2-length runs (only counted when the two runs are physically adjacent — no other length in between) · red dot = a rest next to your current longest run, including a single length on the other side · line = session median of the blue dots · dashed = {B2B_TARGET_S}s gateway target.</p>
 </section>
 
 <section>
