@@ -730,9 +730,37 @@ def fifty_stat_row(cap_stats, frontier):
             f'</div></div></div>')
 
 
+# Deterministic color-by-length map: dataviz skill's validated ordinal ramp
+# (single hue, light-to-dark, one-hue-per-tier -- run length is ordered
+# magnitude, not arbitrary categories). Fixed steps, NOT scaled to the
+# observed max, so a new rung never recolors the bars for lengths already
+# on the chart. Lengths beyond the map fold into a "6+" bucket.
+LENGTH_COLORS = {2: "#86b6ef", 3: "#5598e7", 4: "#2a78d6", 5: "#1c5cab"}
+LENGTH_COLOR_6PLUS = "#104281"
+
+
+def length_bucket(n):
+    return n if n in LENGTH_COLORS else "6+"
+
+
+def length_color(bucket):
+    return LENGTH_COLORS.get(bucket, LENGTH_COLOR_6PLUS)
+
+
+def chart_fifty_legend(cap_stats):
+    """Legend tags for whichever length buckets actually appear in the
+    data -- generated, not hardcoded, so a new rung adds its own tag."""
+    buckets = sorted({length_bucket(l) for c in cap_stats for l in c["run_hist"]},
+                      key=lambda b: 99 if b == "6+" else b)
+    labels = {b: ("6+ lengths" if b == "6+" else f"{b}-length") for b in buckets}
+    return " ".join(f'<span class="tag" style="background:{length_color(b)};color:#fff">{esc(labels[b])}</span>'
+                     for b in buckets)
+
+
 def chart_fifty_count(cap_stats):
-    """Stacked bar per session: count of >=2-length runs, split 2 (blue) vs
-    3+ (amber). Share-of-volume label above each bar."""
+    """Stacked bar per session: count of >=2-length runs, one segment per
+    exact credited length (2, 3, 4, 5, 6+). Share-of-volume label above
+    each bar."""
     W, H, pad_l, pad_b, pad_t = 1000, 260, 52, 44, 14
     plot_h = H - pad_b - pad_t
     n = len(cap_stats)
@@ -743,7 +771,7 @@ def chart_fifty_count(cap_stats):
     def y(v):
         return pad_t + plot_h * (1 - v / max_v)
 
-    g = [svg_open(W, H, "Count of 50-yard-plus runs per session, stacked by run length")]
+    g = [svg_open(W, H, "Count of 50-yard-plus runs per session, stacked by exact run length")]
     step = 2 if max_v <= 12 else 4
     gv = step
     while gv < max_v:
@@ -761,14 +789,17 @@ def chart_fifty_count(cap_stats):
         tooltip = (f"{d.strftime('%a %b %-d')} · {total} runs ≥2 lengths"
                    + (f" ({hist_str})" if hist_str else "")
                    + f" · {c['multi_lengths']}/{s['lengths']} lengths = {c['share_pct']:.0f}% of volume")
-        y0, y2 = y(0), y(c["count2"])
-        if c["count2"]:
-            g.append(f'<rect x="{x:.1f}" y="{y2:.1f}" width="{bw:.1f}" height="{y0-y2:.1f}" rx="4" '
-                     f'fill="{BLUE}"><title>{esc(tooltip)}</title></rect>')
-        if c["count3plus"]:
-            y3 = y(total)
-            g.append(f'<rect x="{x:.1f}" y="{y3:.1f}" width="{bw:.1f}" height="{y2-y3:.1f}" rx="4" '
-                     f'fill="{AMBER}"><title>{esc(tooltip)}</title></rect>')
+        bucketed = Counter()
+        for length, cnt in c["run_hist"].items():
+            bucketed[length_bucket(length)] += cnt
+        cum = 0
+        for bucket in sorted(bucketed, key=lambda b: 99 if b == "6+" else b):
+            cnt = bucketed[bucket]
+            y_bot = y(cum)
+            cum += cnt
+            y_top = y(cum)
+            g.append(f'<rect x="{x:.1f}" y="{y_top:.1f}" width="{bw:.1f}" height="{y_bot-y_top:.1f}" rx="4" '
+                     f'fill="{length_color(bucket)}"><title>{esc(tooltip)}</title></rect>')
         if total:
             g.append(f'<text x="{x+bw/2:.1f}" y="{y(total)-6:.1f}" text-anchor="middle" font-size="12" '
                      f'fill="#8a8580">{c["share_pct"]:.0f}%</text>')
@@ -1373,8 +1404,8 @@ def build():
 <p>{esc(frontier_lead(frontier, fifty_stats))}</p>
 {fifty_stat_row(fifty_stats, frontier)}
 {chart_fifty_count(fifty_stats)}
-<p style="margin-top:0.5rem"><span class="tag" style="background:{BLUE};color:#fff">2-length</span> <span class="tag" style="background:{AMBER};color:#fff">3+ length</span></p>
-<p class="small">Bar = count of runs of 2+ credited lengths that session, stacked by length; % label = share of that session's total lengths spent inside a 2+ run.</p>
+<p style="margin-top:0.5rem">{chart_fifty_legend(fifty_stats)}</p>
+<p class="small">Bar = count of runs of 2+ credited lengths that session, stacked by exact length (darker = longer); % label = share of that session's total lengths spent inside a 2+ run.</p>
 {chart_fifty_b2b(fifty_stats)}
 <p class="small">Blue dot = each rest between back-to-back ≥2-length runs (only counted when the two runs are physically adjacent — no other length in between) · red dot = a rest next to your current longest run, including a single length on the other side · line = session median of the blue dots · dashed = {B2B_TARGET_S}s gateway target.</p>
 </section>
