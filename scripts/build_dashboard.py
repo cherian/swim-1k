@@ -26,6 +26,10 @@ BASELINE_C, ERA_C = "#b45309", "#2563eb"
 BAND_LO, BAND_HI = 20, 45          # protocol active-rest band (video 06:29)
 WAY_OVER = 90                      # beyond this, rest is a full reset
 RUN_JOIN = parse_health.CONFIG["run_join_max_s"]  # turn gap that keeps a run alive
+PHASE = parse_health.CONFIG.get("training_phase", {"mode": "extend"})
+CONSOLIDATE = PHASE.get("mode") == "consolidate"
+REPS_TARGET = int(PHASE.get("frontier_reps_target", 5))
+PHASE_REST_S = int(PHASE.get("frontier_rest_median_target_s", 60))  # distinct from the chart's REST_TARGET_S (L~538)
 FREESTYLE = parse_health.FREESTYLE
 MIN_LENGTHS = 5                    # ignore false-start recordings
 LENGTH_M = 22.86                   # one 25-yard pool length, in meters
@@ -254,6 +258,7 @@ def frontier_stats(measured, cap_stats, ratchet):
     latest_session = measured[-1]
     latest_runs = session_runs(latest_session)
     times_hit = sum(1 for r in latest_runs if r["length"] == frontier)
+    times_hit_plus = sum(1 for r in latest_runs if r["length"] >= frontier)
     moved_this_session = ratchet["promotion_session"] == latest_session["id"]
     prev_value, held_sessions = None, None
     if moved_this_session and len(ratchet["history"]) >= 2:
@@ -269,6 +274,7 @@ def frontier_stats(measured, cap_stats, ratchet):
     return {
         "value": frontier,
         "times_hit": times_hit,
+        "times_hit_plus": times_hit_plus,
         "moved_this_session": moved_this_session,
         "prev_value": prev_value,
         "held_sessions": held_sessions,
@@ -691,18 +697,26 @@ def fifty_stat_row(cap_stats, frontier):
     prv = cap_stats[-2] if len(cap_stats) >= 2 else None
     cur_runs, prv_runs = cur["count2"] + cur["count3plus"], (prv["count2"] + prv["count3plus"]) if prv else None
 
-    if frontier["times_hit"] > 0:
-        frontier_val = f'{frontier["value"]} laps ×{frontier["times_hit"]}'
+    frontier_hits = frontier["times_hit_plus"] if CONSOLIDATE else frontier["times_hit"]
+    if frontier_hits > 0:
+        frontier_val = (f'{frontier["value"]} laps ×{frontier_hits} of {REPS_TARGET}' if CONSOLIDATE
+                        else f'{frontier["value"]} laps ×{frontier_hits}')
     else:
         frontier_val = f'{frontier["value"]} laps · not hit this session'
     frontier_delta = "▲ new" if frontier["moved_this_session"] else ""
 
     laps_val = str(cur["laps"])
     runs_val = str(cur_runs)
+    runs_caption, runs_title = "2+-length runs", None
+    if CONSOLIDATE:
+        runs_val = str(cur["count3plus"])
+        runs_caption = "3+-lap runs"
+        runs_title = f'{cur["count2"]} two-lap runs left to convert to 3s'
 
     med = cur["frontier_rest_median"]
     n_rests = len(cur["frontier_rests"])
     rest_val = f"{med:.0f}s" if med is not None else "—"
+    rest_caption = f"rest by longest swim (target <{PHASE_REST_S}s)" if CONSOLIDATE else "rest by longest swim"
     rest_title = None
     if med is not None:
         rest_title = f'min {cur["frontier_rest_min"]:.0f}s over n={n_rests} qualifying rests'
@@ -714,7 +728,7 @@ def fifty_stat_row(cap_stats, frontier):
     else:
         dlaps = cur["laps"] - prv["laps"]
         laps_delta = f"{'▲' if dlaps > 0 else '▼' if dlaps < 0 else '–'}{abs(dlaps)}"
-        drun = cur_runs - prv_runs
+        drun = (cur["count3plus"] - prv["count3plus"]) if CONSOLIDATE else (cur_runs - prv_runs)
         runs_delta = f"{'▲' if drun > 0 else '▼' if drun < 0 else '–'}{abs(drun)}"
         if med is not None and prv["frontier_rest_median"] is not None:
             drest = med - prv["frontier_rest_median"]
@@ -725,8 +739,8 @@ def fifty_stat_row(cap_stats, frontier):
     return (f'<div class="card"><div class="card-body"><div class="card-row">'
             f'{tile("longest swim", frontier_val, frontier_delta)}'
             f'{tile("laps this session", laps_val, laps_delta)}'
-            f'{tile("2+-length runs", runs_val, runs_delta)}'
-            f'{tile("rest by longest swim", rest_val, rest_delta, rest_title)}'
+            f'{tile(runs_caption, runs_val, runs_delta, runs_title)}'
+            f'{tile(rest_caption, rest_val, rest_delta, rest_title)}'
             f'</div></div></div>')
 
 
@@ -1154,8 +1168,26 @@ def chunk_fix_text(latest, frontier):
     session's chunks as this one's would be misleading, so unmeasured
     sessions get estimate-safe wording with no run-length claims."""
     if not latest.get("rest_measured") or frontier is None:
+        if CONSOLIDATE:
+            return ("The target this block: five 3-length runs a session with short rests beside them. "
+                    "Hold that plan once this session's rests are measured, not estimated.")
         return ("The protocol's smallest unit is 100 m — four lengths. Keep chunking up "
                 "toward that once this session's rests are measured, not estimated.")
+    if CONSOLIDATE:
+        v, hits, med = frontier["value"], frontier["times_hit_plus"], frontier["median_rest"]
+        reps_done = hits >= REPS_TARGET
+        rest_done = med is not None and med < PHASE_REST_S
+        if reps_done and rest_done:
+            return (f"Today's targets hit: {v}-length runs ×{hits} with rests beside them under "
+                    f"{PHASE_REST_S}s. Next squeeze: turn the remaining 2-length runs into 3s.")
+        if reps_done:
+            rest_bit = (f"rests beside them ran ~{med:.0f}s median — bring that under {PHASE_REST_S}s"
+                        if med is not None else "no clean rest sample beside them this session — next swim decides")
+            return f"Reps are there: {v}-length runs ×{hits}. Now the rests: {rest_bit}. Touch, three breaths, go."
+        parts = [f"you hit your longest swim ×{hits} — the target is ×{REPS_TARGET}"]
+        if med is not None and not rest_done:
+            parts.append(f"rests beside those swims ran ~{med:.0f}s median — bring that under {PHASE_REST_S}s")
+        return f"Stack, don't stretch: {'; '.join(parts)}. And turn 2-length runs into 3s. Touch, three breaths, go."
     runs = session_runs(latest)
     biggest = max((r["length"] for r in runs), default=1)
     if biggest >= 4:
@@ -1184,11 +1216,15 @@ def make_verdict(latest, prev, stats, prev_stats, frontier=None):
         if med is not None and med > BAND_HI:
             headline = ("First measured swim — and the estimates were flattering you." if first_measured
                         else "The engine is fine. The wall stops are where the race is lost.")
+            tail = (f"stacking: your longest swim ×{frontier['times_hit_plus']} this session, target ×{REPS_TARGET}."
+                    if CONSOLIDATE and frontier else
+                    "chunking up: the protocol's smallest unit is 100 m — four lengths.")
             fix = (f"Measured median rest is ~{med:.0f}s, above the 20–45s band — only "
                    f"{stats['inband_pct']}% of rests in band. Touch, three breaths, go. And keep "
-                   "chunking up: the protocol's smallest unit is 100 m — four lengths.")
+                   + tail)
         else:
             headline = ("First measured swim — and the rest discipline is real." if first_measured
+                        else "Rests in band, measured. Now stack the reps." if CONSOLIDATE
                         else "Rests in band, measured. Now stretch the chunks.")
             fix = chunk_fix_text(latest, frontier)
         return headline, win, fix
@@ -1257,10 +1293,22 @@ def frontier_lead(frontier, cap_stats):
         return (f'Your longest swim just moved to {v} lengths ({v_m:.0f} m), hit {frontier["times_hit"]}× this '
                 f'session{held}.{rest_note}{pace_note}')
     if frontier["times_hit"] > 0:
+        if CONSOLIDATE:
+            hits = frontier["times_hit_plus"]
+            gap = max(REPS_TARGET - hits, 0)
+            rest_bit = (f" Rests beside them: ~{frontier['median_rest']:.0f}s median against the <{PHASE_REST_S}s target."
+                        if frontier["median_rest"] is not None else "")
+            return (f'Your longest swim holds at {v} lengths ({v_m:.0f} m) — hit {hits}× this session. '
+                    f'This block is about stacking, not stretching: {REPS_TARGET} of these per session'
+                    f'{f" — {gap} more than today" if gap else " — done"}.{rest_bit}{pace_note}')
         return (f'Your longest swim holds at {v} lengths ({v_m:.0f} m) — touched {frontier["times_hit"]}× this '
                 f'session.{rest_note}{pace_note}')
     stuck_for = frontier["sessions_since_promotion"]
     stuck = f" for {stuck_for} sessions" if stuck_for else ""
+    if CONSOLIDATE:
+        return (f'Your longest swim is stuck at {v} lengths ({v_m:.0f} m){stuck} — not touched this session. '
+                f'The ask this block: {REPS_TARGET} of them per session with rests beside them under '
+                f'{PHASE_REST_S}s — get back on it before anything else.')
     return (f'Your longest swim is stuck at {v} lengths ({v_m:.0f} m){stuck} — not touched this session. '
             f'The two dials that move it: more multi-length runs per session, and the rest next to your '
             f'longest swims compressing toward ≤{RUN_JOIN:.0f}s.')
@@ -1291,10 +1339,16 @@ def build():
     prog_measured = [s["longest_run_lengths"] for s in prog if s.get("rest_measured")]
     prog_best = max(prog_measured) if prog_measured else max(s["longest_run_lengths"] for s in prog)
     next_rung = next((v for v, _ in RUNGS if v > prog_best), cfg["goal_lengths"])
-    prog_coach = (f"Since the protocol started (July 19), your best continuous swim is {prog_best} lengths "
-                  f"({prog_best*22.86:.0f} m). Next rung on the ladder: {next_rung} lengths "
-                  f"({next_rung*22.86:.0f} m) in one go. Every measured session adds a dot — the job is to make "
-                  f"the blue step line climb, one rung at a time, until it touches the red line at 44.")
+    if CONSOLIDATE:
+        prog_coach = (f"Since the protocol started (July 19), your best continuous swim is {prog_best} lengths "
+                      f"({prog_best*22.86:.0f} m). This block isn't about the next rung — it's about owning this one: "
+                      f"{REPS_TARGET} runs of {prog_best} lengths a session with rests under {PHASE_REST_S}s. "
+                      f"When that's routine, the climb resumes.")
+    else:
+        prog_coach = (f"Since the protocol started (July 19), your best continuous swim is {prog_best} lengths "
+                      f"({prog_best*22.86:.0f} m). Next rung on the ladder: {next_rung} lengths "
+                      f"({next_rung*22.86:.0f} m) in one go. Every measured session adds a dot — the job is to make "
+                      f"the blue step line climb, one rung at a time, until it touches the red line at 44.")
 
     comfort_rungs, comfort_per_session = comfort_ladder_stats(measured)
     comfort_baseline, _ = compute_comfort_baseline(comfort_rungs, comfort_per_session, cfg)
@@ -1314,7 +1368,9 @@ def build():
                        f"with {l_stats['inband_pct']}% of rests in band. Swim pace: a measured "
                        f"{latest['est_swim_per_length_s']:.0f}s per length. "
                        + ("The swimming isn't the limiter right now — the wall is. Touch, three breaths, go.</p>"
-                          if inband_word == "above" else "Hold that and stretch the chunks.</p>"))
+                          if inband_word == "above"
+                          else "Hold that and stack the threes.</p>" if CONSOLIDATE
+                          else "Hold that and stretch the chunks.</p>"))
     else:
         spotlight_p = (f"<p>Here's the thing you told me: <em>\"I swim 25 yards, wait a minute.\"</em> The data disagrees, in your favor. "
                        f"Your median wait on {esc(l_date)} was about <strong>{l_stats['median_rest']:.0f} seconds</strong> — inside the "
@@ -1337,6 +1393,27 @@ def build():
                     f"<td>{s['lengths']}</td><td>{s['true_distance_m']:.0f} m</td>"
                     f"<td>~{st['median_rest']:.0f}s</td><td>{st['inband_pct']}%</td>"
                     f"<td>{s['longest_run_lengths'] if s.get('rest_measured') else '—'}</td><td>{s['hr_avg']:.0f}</td></tr>")
+
+    if CONSOLIDATE:
+        mistake3_grade, mistake3_note = "B", (
+            "Right call: you're not chasing distance, you're consolidating. Own the 3-length run "
+            "— five a session, short rests — before reaching for the next rung.")
+        correction2_title = "2 · Stack the threes, shrink the rest"
+        correction2_body = (
+            "This week: <strong>5 × 3 lengths, rests under 60 s</strong>, easy pace, every run at the same speed. "
+            "Three lengths, touch, breathe, go — make the three the plan, not the peak.")
+        ladder_now_set, ladder_now_total, ladder_now_ready = (
+            "5 × 3 lengths @ <60s", "≈ 343 m", "five feel the same, rests under a minute")
+    else:
+        mistake3_grade, mistake3_note = "C", (
+            "You're not overreaching — you're underreaching. Most reps are still one length, and even your "
+            "longest run (3 lengths) is smaller than anything on the ladder. Time to chunk up: this is your growth edge.")
+        correction2_title = "2 · Double the chunk, keep the rest"
+        correction2_body = (
+            "This week: <strong>8 × 50 yd with 30–45 s rest</strong>, easy pace, every repeat at the same speed. "
+            "Two lengths, touch, breathe, go — make your current longest run the plan, not the ceiling.")
+        ladder_now_set, ladder_now_total, ladder_now_ready = (
+            "8 × 50 yd @ 30–45s", "≈ 366 m", "all repeats feel the same, breathing steady")
 
     page = f"""<!DOCTYPE html>
 <html lang="en">
@@ -1450,7 +1527,7 @@ def build():
 <tbody>
 <tr><td><strong>1 · Random laps, no plan</strong> <span class="small">(01:30)</span></td><td><span class="badge" style="background:{BLUE};color:#fff">B+</span></td><td>You now show up with a plan and repeat it. That's base training. Write it down before each swim to make it an A.</td></tr>
 <tr><td><strong>2 · The wrong kind of rest</strong> <span class="small">(04:54)</span></td><td><span class="badge" style="background:{BLUE};color:#fff">B</span></td><td>Median rest ~{era_med:.0f}s is inside the 20–45s band. The remaining leak: the 90s+ full resets that aren't feeding a bigger chunk. One hand on the wall, stay ready.</td></tr>
-<tr><td><strong>3 · Chasing the goal distance</strong> <span class="small">(08:12)</span></td><td><span class="badge" style="background:{AMBER};color:#fff">C</span></td><td>You're not overreaching — you're underreaching. Most reps are still one length, and even your longest run (3 lengths) is smaller than anything on the ladder. Time to chunk up: this is your growth edge.</td></tr>
+<tr><td><strong>3 · Chasing the goal distance</strong> <span class="small">(08:12)</span></td><td><span class="badge" style="background:{AMBER};color:#fff">{mistake3_grade}</span></td><td>{mistake3_note}</td></tr>
 </tbody>
 </table>
 </section>
@@ -1462,8 +1539,8 @@ def build():
 <p>You switched to <strong>Pool Swim mode</strong> and it shows: exact laps, exact rests, honest distance. Sessions before July 22 keep their "estimated" asterisks; from here on the numbers are measured. Keep the setting.</p>
 </div>
 <div class="callout">
-<p class="callout-title">2 · Double the chunk, keep the rest</p>
-<p>This week: <strong>8 × 50 yd with 30–45 s rest</strong>, easy pace, every repeat at the same speed. Two lengths, touch, breathe, go — make your current longest run the plan, not the ceiling.</p>
+<p class="callout-title">{esc(correction2_title)}</p>
+<p>{correction2_body}</p>
 </div>
 <div class="callout">
 <p class="callout-title">3 · Kill the innocent full resets</p>
@@ -1478,7 +1555,7 @@ def build():
 <table class="bordered compact">
 <thead><tr><th>Block</th><th>The set</th><th>Session total</th><th>You're ready when</th></tr></thead>
 <tbody>
-<tr><td>Now</td><td>8 × 50 yd @ 30–45s</td><td>≈ 366 m</td><td>all repeats feel the same, breathing steady</td></tr>
+<tr><td>Now</td><td>{ladder_now_set}</td><td>{ladder_now_total}</td><td>{ladder_now_ready}</td></tr>
 <tr><td>Next</td><td>10 × 5 lengths @ 30s</td><td>≈ 1,143 m</td><td>30s starts to feel like plenty of rest</td></tr>
 <tr><td>Then</td><td>5 × 10 lengths @ 30s</td><td>≈ 1,143 m</td><td>same — chunks up, rest unchanged</td></tr>
 <tr><td>Then</td><td>2 × 22 lengths @ 30s</td><td>≈ 1,006 m</td><td>finishing thinking "I could do one more"</td></tr>

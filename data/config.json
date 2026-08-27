@@ -13,5 +13,6 @@
   "comfort_baseline": {"min_runs_per_session": 3, "window_sessions": 3, "recovery_rest_max_s": 30},
   "run_join_max_s": 5,
   "run_credit_overrides": {},
+  "training_phase": {"mode": "consolidate", "frontier_reps_target": 5, "frontier_rest_median_target_s": 60},
   "notes": "Sessions through 2026-07-21 recorded as Open Water (rests estimated). Pool Swim mode from 2026-07-22 (rests measured). True distance = lengths * pool_length_m always. location_overrides: {\"<session-id>\": \"pool\"|\"open_water\"} forces classification when watch metadata is missing."
 }

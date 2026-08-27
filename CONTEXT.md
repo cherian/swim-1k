@@ -42,6 +42,20 @@ totals (it can demote, never promote above the raw cycle count).
 
 **Plain English on the page:** "rest by longest swim."
 
+## Training phase
+
+`training_phase` in `data/config.json` steers coaching copy without code
+changes. `mode: "extend"` (or the block absent) = push the frontier to the
+next rung — the original wording, byte-for-byte. `mode: "consolidate"` =
+stack reps at the current frontier (`frontier_reps_target` per session,
+counted as runs `>= frontier` so exceeding it still counts), convert 2-lap
+runs to 3s, and compress frontier-adjacent rests
+(`frontier_rest_median_target_s` median). Only steering copy, tiles, the
+report card, correction #2, and the ladder's "Now" row change;
+`compute_frontier`, the two-touch ratchet, and the "moved" celebration
+narrative are phase-independent. Page vocabulary stays plain English
+("longest swim", "this block") — never "frontier"/"phase".
+
 ## Two-touch ratchet
 
 The confirmation rule behind Frontier (see above). Existing single-touch
